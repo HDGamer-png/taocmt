@@ -394,6 +394,23 @@ function renderTaskDetail(task) {
             <!-- Stats -->
             ${!isRunning && comments.length > 0 ? renderStats(comments, task.num_comments) : ''}
 
+            <!-- Plain text output -->
+            ${!isRunning && comments.length > 0 ? `
+            <div class="plain-output-section">
+                <div class="plain-output-header">
+                    <div>
+                        <h3>📝 Nội dung để sử dụng</h3>
+                        <p>Toàn bộ comment ở dạng văn bản, mỗi comment một dòng.</p>
+                    </div>
+                    <div class="plain-output-actions">
+                        <button class="btn btn-secondary btn-sm" onclick="copyAllComments()">📋 Sao chép tất cả</button>
+                        <button class="btn btn-primary btn-sm" onclick="downloadTask('${task.task_id}', 'txt')">📥 Tải file TXT</button>
+                    </div>
+                </div>
+                <textarea class="plain-output-textarea" id="plain-output" readonly aria-label="Toàn bộ comment">${escapeHtml(comments.map(c => c.content || '').join('\\n'))}</textarea>
+            </div>
+            ` : ''}
+
             <!-- Comments section -->
             <div class="comments-section" id="comments-section">
                 <h3>📋 Danh sách comment <span class="count" id="comment-count">${comments.length}</span></h3>
@@ -604,6 +621,22 @@ function copyComment(el, text) {
         document.execCommand('copy');
         document.body.removeChild(ta);
         showToast('Đã copy comment!', 'success');
+    });
+}
+
+function copyAllComments() {
+    const output = document.getElementById('plain-output');
+    if (!output) return;
+
+    const text = output.value;
+    navigator.clipboard.writeText(text).then(() => {
+        showToast('Đã sao chép toàn bộ comment!', 'success');
+    }).catch(() => {
+        output.focus();
+        output.select();
+        document.execCommand('copy');
+        output.setSelectionRange(0, 0);
+        showToast('Đã sao chép toàn bộ comment!', 'success');
     });
 }
 

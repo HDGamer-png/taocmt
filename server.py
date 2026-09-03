@@ -728,7 +728,14 @@ async def download_task(task_id: str, format: str = "json", authorization: str =
 
     safe_topic = "".join(c if c.isalnum() or c in " _-" else "_" for c in task.get("topic", "comments"))[:30]
 
-    if format == "csv":
+    if format == "txt":
+        content = "\n".join(c.get("content", "") for c in comments)
+        return StreamingResponse(
+            io.BytesIO(content.encode("utf-8")),
+            media_type="text/plain; charset=utf-8",
+            headers={"Content-Disposition": f'attachment; filename="{safe_topic}.txt"'}
+        )
+    elif format == "csv":
         output = io.StringIO()
         fieldnames = ["id", "content", "length_category", "tone", "style", "word_count"]
         writer = csv.DictWriter(output, fieldnames=fieldnames)
