@@ -1,0 +1,4919 @@
+[
+  {
+    "task_id": "f9a1285a",
+    "user_id": "1b4c8747",
+    "topic": "khen video hay trên tiktok theo GenZ",
+    "num_comments": 200,
+    "language": "Tiếng Việt",
+    "api_provider": "groq",
+    "api_model": "llama-3.3-70b-versatile",
+    "batch_size": 15,
+    "similarity_threshold": 0.75,
+    "status": "failed",
+    "current_count": 0,
+    "progress_pct": 0,
+    "created_at": "2026-09-03T11:51:51.021710",
+    "started_at": "2026-09-03T11:51:51.025473",
+    "completed_at": "2026-09-03T11:51:51.161997",
+    "comments": [],
+    "error": "Chưa đặt biến môi trường GROQ_API_KEY.\nLấy key miễn phí tại: https://console.groq.com/keys"
+  },
+  {
+    "task_id": "c8e8a9b0",
+    "user_id": "1b4c8747",
+    "topic": "Lời khen gái xinh Tiktok kiểu GenZ",
+    "num_comments": 200,
+    "language": "Tiếng Việt",
+    "api_provider": "groq",
+    "api_model": "llama-3.3-70b-versatile",
+    "batch_size": 15,
+    "similarity_threshold": 0.75,
+    "status": "completed",
+    "current_count": 0,
+    "progress_pct": 0,
+    "created_at": "2026-09-03T12:00:05.908089",
+    "started_at": "2026-09-03T12:00:05.911318",
+    "completed_at": "2026-09-03T12:00:12.855225",
+    "comments": [],
+    "error": null
+  },
+  {
+    "task_id": "e7139891",
+    "user_id": "1b4c8747",
+    "topic": "Lời khen gái xinh Tiktok",
+    "num_comments": 200,
+    "language": "Tiếng Việt",
+    "api_provider": "groq",
+    "api_model": "llama-3.3-70b-versatile",
+    "batch_size": 15,
+    "similarity_threshold": 0.75,
+    "status": "failed",
+    "current_count": 0,
+    "progress_pct": 0,
+    "created_at": "2026-09-03T12:04:21.829346",
+    "started_at": "2026-09-03T12:04:21.832238",
+    "completed_at": "2026-09-03T12:04:28.727152",
+    "comments": [],
+    "error": null
+  },
+  {
+    "task_id": "044d4912",
+    "user_id": "1b4c8747",
+    "topic": "khen gái xinh Tiktok kiểu GenZ",
+    "num_comments": 200,
+    "language": "Tiếng Việt",
+    "api_provider": "groq",
+    "api_model": "qwen/qwen3.8-27b",
+    "batch_size": 15,
+    "similarity_threshold": 0.75,
+    "status": "completed",
+    "current_count": 200,
+    "progress_pct": 0,
+    "created_at": "2026-09-03T12:12:50.573051",
+    "started_at": "2026-09-03T12:12:50.576508",
+    "completed_at": "2026-09-03T12:14:28.474917",
+    "comments": [
+      {
+        "content": "xinh quá trời ơi nhìn hoài ko chán luôn á",
+        "tone": "agreeing",
+        "style": "teencode",
+        "id": "8b24bdcd",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "ai cho phép đẹp vậy trời ơi cứu tui với",
+        "tone": "questioning",
+        "style": "emphatic",
+        "id": "220feed9",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "lướt feed gặp em là quên hết mọi thứ luôn",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "02faebd1",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "diện mạo này nó có pháp luật mà phải kiểm tra",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "83aa05d1",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "tôi thật sự không hiểu vì sao lại đẹp vậy",
+        "tone": "neutral",
+        "style": "formal",
+        "id": "73676d53",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "mặt xinh body chuẩn quá trời ơi là trời ơi",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "0d8f7c66",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "xinh như mộng thôi không phải người trần thế đâu",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "add7ceed",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "vừa thấy thôi đã muốn theo dõi ngay lập tức rồi",
+        "tone": "neutral",
+        "style": "casual",
+        "id": "dd05e0dc",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "sao em lại xinh đến mức khiến anh phải sốc",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "a6eb6b19",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "chỉ nhìn thôi mà tim đập nhanh hơn bình thường kha khá",
+        "tone": "storytelling",
+        "style": "minimal",
+        "id": "91178105",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "đẹp rõ mồn một ra ngoài đó chứ không lừa ai",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "3a27385f",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "ngưỡng mộ cơ duyên xinh đẹp của em quá trời ơi",
+        "tone": "neutral",
+        "style": "emphatic",
+        "id": "0f64f3cd",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "em làm gì vậy mà xinh giỏi đảm đang đến thế",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "bec193e1",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "nổi bật giữa đám đông chỉ vì cái mặt quá xinh đẹp",
+        "tone": "informative",
+        "style": "casual",
+        "id": "34dfbdde",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "hôm nay mình được thưởng thức ẩm thực thị giác đúng nghĩa",
+        "tone": "humorous",
+        "style": "formal",
+        "id": "27fe5b71",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Trời ơi mặt em đẹp quá mê liền nha",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "ad0ddedd",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Sao mà cute vậy trời ơi cứu lấy với",
+        "tone": "questioning",
+        "style": "emphatic",
+        "id": "a4c9d611",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Thích cách em cười quá dễ thương ghê á",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "a5113141",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Chưa từng thấy ai tỏa sáng耀眼 như em đâu",
+        "tone": "storytelling",
+        "style": "emphatic",
+        "id": "fe0f02aa",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Chỉ cần nhìn là vui hết cả ngày luôn á",
+        "tone": "neutral",
+        "style": "minimal",
+        "id": "9aa2f90a",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Gợi cảm mà duyên dáng quá đỉnh cao luôn nè",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "1bfd2945",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Phải chăng là yêu tinh hóa thân đến trần gian",
+        "tone": "questioning",
+        "style": "sarcastic",
+        "id": "07f2a189",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Mắt em sao mà sáng quá khiến tim đập loạn",
+        "tone": "storytelling",
+        "style": "emphatic",
+        "id": "7f934223",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Xem xong muốn quên hết việc ở công ty luôn",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "a3bf5e56",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Không hiểu sao ngày nào cũng chờ xem em",
+        "tone": "neutral",
+        "style": "minimal",
+        "id": "032b144c",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Đỉnh nhất là nụ cười tỏa nắng chiều nay á",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "f1c94078",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Cảm giác bị mê hoặc từ cái nhìn đầu tiên",
+        "tone": "storytelling",
+        "style": "formal",
+        "id": "b376533f",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh quá làm sao ngủ được đây trời ơi j",
+        "tone": "questioning",
+        "style": "teencode",
+        "id": "f74efa5a",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Chắc phải tin em là công chúa thật rồi j",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "e5e07d96",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Gặp em trong sea là được quà quý giá",
+        "tone": "informative",
+        "style": "casual",
+        "id": "c594de18",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "trời ơi xinh quá trời cứu tôi với",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "42e3b268",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "chụp hình góc này là chuẩn chỉnh luôn rồi",
+        "tone": "informative",
+        "style": "casual",
+        "id": "b4a5ab6f",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "không hiểu sao mà mê quá đỗi á",
+        "tone": "questioning",
+        "style": "neutral",
+        "id": "4877112f",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "gen z xinh vậy thì lấy ai nữa",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "0fbdd4b1",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "xinh quá trời ơi khiến tim đập loạn nhịp",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "c08fb94b",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "nhìn em xong cảm thấy bản thân kém đi",
+        "tone": "neutral",
+        "style": "casual",
+        "id": "a48916b1",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "tôi xin phép lưu lại ảnh này nhé",
+        "tone": "neutral",
+        "style": "formal",
+        "id": "58af6c1e",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "đẹp vậy làm sao mà ngủ ngon được chứ",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "de50dfca",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "xin lỗi vì đã làm phiền màn hình của bạn",
+        "tone": "neutral",
+        "style": "formal",
+        "id": "696f253d",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "mặt em xinh đến mức không thể tin nổi",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "801c4628",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "em làm tui phải dừng lại vài giây",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "2301c8ca",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "cần cài đặt lại bộ lọc cảm xúc ngay bây giờ",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "327b8d95",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "xem video này xong muốn đăng ký follow luôn",
+        "tone": "neutral",
+        "style": "casual",
+        "id": "87fa2859",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "em là định nghĩa của sự hoàn hảo tuyệt đối",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "4cd52d04",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "xin cảm ơn vì đã mang lại niềm vui",
+        "tone": "neutral",
+        "style": "formal",
+        "id": "8758dac8",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh ghê luôn em ơi cười tươi quá trời",
+        "tone": "agressing",
+        "style": "casual",
+        "id": "d48615c8",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Chưa bao giờ thấy ai cute đến thế này hết á",
+        "tone": "agreeing",
+        "style": "minimal",
+        "id": "5264feb8",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Mặt em sao lại dễ thương vậy trời ơi cứu tui",
+        "tone": "questioning",
+        "style": "emphatic",
+        "id": "0c22636f",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Lướt qua vài giây mà tim đập thình thịch luôn j",
+        "tone": "storytelling",
+        "style": "teencode",
+        "id": "4f1c0b8c",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Đẹp vậy mà còn khiêm tốn nữa là đỉnh cao rồi",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "66f03682",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Em có biết mình đang khiến bao người mê mẩn không",
+        "tone": "questioning",
+        "style": "formal",
+        "id": "1c6c6c2e",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Vẻ đẹp này thật sự là phenix của cả thế giới luôn",
+        "tone": "informative",
+        "style": "emphatic",
+        "id": "0b713dbc",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Cười một cái là tan biến hết muộn phiền trong ngày",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "9372bbb5",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Không cần filter vẫn xinh xẻo đến mức không tin được",
+        "tone": "disagreeing",
+        "style": "teencode",
+        "id": "cb3462f4",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Gen Z mà có được gương mặt như thế thì quá đỉnh",
+        "tone": "agreeing",
+        "style": "minimal",
+        "id": "06a3ed0d",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Mắt long lanh thế này thì ai mà dám không thích chứ",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "edb2d26b",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Em nên làm diễn viên thì thành sao màn ảnh rộng luôn",
+        "tone": "humorous",
+        "style": "formal",
+        "id": "ceecc1f9",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Thấy em xong thì bọn em chỉ muốn theo dõi mãi thôi",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "b508d51b",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Em ơi đẹp quá trời ơi cứu tui với",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "282dfe09",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Chạy đi nhanh trước khi tui hít phải vía",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "87c67fe8",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Mắt em sao mà lộng lẫy đến vậy trời",
+        "tone": "agreesing",
+        "style": "emphatic",
+        "id": "7655dc95",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Thôi được rồi chấp nhận em xinh bất công",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "a71ad91d",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Mình là ai mà dám đứng cạnh em",
+        "tone": "questioning",
+        "style": "minimal",
+        "id": "05e474a1",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Lưu ngay lại xem mỗi khi buồn nản",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "11d92cba",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Gen Z mà có nét đẹp vượt thời đại",
+        "tone": "agreesing",
+        "style": "formal",
+        "id": "497ab90c",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Em cười là tui mất hết lý trí luôn",
+        "tone": "agreesing",
+        "style": "emphatic",
+        "id": "9599a12d",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Bảo sao không ai dám đi cạnh em",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "7c0ba270",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh đến mức làm tui muốn bỏ học",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "1fc4577f",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Em ơi giảm bớt độ xinh lại chút",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "c2090bf0",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Mỗi frame trong clip này đều là thơ",
+        "tone": "agreesing",
+        "style": "informative",
+        "id": "1bf6e89c",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Tui xin chuyển khoản cho ánh sáng đó",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "07d91a0b",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Đẹp vậy mà cứ đăng hoài tui mê",
+        "tone": "agreesing",
+        "style": "casual",
+        "id": "9fd4614d",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "chị ơi xinh phát hốt hành tinh luôn á",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "742c43a7",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "vẻ đẹp này là vũ khí sát thương",
+        "tone": "agreement",
+        "style": "casual",
+        "id": "6926edf3",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "tui ghen tị với màn hình điện thoại",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "7c5e25b9",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "ai đang cân bằng sắc đẹp thế này",
+        "tone": "questioning",
+        "style": "neutral",
+        "id": "eb13e9ad",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "em xin lỗi vì đã làm xao xuyến",
+        "tone": "informative",
+        "style": "formal",
+        "id": "4a90f550",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "em là hiện tượng thiên văn hiếm gặp",
+        "tone": "informative",
+        "style": "formal",
+        "id": "3aa77671",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Trời ơi em đẹp quá đỗi quá chừng luôn",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "c3de2c72",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Nhan sắc này phá hoại sự bình yên của tui",
+        "tone": "sarcastic",
+        "style": "teencode",
+        "id": "02b045a7",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Đi qua là phải ngước nhìn mãi không thôi",
+        "tone": "questioning",
+        "style": "emphatic",
+        "id": "250e0c51",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Sao mà trời cho em xinh thế này đc",
+        "tone": "agreeing",
+        "style": "teencode",
+        "id": "5317f11f",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh như vậy thì thế giới còn chỗ cho ai",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "39100f92",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Tui xin rút lui vì quá choáng ngợp đây",
+        "tone": "humorous",
+        "style": "emphatic",
+        "id": "607bead0",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Cần báo công an vì làm tim tui loạn nhịp",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "9fba3529",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Đẹp kiểu không cần cố gắng cũng thắng cả hội",
+        "tone": "agreeing",
+        "style": "teencode",
+        "id": "53422040",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Chị ơi dừng lại đi sức tui không chịu nổi",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "35a7f353",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Em là định nghĩa hoàn hảo của từ xinh đẹp",
+        "tone": "informative",
+        "style": "formal",
+        "id": "8b67e185",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Thấy em xong là bỏ hết lý trí sang bên",
+        "tone": "storytelling",
+        "style": "teencode",
+        "id": "7505a7eb",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Nét cười ấy làm cho tháng năm trở nên đẹp",
+        "tone": "neutral",
+        "style": "formal",
+        "id": "4495e70a",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Tui cam kết sẽ ngắm em cả đời luôn nha",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "8f4fdad0",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Đẹp kiểu gây án nhưng tui xin nhận tội",
+        "tone": "humorous",
+        "style": "emphatic",
+        "id": "6cc66b24",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Sao lại cho em xinh thế này trời ơi ơi",
+        "tone": "questioning",
+        "style": "teencode",
+        "id": "aec9c656",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "diện mạo ấy khiến ai cũng phải chòng ghẹo liền",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "d7742b7a",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "mắt to tròn mọng nước nhìn là muốn xỉu luôn",
+        "tone": "sarcastic",
+        "style": "teencode",
+        "id": "d6047cae",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "da dẻ trắng mịn thế này chắc ngủ sớm lắm",
+        "tone": "questioning",
+        "style": "formal",
+        "id": "ed6298f9",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "ảnh vía đẹp cỡ này mà chưa nổi tiếng sao trời",
+        "tone": "disagreeing",
+        "style": "emphatic",
+        "id": "e4e2e8ec",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "có ai nói cho em biết chuẩn gái genz không",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "a3f77940",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "chỉ là nàng thơ sống thực tế ảo thôi á",
+        "tone": "agreeing",
+        "style": "minimal",
+        "id": "6a04a3a2",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "đến bộ trang phục giản dị cũng tỏa sáng lung linh",
+        "tone": "informative",
+        "style": "formal",
+        "id": "1e6c396f",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "làm fan cuồng hết rồi không kháng cự nổi đâu",
+        "tone": "storytelling",
+        "style": "teencode",
+        "id": "b7ac584e",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "chấm điểm xinh đẹp tối đa ba chấm đầy đủ luôn",
+        "tone": "neutral",
+        "style": "casual",
+        "id": "3742327c",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "xinh thế này mà chưa đi casting phim gì sao",
+        "tone": "questioning",
+        "style": "emphatic",
+        "id": "59cc70ae",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "đừng làm người ta xao lãng việc học hành nữa nha",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "28d3a19d",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "có lẽ ông trời đã ưu ái thiên vị em nhiều",
+        "tone": "neutral",
+        "style": "formal",
+        "id": "e2c4de11",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "giọng nói nhẹ nhàng trong trẻo khiến tim đập nhanh",
+        "tone": "storytelling",
+        "style": "minimal",
+        "id": "e31c0821",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "chúng ta cùng nhau ủng hộ kênh youtube của em nhé",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "01a94c0a",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "xinh đẹp mà còn tài năng nữa thì quá đỉnh luôn",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "669282b3",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Chân dung này khiến tui phải ngồi im lặng mãi",
+        "tone": "questioning",
+        "style": "minimal",
+        "id": "90d53ae5",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Một khoảnh khắc đẹp đến mức làm tim tui đau",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "acb5ef41",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Lướt feed gặp em là quên hết mọi thứ luôn á",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "372af864",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh quá trời ơi nhìn hoài không chán luôn á",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "62602cbd",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Em là hiện thân của sự hoàn hảo tuyệt đối luôn",
+        "tone": "agreeing",
+        "style": "formal",
+        "id": "825bce70",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Không thể nào tin được đây là người thật đâu",
+        "tone": "disagreeing",
+        "style": "casual",
+        "id": "0cc3c46f",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Mỗi lần xem video là lại yêu thêm một chút",
+        "tone": "storytelling",
+        "style": "minimal",
+        "id": "77bc5225",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "TikTok này có em là sáng bừng cả thế giới luôn",
+        "tone": "informative",
+        "style": "casual",
+        "id": "3148ec87",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Đẹp đến mức làm tui phải nghi ngờ sự thật luôn",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "68c285f5",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Em là nguồn cảm hứng bất tận cho mọi người nha",
+        "tone": "agreeing",
+        "style": "formal",
+        "id": "2cd242b7",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Một bức ảnh đủ để làm tui mơ màng cả ngày",
+        "tone": "storytelling",
+        "style": "minimal",
+        "id": "7d987812",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Không cần nhiều lời chỉ cần nhìn em là đủ rồi",
+        "tone": "neutral",
+        "style": "minimal",
+        "id": "7c5f7c05",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Em khiến tui phải ghi tên vào danh sách yêu thích",
+        "tone": "informative",
+        "style": "casual",
+        "id": "fa837cd5",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Em xinh xỉu luôn tui ngất luôn á",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "4c1ba513",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Chân dài tới vậy ai chịu nổi nổi",
+        "tone": "questioning",
+        "style": "emphatic",
+        "id": "9901923b",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Tui chết luôn rồi trời ơi cứu tui",
+        "tone": "agreeing",
+        "style": "teencode",
+        "id": "202c9efc",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Nàng mày ơi sao mà đẹp thế này",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "a660a5f8",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Đẹp thế này thì thế giới còn gì đâu",
+        "tone": "storytelling",
+        "style": "formal",
+        "id": "34ca6415",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Tui chỉ nhìn mặt thôi là đủ rồi",
+        "tone": "neutral",
+        "style": "minimal",
+        "id": "972f3fc1",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Khoảnh khắc này xứng đáng được lưu lại",
+        "tone": "informative",
+        "style": "formal",
+        "id": "c3f71052",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Em ơi xinh quá tui sắp khóc thật",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "674d38ea",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Giật mình quá trời vì vẻ ngoài này",
+        "tone": "disagreeing",
+        "style": "emphatic",
+        "id": "b590a7c8",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh xỉu luôn á ai thấu hiểu tui",
+        "tone": "agreeing",
+        "style": "teencode",
+        "id": "2acbbf27",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Đẹp tới mức làm tui quên hết cả",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "da778144",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Mỗi khung hình đều là một tuyệt tác",
+        "tone": "informative",
+        "style": "formal",
+        "id": "b4d07e87",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Tui say mê nàng từ cái nhìn đầu",
+        "tone": "humorous",
+        "style": "minimal",
+        "id": "ed980d59",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Sao em lại có thể xinh thế này",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "df330309",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh quá trời ơi tui muốn ôm em",
+        "tone": "agreeing",
+        "style": "emoji_heavy",
+        "id": "3f124abd",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "trời ơi em gái đẹp điên rồ thật",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "f4be10e2",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "mắt tui không còn nhìn thẳng được nữa nè",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "9bff5c40",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "xinh thế này ai chịu nổi chứ các bác ơii",
+        "tone": "questioning",
+        "style": "emphatic",
+        "id": "00e20076",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "đây chắc là hoa hậu tương lai của tiktok rồi",
+        "tone": "informative",
+        "style": "formal",
+        "id": "d797c207",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "nhìn là mê luôn không cần lý do gì hết",
+        "tone": "agreeing",
+        "style": "minimal",
+        "id": "3d613d0e",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "chú ý hoàn toàn bị thu hút bởi nụ cười",
+        "tone": "neutral",
+        "style": "formal",
+        "id": "ff09a029",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "em là định nghĩa hoàn hảo của chữ đẹp phải",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "9726f792",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "ghen tị nhan sắc này thật sự là đỉnh cao",
+        "tone": "disagreeing",
+        "style": "emphatic",
+        "id": "401b4d92",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "tuổi thơ tui bị đánh cắp bởi vẻ đẹp này",
+        "tone": "storytelling",
+        "style": "humorous",
+        "id": "902c45b1",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "không phải ai cũng xứng đáng nhìn em lâu",
+        "tone": "sarcastic",
+        "style": "minimal",
+        "id": "38d51a8e",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "phải khen thật lòng em gái quá đỗi xinh",
+        "tone": "informative",
+        "style": "casual",
+        "id": "3bc11ad2",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "vẻ đẹp này làm mặt đất rung chuyển nhẹ",
+        "tone": "humorous",
+        "style": "emphatic",
+        "id": "7233215d",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "em có biết mình đang làm đảo lộn thế giới",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "609cc903",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "giữ vẻ đẹp này lại đừng để ai bắt",
+        "tone": "disagreeing",
+        "style": "teencode",
+        "id": "215ad639",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "đẹp cỡ này là có xuýt xoa liền á",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "a43b71f0",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "ngầu thế này thì tui xin theo dõi dc",
+        "tone": "agreeing",
+        "style": "teencode",
+        "id": "3cb8a33b",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "trời ơi mặt xinh quá trời ơi luôn",
+        "tone": "humorous",
+        "style": "emphatic",
+        "id": "187b462b",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "chỉ cần nhìn qua là mê ngay lập tức",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "64734cf3",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "xinh vậy thì phải lên xuýt xoa thật đi",
+        "tone": "disagreeing",
+        "style": "formal",
+        "id": "f1ba6a85",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "mắt tui bị hút hồn bởi vẻ đẹp đó",
+        "tone": "neutral",
+        "style": "minimal",
+        "id": "1f892edf",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "ai đó giúp tui quên đi vẻ đẹp này với",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "2986460d",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "đẹp một cách khoa học và cực kỳ tự nhiên",
+        "tone": "informative",
+        "style": "formal",
+        "id": "0b13a085",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "tối nay mộng du cũng thấy em xinh lắm",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "b336fd59",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "em chỉ cần cười là tan hết mọi muộn phiền",
+        "tone": "agreeing",
+        "style": "minimal",
+        "id": "c8f17627",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "sao tui lướt mãi mà không thấy chán thế",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "28ddffe5",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "đẹp tới mức khiến tui muốn xin chụp cùng",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "d32e8491",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "góc cạnh nào nhìn cũng đều thấy xinh lòi",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "20f362fe",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "tội nhất là ai đang ghen tị với tui",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "be11313e",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Gửi chị mặt người ơi tui chết liền rồi nha",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "3c9628e7",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Điện thoại tui cháy do nhìn quá nhiều lần liên tục vậy",
+        "tone": "storytelling",
+        "style": "emphatic",
+        "id": "b7cb0a9b",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Nhan sắc cấp quốc gia luôn đại diện cho cả nước",
+        "tone": "agreeing",
+        "style": "formal",
+        "id": "a48b60a9",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Tui chỉ là fan trung thành của em thôi",
+        "tone": "neutral",
+        "style": "casual",
+        "id": "77aaf509",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Quá tải khung hình rồi không chịu nổi nữa đây",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "efa8045a",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Em có phải người ngoài hành tinh xuống trái đất?",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "e7f20cde",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Đẹp nghiêng nước nghiêng thành luôn đó không phải nói dối",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "01adea03",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Mệt quá đi thôi xin dừng lại ngay lập tức",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "6805a487",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Tui tin luôn vào cái duyên bên ngoài kia",
+        "tone": "informative",
+        "style": "minimal",
+        "id": "ec4cf720",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Cứ đi tiếp đi đừng dừng lại kiểu gì đó",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "235ed818",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Mới lướt đã thấy yêu thương tràn ngập tâm hồn",
+        "tone": "storytelling",
+        "style": "emphatic",
+        "id": "71c041c2",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Cho tui xin địa chỉ để mua lại gương mặt",
+        "tone": "questioning",
+        "style": "humorous",
+        "id": "5dcdbd39",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Tuyệt tác thiên nhiên được tạo nên bởi bàn tay ai",
+        "tone": "informative",
+        "style": "formal",
+        "id": "51a29a41",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Xoay ba vòng rồi vẫn chưa hết bị mê mẩn",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "a70c3eeb",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Em làm trái tim tui đập nhanh hơn hẳn đó",
+        "tone": "agreeing",
+        "style": "minimal",
+        "id": "92233109",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Cấp đại học gì vậy trời đẹp vượt ngoài mong đợi",
+        "tone": "questioning",
+        "style": "teencode",
+        "id": "400fab4b",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Tui xin lỗi vì đã nhìn chằm chằm quá lâu nha",
+        "tone": "sarcastic",
+        "style": "formal",
+        "id": "4fe67645",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Sao mà xinh được vậy trời ơi thật sự ko tin",
+        "tone": "questioning",
+        "style": "teencode",
+        "id": "f19de7e9",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Đẹp tới mức khiến ai cũng phải dừng tay lại đây",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "74e025a1",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Không hiểu sao tui lại mê cái phong cách này",
+        "tone": "neutral",
+        "style": "minimal",
+        "id": "40d0d8de",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh đẹp hiền lành mà sao lại quá đỗi hoàn hảo",
+        "tone": "agreeing",
+        "style": "formal",
+        "id": "4ee07387",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Thật sự thì tui đang cần một người bạn gái",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "64273dbe",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Xem xong clip này xong tui ngủ yên lòng cả đêm",
+        "tone": "storytelling",
+        "style": "teencode",
+        "id": "627e9f8c",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Đẹp trai hay gái thì cũng phải ngả mũ thán phục",
+        "tone": "agreeing",
+        "style": "formal",
+        "id": "26a38b38",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Chân cứng đá mềm mà sao dễ thương đến thế này",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "bcd11ba6",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Tui đồng ý hoàn toàn với mọi lời khen có cánh nha",
+        "tone": "agreeing",
+        "style": "formal",
+        "id": "02eb2d93",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Đẹp lắm nha các bạn ơi nhưng nhớ giữ sức khỏe",
+        "tone": "informative",
+        "style": "casual",
+        "id": "58342abf",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh xỉu ra luôn trời ơi đẹp quá trời",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "0f5249be",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Ai bảo em này không phải công chúa huhu",
+        "tone": "questioning",
+        "style": "teencode",
+        "id": "df886154",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Ngắm màn hình vỡ luôn vì quá chói lọi",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "a28a9ade",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Giờ cần nghỉ mắt vì nhìn mỏi quá nè",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "c8651e51",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Sao mà duyên dáng thế này trời ơi ơi",
+        "tone": "questioning",
+        "style": "exclamatory",
+        "id": "e902a08f",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Cứ đứng yên cho tui chụp selfie với nè",
+        "tone": "requesting",
+        "style": "casual",
+        "id": "b491d46f",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Đẹp kiểu trong mơ luôn á xin phép ngưỡng",
+        "tone": "admiring",
+        "style": "minimal",
+        "id": "7c57555e",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Xem xong muốn lắp luôn gương trước cửa nhà",
+        "tone": "humorous",
+        "style": "storytelling",
+        "id": "0627407f",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Em ơi bớt xinh đi chút đi đừng làm",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "fa77845f",
+        "word_count": 9,
+        "length_category": "short"
+      }
+    ],
+    "error": null
+  },
+  {
+    "task_id": "6ea427ee",
+    "user_id": "1b4c8747",
+    "topic": "Khen gái Idol Tiktok xinh theo xu hướng giới trẻ với độ quá mức 60%",
+    "num_comments": 200,
+    "language": "Tiếng Việt",
+    "api_provider": "groq",
+    "api_model": "qwen/qwen3.8-27b",
+    "batch_size": 15,
+    "similarity_threshold": 0.75,
+    "status": "completed",
+    "current_count": 200,
+    "progress_pct": 0,
+    "created_at": "2026-09-03T12:21:58.192641",
+    "started_at": "2026-09-03T12:21:58.203486",
+    "completed_at": "2026-09-03T12:23:46.237509",
+    "comments": [
+      {
+        "content": "Chân á thần giáng trần đây rồi nha 👍",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "54a2b38f",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Đi đường xa cũng phải ngoái nhìn em luôn",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "58f945f0",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Mặt em đó vừa ở đâu đây trời ơi",
+        "tone": "questioning",
+        "style": "emphatic",
+        "id": "fe7cfe1a",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Chỉ tay vào mặt mác cười đẹp giãy",
+        "tone": "storytelling",
+        "style": "minimal",
+        "id": "49733a25",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Làm ơn đăng thêm nữa đừng bỏ lỡ nha",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "38ef6438",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Cô bé nhà ai xinh xắn thế này vậy",
+        "tone": "questioning",
+        "style": "formal",
+        "id": "0c06ae46",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Giữ vững phong độ nha người đẹp tui",
+        "tone": "agreeing",
+        "style": "teencode",
+        "id": "3e59dbbd",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Kể chuyện con gái xinh miết quá trời ơi",
+        "tone": "humorous",
+        "style": "emoji_heavy",
+        "id": "86d64e6c",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Khoảnh khắc định nghĩa từ xinh đẹp mới nhất",
+        "tone": "informative",
+        "style": "emphatic",
+        "id": "af469c9f",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Túi đồ em chắc chỉ toàn quần jean thôi",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "ec316905",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Sáng nay thức dậy thấy mặt ai đây nha",
+        "tone": "storytelling",
+        "style": "teencode",
+        "id": "e8d89574",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Làm ơn ngừng xinh đi để anh sống nha",
+        "tone": "humorous",
+        "style": "emphatic",
+        "id": "5c1d24c3",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Anh hai bảo mai đi xem trực tiếp luôn",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "e59d1133",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Đôi mắt em đó có thể bắn điện được",
+        "tone": "humorous",
+        "style": "emoji_heavy",
+        "id": "6d622530",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Ngưỡng cửa điện thoại sắp bay rồi chịu thua",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "cf8bbd71",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Trời ơi em đẹp quá mức khiến tim tui rung",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "e48794f8",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh đến mức làm cho cả màn hình phát sáng lên",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "842eed81",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Sao em lại xinh đẹp như vậy khiến người ta mê",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "df8d6c72",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Kiểu đẹp này là đang quá mức so với chuẩn bình",
+        "tone": "informative",
+        "style": "neutral",
+        "id": "81e85c09",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Xem em là quên hết mọi thứ đau buồn trong đời",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "4db2f10f",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Đẹp quá trời ơi xin hãy dừng lại đây không chịu",
+        "tone": "sarcastic",
+        "style": "emphatic",
+        "id": "6234bc15",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Có phải em là thiên thần giáng trần xuống trần gian",
+        "tone": "questioning",
+        "style": "poetic",
+        "id": "da4ac208",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Mỗi lần lướt feed là gặp em là vui cả ngày",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "1f7966ae",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Sắc đẹp của em là một phen hồng chấm tuyệt",
+        "tone": "agreeing",
+        "style": "formal",
+        "id": "7c735b97",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Nụ cười em làm tan chảy hết mọi sự khó chịu",
+        "tone": "neutral",
+        "style": "poetic",
+        "id": "3b3d29a4",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Đừng cười nữa tui bị ngất xỉu tại chỗ ngay bây giờ",
+        "tone": "humorous",
+        "style": "emphatic",
+        "id": "5efadfeb",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Chân á thần đúng nghĩa không ngoa một chút nào nha",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "c2236583",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Em đẹp đến mức khiến cho đối thủ phải thua cuộc",
+        "tone": "sarcastic",
+        "style": "neutral",
+        "id": "43ccb4a6",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Linh hồn tui bay đi mất khi nhìn thấy em đây",
+        "tone": "storytelling",
+        "style": "emphatic",
+        "id": "d90847c7",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Có ai hiểu tui không xem em mà tim đập nhanh",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "317e7279",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Chân á thần quá trời ơi cứu tui",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "d3e96aad",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Mặt đẹp vậy là gian dối nghề nghiệp",
+        "tone": "sarcastic",
+        "style": "emphatic",
+        "id": "77407883",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Đây là cơ chế lọc mặt nào vậy",
+        "tone": "questioning",
+        "style": "neutral",
+        "id": "7d931142",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh đến mức làm máy tính nóng tung",
+        "tone": "humorous",
+        "style": "emphatic",
+        "id": "3f5fce42",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Mặt này dành cho đại hội thế giới",
+        "tone": "sarcastic",
+        "style": "formal",
+        "id": "6a4a58a4",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "xinh xỉu đi em tui không sống nổi luôn à",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "f02fabd1",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "đời tui chưa từng thấy ai đẹp vậy đây trời ơi",
+        "tone": "agreement",
+        "style": "emphatic",
+        "id": "88acba3b",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "alọ bảo sao tui lướt qua không dám dừng lại á",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "3f73df29",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "đẹp quá trời ơi mặt người mà chắc không phải đâu",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "344b7c01",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "em xinh vậy thì người ta có lấy tui dc không",
+        "tone": "questioning",
+        "style": "teencode",
+        "id": "a941643d",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "nhan sắc đỉnh cao thật sự không cần chỉnh sửa gì thêm",
+        "tone": "informative",
+        "style": "formal",
+        "id": "32c058e3",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "sao tui cứ hoài nghi độ thật của em vậy trời",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "276aba28",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "đẹp đến mức khiến cho cả feed sáng bừng lên cả",
+        "tone": "agreement",
+        "style": "emphatic",
+        "id": "04c1ce2e",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "em ơi xinh quá tui xin phép được làm fanclub",
+        "tone": "agreement",
+        "style": "casual",
+        "id": "d1804f00",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "chưa bao giờ tui tin vào các tiêu chuẩn cái đẹp",
+        "tone": "disagreeing",
+        "style": "formal",
+        "id": "cc1ad7a6",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "mặt đẹp vậy nên tui phải bấm lưu lại ngay đây",
+        "tone": "agreement",
+        "style": "minimal",
+        "id": "82a1f6f5",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "đẹp quá trời ơi tui tự hỏi em là ai vậy",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "7197b3fd",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "xinh xỉu luôn á tui không tin đây là sự thật",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "f10ae2d5",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "đẹp đến mức khiến người ta phải trầm trồ luôn á",
+        "tone": "agreement",
+        "style": "emphatic",
+        "id": "c5da65cd",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "em ơi xinh quá trời ơi tui phải xuống comment",
+        "tone": "agreement",
+        "style": "casual",
+        "id": "7d3be9a3",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Tội gì mà phải xinh đẹp vậy trời ơi",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "df890375",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Xin đừng xinh nữa chứ chịu hết nổi luôn",
+        "tone": "sarcastic",
+        "style": "emphatic",
+        "id": "bb6dbbab",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Trời ơi ai đào tạo ra em xinh vậy",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "73623a7a",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Chóng mặt luôn á đẹp quá trời đất này",
+        "tone": "agreeing",
+        "style": "teencode",
+        "id": "65b80746",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Em xinh đến mức làm tui bị hoa mắt",
+        "tone": "humorous",
+        "style": "minimal",
+        "id": "199c6e2b",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Sao em xinh vậy chứ trời ơi cứu tui",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "7a9a733c",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Đẹp vãi đái luôn á nhìn chẳng muốn đi",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "a565420d",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Em là hiện thân của cái đẹp hoàn hảo",
+        "tone": "informative",
+        "style": "formal",
+        "id": "6d8148a3",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh quá trời ơi tim tui đập loạn xạ",
+        "tone": "agreeing",
+        "style": "emoji_heavy",
+        "id": "81537552",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Chán đời vì em quá xinh đẹp đến thế",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "c2ccd525",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Ai vẽ ra bộ mặt xinh đẹp này vậy",
+        "tone": "questioning",
+        "style": "minimal",
+        "id": "90066e53",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Em xinh tựa tiên giáng trần xuống cõi",
+        "tone": "storytelling",
+        "style": "formal",
+        "id": "0968a18c",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Thích em quá trời luôn á chịu hết nổi",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "0a1ceef7",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh đến mức làm tui quên hết mọi thứ",
+        "tone": "neutral",
+        "style": "minimal",
+        "id": "b0b55d8b",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Em đẹp như mộng ước trong giấc mơ xa",
+        "tone": "informative",
+        "style": "formal",
+        "id": "95025992",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Trời ơi nhìn mặt em mà sao xinh thế",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "0fd4717f",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Tiết kiệm ánh sáng mà vẫn sáng rực rỡ lắm",
+        "tone": "sarcastic",
+        "style": "emphatic",
+        "id": "7b101530",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Quên hết việc thì giờ chỉ muốn xem em",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "109ef1d7",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Chắc do gen trội nên mới đẹp thế này",
+        "tone": "questioning",
+        "style": "neutral",
+        "id": "eb38d970",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Có phải người thật hay là ảnh chỉnh sửa",
+        "tone": "questioning",
+        "style": "formal",
+        "id": "be935eb0",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Đứng hình luôn khi lướt feed gặp em đây",
+        "tone": "storytelling",
+        "style": "teencode",
+        "id": "f0b458ca",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Giới trẻ ngày nay thật là biết chăm sóc da",
+        "tone": "informative",
+        "style": "casual",
+        "id": "b7d20872",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Mệt lười scroll cũng phải dừng lại xem em",
+        "tone": "neutral",
+        "style": "minimal",
+        "id": "20884141",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh đẹp vậy mà còn tài năng giỏi nữa kìa",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "8143464a",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Chứng tỏ chuẩn mực cái đẹp giờ đã thay đổi rồi",
+        "tone": "disagreeing",
+        "style": "formal",
+        "id": "93d1b79c",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Đời sống ảo chất lượng hơn đời thực nhiều lắm",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "9d2531be",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Tim đập thình thịch khi thấy em lên màn hình",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "1bbb914e",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Không hiểu nhà họ có công thức gì lạ vậy",
+        "tone": "questioning",
+        "style": "teencode",
+        "id": "75ef9b0e",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Càng xem càng nghiện vì nụ cười tươi quá đi",
+        "tone": "agreeing",
+        "style": "emoji_heavy",
+        "id": "8b21e145",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Người mẫu chuyên nghiệp chưa chắc đã vượt mặt em đâu",
+        "tone": "informative",
+        "style": "formal",
+        "id": "f38225ae",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Gái đẹp thì phải vậy chứ chịu gì đây nha",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "83194a65",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Chém gió hơi quá nhưng phải công nhận là xinh thật",
+        "tone": "agreeing",
+        "style": "minimal",
+        "id": "b5e37ade",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Tui tin anh chàng nào đó đang ghen tị nặng",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "91d106f3",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Tiến bộ quá trời từ ngày trước đến giờ rêng",
+        "tone": "informative",
+        "style": "teencode",
+        "id": "2906c536",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Mày có biết cái đẹp này nó làm phiền tui không",
+        "tone": "questioning",
+        "style": "emphatic",
+        "id": "c6fac26b",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Thực ra xinh cỡ này là hơi đáng sợ rồi đấy",
+        "tone": "disagreeing",
+        "style": "formal",
+        "id": "c8682cdb",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Cứ để yên là được rồi đừng có chụp thêm",
+        "tone": "humorous",
+        "style": "minimal",
+        "id": "7c750f0d",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Gen di truyền it looks so perfect in every angle",
+        "tone": "informative",
+        "style": "casual",
+        "id": "fbc6e9b7",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Người ta cười bằng mắt thì mọi sự ghen đều vô nghĩa",
+        "tone": "neutral",
+        "style": "emphatic",
+        "id": "b6d16845",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Sao cứ phải đẹp đến mức làm người ta mất ngủ vậy",
+        "tone": "questioning",
+        "style": "emphatic",
+        "id": "8a8eb019",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Không cần filter gì hết mà da dẻ vẫn sáng căng mọng",
+        "tone": "agreeing",
+        "style": "minimal",
+        "id": "9de20d7b",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Nhìn là biết là con giáp chịu khó chăm sóc bản thân",
+        "tone": "informative",
+        "style": "casual",
+        "id": "a28f8a14",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Đừng có nhận lời hẹn hò với những người chỉ thích hình",
+        "tone": "disagreeing",
+        "style": "formal",
+        "id": "a2eba073",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "xinh vậy ai chịu nổi chứ em ơi thật không",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "40c642cd",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "thang điểm mười chấm em thuộc loại nào đúng không",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "6c36584a",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "đẹp quá trời ơi nhìn mãi không chán luôn nha",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "9295d21e",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "chắc tui phải đi kiểm tra mắt lại rồi đây",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "fde851fb",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "idol này quá đỉnh luôn cô chú ơi xem đi",
+        "tone": "informative",
+        "style": "teencode",
+        "id": "a410c632",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "đẹp thế này thì ai còn muốn sống nổi nữa trời",
+        "tone": "sarcastic",
+        "style": "emphatic",
+        "id": "40794080",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "lần đầu thấy xinh vậy đó mình chơi tiktok lâu",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "474ea0dc",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "có phải photoshop không nhưng mà nhìn thật quá đỗi",
+        "tone": "questioning",
+        "style": "neutral",
+        "id": "2481065d",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "đẹp đến mức khiến tui quên luôn cách typing nhanh",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "f56748d9",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "em này chính là definition của đẹp tuyệt đối nhé",
+        "tone": "agreeing",
+        "style": "formal",
+        "id": "4c0d0f2c",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "cho tui xin lại cái tự tin của mình với nha",
+        "tone": "requesting",
+        "style": "casual",
+        "id": "06658599",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "xinh vậy thì đừng có làm phiền tui nữa được không",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "22e09afa",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "ngày mai đi học chắc tui sẽ ngắm em hoài",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "8219c282",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "đẹp vậy mà giá vẫn giữ nguyên không đổi chút nào",
+        "tone": "disagreeing",
+        "style": "neutral",
+        "id": "3a3f6f38",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "chắc ngay cả thần tiên cũng phải ghen tị với em",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "32d01c89",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Trời ơi xinh xỉu nhìn thấy muốn xỉu luôn",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "62ac863e",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Chân dung chuẩn mẫu ảnh từ đầu đến chân",
+        "tone": "agreeing",
+        "style": "formal",
+        "id": "5635178e",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Sao má khỏi chịu nổi cái mặt đơ này",
+        "tone": "questioning",
+        "style": "teencode",
+        "id": "63cde349",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Em là hiện thân của sự hoàn hảo tuyệt đối",
+        "tone": "informative",
+        "style": "emphatic",
+        "id": "d8b51f71",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh vậy ai mà chẳng phải dừng lại xem",
+        "tone": "neutral",
+        "style": "casual",
+        "id": "321e3def",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Tui từng nghĩ rằng thế giới này quá khô khan",
+        "tone": "storytelling",
+        "style": "formal",
+        "id": "9d56155a",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Cho xin cái link đặt đơn hàng mẫu này",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "43a5d1d8",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Nhìn em là thấy tim đập nhanh hơn bình thường",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "f6e74e07",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Chắc các vị thần đã nghiêng vạt áo về em",
+        "tone": "neutral",
+        "style": "formal",
+        "id": "544f794d",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Sao người ta có thể đẹp đến mức kinh hoàng vậy",
+        "tone": "questioning",
+        "style": "emphatic",
+        "id": "6e77d629",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Em là định nghĩa của sự quyến rũ vĩnh cửu mãi",
+        "tone": "informative",
+        "style": "minimal",
+        "id": "678a3ed3",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Mất ngủ cả đêm chỉ vì dừng lại xem em",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "cb929532",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Ai đó hãy giải thích tại sao người ta đẹp thế",
+        "tone": "questioning",
+        "style": "teencode",
+        "id": "2e66c7d3",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Em là lý do khiến tui ngừng lướt mạng xã hội",
+        "tone": "neutral",
+        "style": "casual",
+        "id": "99b18fef",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Đẹp đến mức khiến các siêu mẫu phải cúi đầu",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "8d7a8784",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Vừa lướt feed gặp em là muốn截图 liền",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "eda0ffa3",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh tới mức khiến tim đập nhanh gấp đôi luôn",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "5d9c1b48",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Lướt qua hàng chục video mà vẫn không chán được",
+        "tone": "neutral",
+        "style": "minimal",
+        "id": "8358f9de",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Em này khiến cả feed trở nên có ý nghĩa hơn",
+        "tone": "informative",
+        "style": "formal",
+        "id": "e6c9ce54",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Chân mày đó, sống mũi đó, quá chuẩn bài luôn",
+        "tone": "storytelling",
+        "style": "emoji_heavy",
+        "id": "25216117",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Sao lại xinh vậy trời, lỗi do mắt tui không",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "eefb1390",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Thích cách em cười, vừa ngọt vừa mischievous quá",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "ee1950c6",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Dừng mọi việc để ngắm em thêm vài giây nữa",
+        "tone": "humorous",
+        "style": "minimal",
+        "id": "95e17aed",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Đẹp đến nỗi khiến các bạn nữ khác ghen tị nhẹ",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "2654ce42",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Em chính là định nghĩa hoàn hảo của cụm từ xinh",
+        "tone": "informative",
+        "style": "formal",
+        "id": "594e8299",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Mắt em sáng hơn cả đèn flash phone nữa á",
+        "tone": "storytelling",
+        "style": "emoji_heavy",
+        "id": "51bff7cf",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Không hiểu sao mỗi ngày lại càng thêm xinh dữ",
+        "tone": "questioning",
+        "style": "teencode",
+        "id": "78e9c8f0",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Mô tả ngắn gọn: thần tượng sống động trước mắt mình",
+        "tone": "neutral",
+        "style": "formal",
+        "id": "6da359c8",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Em làm xói mòn sự nghiệp 'người đẹp' của mọi người",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "1a09bab8",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "đỉnh chóp thật sự em xinh phát sáng cả màn hình",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "02fc9aa3",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "không tin nổi đây là người thật không phải ai đâu",
+        "tone": "questioning",
+        "style": "neutral",
+        "id": "42cfd642",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "yêu cái ánh mắt đó vừa dịu dàng vừa quyền lực",
+        "tone": "storytelling",
+        "style": "minimal",
+        "id": "66287d4a",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "sao mà xinh đến vậy trời ơi tui mê lắm",
+        "tone": "agreeing",
+        "style": "emoji_heavy",
+        "id": "a39a7468",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "em là hiện thân của nhan sắc thời nay luôn nha",
+        "tone": "informative",
+        "style": "formal",
+        "id": "7211a0e5",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "chán view khác quá chỉ muốn nhìn mỗi mặt em thôi",
+        "tone": "disagreeing",
+        "style": "casual",
+        "id": "d7a88950",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "xinh đẹp và thông minh vậy sao trời cho em cả hai",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "4fbadf53",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "không cần filter gì hết em xinh tự nhiên quá trời ơi",
+        "tone": "neutral",
+        "style": "teencode",
+        "id": "003cca83",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "em là giấc mơ chưa thành hiện thực của nhiều người đó",
+        "tone": "storytelling",
+        "style": "neutral",
+        "id": "823a0434",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "xinh quá đỗi tự nhiên không cần chỉnh sửa gì thêm cả",
+        "tone": "agreeing",
+        "style": "minimal",
+        "id": "f6b24e58",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "thật sự không hiểu sao em lại đẹp đến mức này luôn",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "f05b24d3",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Chân dài quá trời nhìn em là mê luôn á",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "35c7ce18",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Trời ơi xinh xỉu thôi cảm ơn đã tồn tại nè",
+        "tone": "humorous",
+        "style": "emoji_heavy",
+        "id": "e00a4586",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Nguôi mình nào ai đó giúp mình tỉnh táo lại",
+        "tone": "questioning",
+        "style": "teencode",
+        "id": "a0344a5c",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Cái cách em cười đó làm tim mình tan chảy",
+        "tone": "storytelling",
+        "style": "emphatic",
+        "id": "2525e461",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Không phải fan nhưng nhìn em là phải follow ngay",
+        "tone": "neutral",
+        "style": "casual",
+        "id": "281d0938",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh vậy có tin ai yêu em nhiều hơn mình không",
+        "tone": "questioning",
+        "style": "sarcastic",
+        "id": "22b4d4a4",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Mỗi lần em lên hình là battery tui cạn sạch luôn",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "f7e7ccbc",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Đúng là hoa hậu nhỏ của làng Tiktok hiện nay",
+        "tone": "informative",
+        "style": "formal",
+        "id": "c977aae8",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Ai rắp tâm tạo ra thiên thần này cho mình với",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "1f1583db",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Không cần son môi nhưng môi em đỏ tự nhiên đẹp",
+        "tone": "disagreeing",
+        "style": "minimal",
+        "id": "3aa52faa",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Chóng mặt luôn nè ai đó cứu mình với trời ơi",
+        "tone": "sarcastic",
+        "style": "emoji_heavy",
+        "id": "a14cfeb4",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Nét lông mày đó vẽ lên bầu trời cũng không đẹp bằng",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "ed8c2006",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Mình nghĩ em đang phá vỡ mọi chuẩn mực về nhan sắc",
+        "tone": "neutral",
+        "style": "formal",
+        "id": "a4e9700a",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Tắt điện thoại chưa được nhưng tim đã chết mất rồi",
+        "tone": "storytelling",
+        "style": "teencode",
+        "id": "fc29c075",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Thật ra là đẹp nhất phòng ơi mấy cô biết chưa",
+        "tone": "informative",
+        "style": "casual",
+        "id": "98fa0d22",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Zin chẩy rần rần y như mộng luôn á",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "0b3736a6",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Nóng chảy màn hình điện thoại j luôn vậy trời ơi",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "51b6859b",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Đẹp chuẩn công chúa mộng tưởng thật sự luôn nha",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "5ffa316d",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Lõi nhân xinh xẻo k cần trang điểm quá trời",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "63d994dd",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Chẩy đôi môi ngọt lịm tim tui ko j",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "6b8600ef",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Đỉnh mặt hoàn hảo không tì vết luôn nha",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "2b1eb4ef",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Nhìn em là quên hết deadline chỗ làm luôn",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "71c681e0",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh đến mức làm ai cũng phải quay lại xem",
+        "tone": "questioning",
+        "style": "neutral",
+        "id": "f8c4b0da",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Không cần học thêm gì cả tự nhiên thế này",
+        "tone": "disagreeing",
+        "style": "minimal",
+        "id": "ebbebba6",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Đôi mắt chớp chớp thôi là tim rung hết",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "d92059f6",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Chẩy nọng cằm gò má Vline chuẩn luôn đồ",
+        "tone": "agreeing",
+        "style": "teencode",
+        "id": "746d308b",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Em ơi ngừng xinh lại đi người ta sợ j",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "095cf8ac",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Mông đùi căng mẩy chuẩn mẫu nội y luôn",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "c53b03d0",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh vậy mà hay ho hơn cả idol Hàn luôn",
+        "tone": "questioning",
+        "style": "neutral",
+        "id": "4fe878e8",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Nở nụ cười tươi rạng rỡ làm lòng tan chảy",
+        "tone": "agreeing",
+        "style": "emoji_heavy",
+        "id": "6c11fb9f",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Chảnh chao thế này ai chịu nổi chứ hả trời",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "bfd0a700",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Em đừng giết người bằng vẻ đẹp mỹ miều đó",
+        "tone": "humorous",
+        "style": "exaggerated",
+        "id": "9cd177d9",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Cứ lướt là dính chàm vào tâm trí em luôn",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "e78a5efe",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh như mộng mơ thật sự là có thật không",
+        "tone": "questioning",
+        "style": "emphatic",
+        "id": "62a172d9",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Người ta đi quay phim còn thấy em hơn mẫu",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "cd7e14a2",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Mắt em long lanh như sao đêm vậy đó nha",
+        "tone": "informative",
+        "style": "poetic",
+        "id": "870a30fc",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Tui xin phép được ngắm em thêm vài giây nữa",
+        "tone": "agreeing",
+        "style": "formal",
+        "id": "c5bc2e0d",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Giao diện này làm điện thoại tui nóng máy lên luôn",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "ff40a959",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Không tin nổi thiên thần giáng trần là em thật",
+        "tone": "disagreeing",
+        "style": "exaggerated",
+        "id": "e5517716",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Da dẻ trắng ngần như tiên nữ hạ phàm vậy",
+        "tone": "informative",
+        "style": "poetic",
+        "id": "fca9871e",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Băng qua khung hình làm tim tui nhảy loạn nhịp",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "b6f0127f",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Phím lách cách gõ yêu em thay cho lời muốn nói",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "08c917ce",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Vẻ đẹp này phải bị cấm vì gây mất an toàn",
+        "tone": "sarcastic",
+        "style": "exaggerated",
+        "id": "1db83092",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Nhìn là mê liền không cần phải nghĩ ngợi gì thêm",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "c74d6c92",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Em là hiện tượng gây sốt khắp mạng xã hội liền",
+        "tone": "informative",
+        "style": "casual",
+        "id": "3ffc57d7",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Trời ơi em đẹp quá mức cho phép luôn á",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "5adcc79e",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Mặt em đốn tim tui rồi xin đừng có dừng",
+        "tone": "agreeing",
+        "style": "teencode",
+        "id": "670bc3fc",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Đẹp đến mức máy tính bảng tui cũng tự nhiên bị",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "5e5a070f",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Em mà đi catwalk chắc là phải xin visa",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "05769113",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Tại sao đời tui lại chưa có một nhan sắc",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "2f9a4a22",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Cứng quá trời ơi em ơi cứu anh với nhé",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "ce0f06e2",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Chân dài títi mà đốn tim tui văng khỏi máy luôn nha",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "f0a8ee7d",
+        "word_count": 12,
+        "length_category": "short"
+      }
+    ],
+    "error": null
+  },
+  {
+    "task_id": "ec2aebb2",
+    "user_id": "1b4c8747",
+    "topic": "Khen gái Idol Tiktok xinh theo xu hướng giới trẻ với độ quá mức 60%",
+    "num_comments": 200,
+    "language": "GenZ",
+    "api_provider": "groq",
+    "api_model": "qwen/qwen3.8-27b",
+    "batch_size": 20,
+    "similarity_threshold": 0.75,
+    "status": "completed",
+    "current_count": 200,
+    "progress_pct": 0,
+    "created_at": "2026-09-03T12:37:53.458571",
+    "started_at": "2026-09-03T12:37:53.477628",
+    "completed_at": "2026-09-03T12:39:23.579931",
+    "comments": [
+      {
+        "content": "chỉnh xinh cực đỉnh đúng chuẩn idol luôn nha",
+        "tone": "agreeing",
+        "style": "teencode",
+        "id": "14b46f05",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "xinh vậy flex dữ zài trời ơi ơi",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "38f7445c",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "đẹp quá trời đi nhẹ nhàng quá trời luôn",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "65ee9af5",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "gương mặt nghiêng này xịn xò hết phần thiên hạ",
+        "tone": "informative",
+        "style": "casual",
+        "id": "7ce3f5f3",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "cháy hết cả màn hình điện thoại tui á nha",
+        "tone": "emphatic",
+        "style": "emphatic",
+        "id": "4b267296",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "ai bảo hông xinh thì tui đấm thẳng mặt",
+        "tone": "disagreeing",
+        "style": "emphatic",
+        "id": "3e4410cb",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "lướt feed gặp là tim đập loạn nhịp luôn",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "5fd6fe53",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "trông có vẻ hiền mà ngầu hết cả phần",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "701b6694",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "chuẩn gái quốc tế đi hát show quốc tế luôn",
+        "tone": "informative",
+        "style": "casual",
+        "id": "cefeeced",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "em slay quá trời ơi cứu tui với nha",
+        "tone": "agreeing",
+        "style": "teencode",
+        "id": "ea8a5a5c",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "đẹp vậy mà chưa có người yêu thì lạ",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "a122cc67",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "mua vé xem concert phải đập nhiều tiền lắm",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "5910227f",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "góc nghiêng này xịn xò hơn cả anime luôn á",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "4870150b",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "dạo feed có em là quên hết công việc luôn",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "4a98ce7b",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "ai đó trả lời cho tui biết vì sao",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "a7567bae",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "xinh tới mức khiến người ta phải dừng lại",
+        "tone": "neutral",
+        "style": "casual",
+        "id": "9d0c3f91",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "đẹp vậy thì bảo sao ai cũng thích quá",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "bcdf85f1",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "chỉnh qua chỉnh lại mà vẫn đẹp vậy sao",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "b1064eb7",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "em này hát chắc hay lắm chứ nhỉ trời",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "5aa18c82",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "đừng nhìn nữa tui chỉ chịu nổi mỗi góc",
+        "tone": "disagreeing",
+        "style": "humorous",
+        "id": "8671d670",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "slay hết sức slay luôn đi em ơi đừng ngại",
+        "tone": "agreeing",
+        "style": "teencode",
+        "id": "2b97b0cb",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "đúng chất idol đúng chất đỉnh cao luôn nha",
+        "tone": "informative",
+        "style": "emphatic",
+        "id": "a9c86696",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "chân dài xinh quá trời ơi ai thử nhớ ko",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "32a76ca7",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "cười xinh quá trời ơi tim tui lỡ nhịp luôn",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "23752703",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "flex quá trời ơi ai thử chịu nổi đứng ngoài",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "5258ff69",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "đẹp mức này đi học trường nào ai nhận ko",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "9761beca",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "tóc xõa xinh quá trời ơi nhìn là mê luôn",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "c533a898",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "xinh quá trời ơi em là crush của ai vậy",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "568c3a78",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "đi qua là phải ngoái lại nhìn theo liền luôn",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "3cc64ffc",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "gì mà xinh dữ vậy trời ơi định chơi lớn",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "1ee9b733",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "xinh quá trời ơi có phải người thật không nè",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "362a1b57",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "đẹp quá trời ơi ai làm crush cho tui đi",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "c0f7bb34",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "xinh quá trời ơi em là thần tượng thật luôn",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "5d85ef20",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "đẹp quá trời ơi ai đứng bên cạnh chịu nổi ko",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "bbbe6fa2",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Trời ơi nét mặt này đẹp đến cực điểm luôn nha",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "9f4bf34a",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Em khiến cả thế giới phải ngất lịm vì vẻ đẹp",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "afe1906c",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Xong hết rồi á ai cứu tui thoát khỏi siu mau",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "b774e967",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Nét mặt này làm fan cứng phải khóc ròng thật luôn",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "2c0b0c98",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Chị ơi má ơi mặt này đẹp không tỳ vết thật",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "89cb1ead",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Feed nhà em toàn là mẫu mắt lừa đảo tinh vi",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "320c00da",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Xin chị cho em thêm một shot góc mặt khác đi",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "309d358c",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Ai diseñ ra khuôn mặt này cho tui gửi lời cảm",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "bb6e9c2f",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Tui tuyên bố đây là đỉnh cao nhan sắc thời nay",
+        "tone": "informative",
+        "style": "formal",
+        "id": "ee683737",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Mắt này nhìn sâu đến mức khiến tim tui đập thình",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "47a92ae9",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Chị phải chịu trách nhiệm vì làm phá vỡ trend đẹp",
+        "tone": "disagreeing",
+        "style": "casual",
+        "id": "19a8cca9",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Đẹp kiểu gây gờ với phần còn lại của nhân loại này",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "e6561344",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Em đi qua đoạn clip nào là đoạn đó nổ luôn",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "3ad84c58",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Cần điều tra gấp vì tiêu chuẩn làm đẹp bị nâng lên",
+        "tone": "informative",
+        "style": "formal",
+        "id": "c49a5818",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Tui xin cúi đầu công nhận chị xinh hơn cả AI tạo",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "17f844aa",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Góc này làm phần mềm chỉnh ảnh phải tự xóa mặt mình",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "ee07e297",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Chị không xinh đơn thuần mà là xinh có chủ đích rõ",
+        "tone": "neutral",
+        "style": "casual",
+        "id": "15d7a5e9",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Tui nghỉ chơi mấy đoạn nhạc thiếu cảm xúc sau video này",
+        "tone": "disagreeing",
+        "style": "casual",
+        "id": "3ce30feb",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Má đẹp vậy ngồi nhà một mình quá uổng phí tài năng",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "0e828af4",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Cần giảm độ sáng màn hình lại kẻo chói mắt tui quá",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "5d2955a8",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "xinh chuẩn diện mạo thần tượng mới nhất của thời đại",
+        "tone": "informative",
+        "style": "casual",
+        "id": "36002dc4",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "slay cực đỉnh luôn khiến ai cũng phải trầm trồ",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "90fe02b1",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "đây là mặt người hay bức tranh vẽ vậy nhỉ",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "e5246e4d",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "visual này làm nổ tung toàn bộ gu thẩm mỹ tui",
+        "tone": "humorous",
+        "style": "emphatic",
+        "id": "0f75989d",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "chị cứ xinh một mình cũng được rồi nha",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "63f81a4e",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "cần kiểm tra lại gương mặt này có thật không",
+        "tone": "questioning",
+        "style": "neutral",
+        "id": "620fa925",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "khiến người ta quên luôn cách thở mỗi lần xem",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "700e48cb",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "mức độ xinh đẹp này khiến nhiều người ghen tị",
+        "tone": "informative",
+        "style": "formal",
+        "id": "e5c4b84b",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "không tin đây là con người thật trên đời",
+        "tone": "disagreeing",
+        "style": "neutral",
+        "id": "ac29a360",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "visual cực phẩm khiến cả thế giới phải mê đắm",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "b018c584",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "em có biết mình xinh đến mức nào không",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "a6257aa0",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "nét mặt này khiến tui muốn ôm chầm lấy",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "75415ac7",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "chị phải chịu trách nhiệm khiến tui mất ngủ đêm nay",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "6c80712f",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "đẹp đến mức khiến điện thoại tui cũng phải tự hào",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "9d5be359",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "hình mẫu hoàn hảo khiến mọi cô gái đều mơ ước",
+        "tone": "informative",
+        "style": "formal",
+        "id": "3a012e4a",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "visual đỉnh cao khiến tui phải bấm like ngay",
+        "tone": "agreeing",
+        "style": "teencode",
+        "id": "10a335f5",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "sao trời ơi chị xinh thế này là gì vậy",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "7fe275f7",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "nét đẹp này khiến tui muốn học lại sự sống",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "7a0994fa",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "chị có biết mình vừa phá vỡ hoàn toàn record không",
+        "tone": "questioning",
+        "style": "emphatic",
+        "id": "2fc7ef77",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "visual này khiến tui cảm thấy tự ti vô cùng",
+        "tone": "disagreeing",
+        "style": "casual",
+        "id": "dd31df7f",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "slay quá trời ơi nhìn không chớp nổi mắt",
+        "tone": "agreeing",
+        "style": "teencode",
+        "id": "ea02d445",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "xinh chuẩn diện vô cùng cực đại luôn á",
+        "tone": "emphatic",
+        "style": "emphatic",
+        "id": "7e4b006f",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "đỉnh chóp luôn rồi mình không nói được gì",
+        "tone": "agreed",
+        "style": "casual",
+        "id": "78344046",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "cháy hết nấc luôn nha cái visual quá đỉnh",
+        "tone": "humorous",
+        "style": "emoji_heavy",
+        "id": "0901a753",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "xịt một tia nước lạnh vào mặt em đi",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "d74a25de",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "giải oan cho các beauty bản chất là đây",
+        "tone": "informative",
+        "style": "formal",
+        "id": "429b1d76",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "mắc cười cái độ xinh nó không kiểm soát",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "7e299c90",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "đứng hình giây đầu tiên luôn đây ko tin",
+        "tone": "storytelling",
+        "style": "minimal",
+        "id": "eab6ea06",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "xẹt sang đường vô tư đi đừng nhìn lại",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "166d32ae",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "đây là lỗi của visual quá mức bình thường",
+        "tone": "neutral",
+        "style": "informative",
+        "id": "417b6341",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "sao trời ơi em đẹp đến mức gây choáng",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "5d644aa8",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "chậm lại nha dư luận đang muốn chụp ảnh",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "b67c9e16",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Slay luôn á trời ơi em mê quá",
+        "tone": "agreeing",
+        "style": "teencode",
+        "id": "c8589718",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Face này xịn quá ai thiết kế vậy",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "022155d6",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Mắt này em ghiền không cần filter nha",
+        "tone": "storytelling",
+        "style": "emphatic",
+        "id": "9de2e920",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Tay run quá xin được một cái xinh",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "7581b730",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Mặt này flex nhan sắc quá trời em ơi",
+        "tone": "sarcastic",
+        "style": "teencode",
+        "id": "f6885c95",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Chào em mới đây mà yêu rồi nè",
+        "tone": "agreeing",
+        "style": "minimal",
+        "id": "f622243a",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh thế này thì người yêu ở đâu vậy",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "531040dc",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Em sập tiệm vì cái mũi này luôn",
+        "tone": "storytelling",
+        "style": "emphatic",
+        "id": "1111bf05",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Face value như vậy mà chưa nổi tiếng sao",
+        "tone": "disagreeing",
+        "style": "neutral",
+        "id": "3141ac8a",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Em đăng thêm nữa đi đừng giữ một mình",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "90bf8c52",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Visual này rồi sẽ làm chấn động TikTok luôn",
+        "tone": "informative",
+        "style": "emphatic",
+        "id": "fd4812bc",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Gặp em ngoài đời chắc em phải chạy",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "f95a9d33",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Cái răng này trắng sứ chắc lắm nha",
+        "tone": "questioning",
+        "style": "neutral",
+        "id": "204cf5a7",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Em là gánh nặng visual của cả feed",
+        "tone": "sarcastic",
+        "style": "emphatic",
+        "id": "37bfadeb",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Tắt điện thoại nay vì mắt em xinh quá",
+        "tone": "storytelling",
+        "style": "minimal",
+        "id": "5c02b1cc",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Face này không need makeup vẫn quá đỉnh luôn",
+        "tone": "agreeing",
+        "style": "teencode",
+        "id": "fb7b1a63",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Cho em xin nguồn thông tin hình này nhé",
+        "tone": "questioning",
+        "style": "formal",
+        "id": "1949fafa",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Em xinh hơn cả con gái bạn trai tui",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "2b5241b5",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Nét mắt này thôi là em hết động lực",
+        "tone": "empathetic",
+        "style": "emphatic",
+        "id": "6c5a50a2",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Visual nữ thần này rồi sẽ viral chóng mặt",
+        "tone": "informative",
+        "style": "neutral",
+        "id": "e6e9f4db",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "visual quá đỉnh khiến người xem phải trầm trồ ngay",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "24f7fc6c",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "ai bảo em ko xinh thì tôi phải cãi lại",
+        "tone": "disagreeing",
+        "style": "casual",
+        "id": "0f43c852",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "lướt feed thấy em là muốn dừng lại ngắm",
+        "tone": "neutral",
+        "style": "casual",
+        "id": "ee233224",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "ngôi sao thì phải bling bling chứ có gì đâu",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "fe65c9c1",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "bên nào lăng xê em giúp tui với nhe",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "807ec7df",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "hôm nay em xinh hơn so với thường nhật nhiều",
+        "tone": "informative",
+        "style": "neutral",
+        "id": "24e21c21",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "đôi mắt em linh động mà mê hoặc đến lạ",
+        "tone": "storytelling",
+        "style": "formal",
+        "id": "d2189871",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "chưa thấy ai đóng vai ngọc ngôn phim mạng hay",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "f9f81457",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "trời ơi cảm giác như em vừa bước ra ảnh",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "f270cd26",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "bài đăng này xịn lỳ mà quá hợp mùa hè",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "ae19b786",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "nguy hiểm quá nha kiểu như em dễ bị bắt",
+        "tone": "sarcastic",
+        "style": "teencode",
+        "id": "dca715cd",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "chưa từng thấy ai cười dễ thương giống em vậy",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "9ba3a2ff",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "face này mà đi casting phim là thắng lớn luôn",
+        "tone": "informative",
+        "style": "casual",
+        "id": "10f8ad92",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "ai đang quan sát em từ xa xin chấm điểm luôn",
+        "tone": "questioning",
+        "style": "minimal",
+        "id": "245bd5b1",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "em như con mèo vừa tắm xong xong chuẩn bị ngủ",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "db4ca325",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "đừng nói là em học việc mà quá xuất sắc thế",
+        "tone": "disagreeing",
+        "style": "casual",
+        "id": "18bde853",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "mình chưa từng thấy ai đẹp thuần như em hết",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "4795aacb",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "camera chắc tự chỉnh màu cho em để nổi bật hơn",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "839ba48b",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "cần thêm nhiều content kiểu này để học hỏi thêm",
+        "tone": "informative",
+        "style": "formal",
+        "id": "55598fde",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "chân dung này làm người xem phải nhìn đi nhìn lại",
+        "tone": "neutral",
+        "style": "casual",
+        "id": "90dec5d3",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "visual quá đỉnh thực sự phải công nhận luôn á",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "5dd64db0",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "xinh kiểu hiền mà lại xuyên tâm đến thế nào",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "40e39c39",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "méo duyên vậy hà nội mà người miền nam",
+        "tone": "questioning",
+        "style": "teencode",
+        "id": "26cd0426",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "sao chụp góc side face lại đẹp như vậy trời",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "47a3d914",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "em ấy slay quá trời luôn không ai đỡ nổi",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "373dbde3",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "cháy luôn rồi nhé cái màn hình điện thoại của tôi",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "28d712fa",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "đỉnh của chóp luôn mọi người cùng lên tiếng nào",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "563e5e7e",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "xinh vậy mà còn hay lắm phải không nào các bạn",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "33c9bd5c",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "trời ơi em là hiện thân của từ xinh đẹp",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "412d1dbe",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "chưa bao giờ thấy ai cười xinh thế này hết",
+        "tone": "informative",
+        "style": "casual",
+        "id": "001ef3d9",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "flex nhẹ thôi mà sao trúng tim đen đến vậy",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "718cc9a3",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "em xinh hơn cả trong tưởng tượng của tui nhiều",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "62c08553",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "góc máy nào cũng thấy em đẹp ngang nhau luôn",
+        "tone": "neutral",
+        "style": "casual",
+        "id": "e035cf0a",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "chân dài quá trời ơi ai nhìn cũng phải mê",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "a33a8a21",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "sao không có điều khoản bảo vệ bạn khỏi em",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "ee163d32",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "em là định nghĩa của từ xinh đẹp trong sách",
+        "tone": "informative",
+        "style": "formal",
+        "id": "f09d722c",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "cần thêm nhiều bài đăng để mình được tiếp tục",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "993fb737",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "slay hết thảy luôn ai thấy ko vậy",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "ea0dac38",
+        "word_count": 8,
+        "length_category": "short"
+      },
+      {
+        "content": "Chưa từng có ai đẹp đến mức này cả",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "ca61b269",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Mất kiểm soát rồi chị ơi ơi cứu giúp",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "c82193ea",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Slay thật sự luôn nha không đùa tí nào",
+        "tone": "agreeing",
+        "style": "teencode",
+        "id": "ed4a4f77",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Visual bá đạo luôn nhé các bạn ơi thôi",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "3f74453b",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Cứ xinh hoài vậy có thương fan chút nào",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "adec10d6",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Ai cho phép em chiếm hết spotlight showbiz vậy",
+        "tone": "disagreeing",
+        "style": "emphatic",
+        "id": "bff432f3",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Ngắm mặt em xong là quên ăn uống luôn á",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "b9e40b33",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Đỉnh quá trời ơi mình chưa từng thấy đâu",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "508094bd",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Giữa đám đông em vẫn lóe sáng rực rỡ nhất",
+        "tone": "neutral",
+        "style": "formal",
+        "id": "2618511d",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Flex nhẹ thôi nha đừng cố quá mức như vậy",
+        "tone": "sarcastic",
+        "style": "teencode",
+        "id": "726715dd",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Tui nghĩ người thật sẽ còn xinh hơn nhiều lần",
+        "tone": "informative",
+        "style": "casual",
+        "id": "4b7a1fdc",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Camera 4K HD vẫn chưa đủ nổi bật gương mặt",
+        "tone": "neutral",
+        "style": "casual",
+        "id": "13bb8991",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Mẹ nuôi em rồi đây nhé không nhường lại đâu",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "91ed072f",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh kiểu khiến tim đập loạn nhịp tim cả ngày",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "3cb64702",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Có ai giải thích giúp tại sao lại đẹp vậy",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "48f13c48",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Em là quốc bảo di sản sống cần được bảo vệ",
+        "tone": "humorous",
+        "style": "emphatic",
+        "id": "cfa9d775",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Thật sự không muốn rời mắt khỏi màn hình điện thoại",
+        "tone": "agreeing",
+        "style": "minimal",
+        "id": "7296a67e",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Đẹp sang chảnh cực kỳ đúng chuẩn idol hiện đại",
+        "tone": "informative",
+        "style": "casual",
+        "id": "11a727f2",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Sao không có nhiều video góc cận giống vậy",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "674fa491",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Chị em ơi tập trung đi đừng mơ mộng nữa nha",
+        "tone": "sarcastic",
+        "style": "casual",
+        "id": "19944250",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh thế này ai chịu nổi nhìn mãi ko chán",
+        "tone": "agreeing",
+        "style": "teencode",
+        "id": "3443a7f0",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Visual đỉnh thật sự feed nhà tui sập luôn",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "c35d14ba",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Em slay nhẹ thôi nhưng toàn dân mạng chết",
+        "tone": "sarcastic",
+        "style": "emphatic",
+        "id": "d7364281",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Sao mặt em hiền mà dáng lại quyến rũ vậy",
+        "tone": "questioning",
+        "style": "casual",
+        "id": "1a0300ce",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Đẹp kiểu xịn sò không cần makeup vẫn HOT",
+        "tone": "informative",
+        "style": "emoji_heavy",
+        "id": "029cf706",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Nhìn em lướt video là quên hết chuyện công việc",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "9f14600b",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Chân dài xẻng vậy có sợ mỏi chân không nào",
+        "tone": "questioning",
+        "style": "humorous",
+        "id": "a2bf710d",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Em chính là quốc dân mới của TikTok Việt",
+        "tone": "agreeing",
+        "style": "emphatic",
+        "id": "cf37178e",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Mắt cong như trăng rằm làm người ta say",
+        "tone": "neutral",
+        "style": "poetic",
+        "id": "9b7b3a4d",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Đừng mà xinh quá trời ơi cứu giúp anh với",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "06c453d7",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Nhạc hay người đẹp combo xịn too much luôn",
+        "tone": "informative",
+        "style": "casual",
+        "id": "81044cbd",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Em có biết mình là cơn sốt lớn nhất",
+        "tone": "questioning",
+        "style": "emphatic",
+        "id": "68ec6af1",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Ngắm mặt em thấy cuộc đời tươi sáng hẳn lên",
+        "tone": "neutral",
+        "style": "minimal",
+        "id": "55f49333",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh căng thẳng quá trời ơi tui lịm tim luôn",
+        "tone": "agreeing",
+        "style": "teencode",
+        "id": "306e68c0",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Em làm gì cũng cute khiến fan quay cuồng",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "cc5fa41f",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Đẹp sang chảnh bất ngờ quá trời ơi giời ơi",
+        "tone": "sarcastic",
+        "style": "emphatic",
+        "id": "a421a1bc",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Lướt feed gặp em là hết sức chịu nổi luôn",
+        "tone": "neutral",
+        "style": "minimal",
+        "id": "ddfc2d46",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Visual của em đây có phải kỹ xảo đâu",
+        "tone": "questioning",
+        "style": "teencode",
+        "id": "a74965b0",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Em xinh đến mức khiến tui muốn xỉu thật",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "34a2d3ba",
+        "word_count": 9,
+        "length_category": "short"
+      },
+      {
+        "content": "Xin đừng xinh vậy trời ơi tui không chịu nổi",
+        "tone": "disagreeing",
+        "style": "emphatic",
+        "id": "0a8bd5d1",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Trời ơi em slay quá đỗi đỉnh cao luôn nha",
+        "tone": "humorous",
+        "style": "casual",
+        "id": "4b5aec3e",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Mặt xinh như vậy xin đừng làm tui lóa mắt",
+        "tone": "questioning",
+        "style": "emphatic",
+        "id": "3c4d4beb",
+        "word_count": 10,
+        "length_category": "short"
+      },
+      {
+        "content": "Flex nhan sắc quá mức làm tui phải tá hoả luôn",
+        "tone": "disagreeing",
+        "style": "teencode",
+        "id": "584a21cf",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Visual này thì khỏi cần thêm bất kỳ hiệu ứng nào hết",
+        "tone": "agreeing",
+        "style": "minimal",
+        "id": "dc568de2",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Nóng quá trời ơi màn hình tui sắp cháy hết rồi",
+        "tone": "humorous",
+        "style": "emoji_heavy",
+        "id": "e269c705",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Ai quản lý visual này vậy cho tui xin liên hệ ngay",
+        "tone": "questioning",
+        "style": "formal",
+        "id": "28ed6fa9",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Đẹp như tranh vẽ khiến người ta quên đường về luôn",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "bde6a2bc",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Slai nhẹ tẹo thôi mà thành ra khiến tui mê mẩn",
+        "tone": "agreeing",
+        "style": "teencode",
+        "id": "6589fd7e",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Gái đẹp quốc dân chính là em thật sự đó nha",
+        "tone": "informative",
+        "style": "minimal",
+        "id": "c26d620a",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Không hiểu sao nhìn em mà tui lại thấy bình an",
+        "tone": "neutral",
+        "style": "emphatic",
+        "id": "43ee65ec",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Chỉnh chu từng milimet mà vẫn giữ nguyên nét tự nhiên",
+        "tone": "informative",
+        "style": "formal",
+        "id": "ca408863",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Thần thái toả ra làm cả căn phòng bỗng sáng bừng lên",
+        "tone": "agreeing",
+        "style": "casual",
+        "id": "894e22c6",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Vẻ đẹp này xin đừng chia sẻ cho ai hết giữ riêng",
+        "tone": "humorous",
+        "style": "teencode",
+        "id": "fa9118b5",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Mỗi góc mặt đều hoàn hảo làm tui phải trầm trồ mãi",
+        "tone": "agreeing",
+        "style": "minimal",
+        "id": "79f8ec70",
+        "word_count": 12,
+        "length_category": "short"
+      },
+      {
+        "content": "Xinh đến mức gây tổn thương cho những người xung quanh",
+        "tone": "sarcastic",
+        "style": "emphatic",
+        "id": "924c6020",
+        "word_count": 11,
+        "length_category": "short"
+      },
+      {
+        "content": "Chỉ cần xuất hiện là kéo cả đám đông theo sau mình",
+        "tone": "storytelling",
+        "style": "casual",
+        "id": "b5fc42ae",
+        "word_count": 12,
+        "length_category": "short"
+      }
+    ],
+    "error": null
+  }
+]
