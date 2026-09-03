@@ -1,0 +1,7 @@
+.env
+.venv/
+__pycache__/
+BE/history/*.json
+data/users.json
+data/*/tasks.json
+data/avatars/*

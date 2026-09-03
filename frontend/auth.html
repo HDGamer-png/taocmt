@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Đăng nhập hoặc đăng ký tài khoản Comment Generator - Công cụ sinh bình luận mạng xã hội bằng AI">
+    <title>Comment Generator — Đăng nhập</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗨️</text></svg>">
+</head>
+<body>
+    <div class="auth-page">
+        <div class="auth-container">
+            <!-- Logo -->
+            <div class="auth-logo">
+                <span class="logo-icon">🗨️</span>
+                <h1>Comment Generator</h1>
+                <p>Sinh bình luận mạng xã hội bằng AI</p>
+            </div>
+
+            <!-- Auth Card -->
+            <div class="auth-card">
+                <!-- Tab switcher -->
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-tab="login" id="tab-login">Đăng nhập</button>
+                    <button class="auth-tab" data-tab="register" id="tab-register">Đăng ký</button>
+                </div>
+
+                <!-- Alert -->
+                <div class="alert" id="auth-alert">
+                    <span class="alert-icon"></span>
+                    <span class="alert-text"></span>
+                </div>
+
+                <!-- LOGIN FORM -->
+                <form class="auth-form active" id="login-form">
+                    <div class="form-group">
+                        <label for="login-username">Tên đăng nhập hoặc Email</label>
+                        <input type="text" class="form-input" id="login-username" placeholder="username hoặc email@example.com" required autocomplete="username">
+                        <span class="form-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="login-password">Mật khẩu</label>
+                        <input type="password" class="form-input" id="login-password" placeholder="••••••••" required autocomplete="current-password">
+                        <span class="form-error"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full" id="login-btn">
+                        <span class="spinner"></span>
+                        <span class="btn-text">Đăng nhập</span>
+                    </button>
+
+                    <p class="text-center mt-2 text-secondary" style="font-size: 0.85rem;">
+                        Chưa có tài khoản?
+                        <a href="#" id="switch-to-register" style="font-weight: 600;">Đăng ký ngay</a>
+                    </p>
+                </form>
+
+                <!-- REGISTER FORM -->
+                <form class="auth-form" id="register-form">
+                    <!-- Avatar upload -->
+                    <div class="avatar-upload">
+                        <div class="avatar-preview" id="avatar-preview" onclick="document.getElementById('avatar-input').click()">
+                            <span class="placeholder">📷</span>
+                            <div class="overlay">Chọn ảnh</div>
+                        </div>
+                        <label>Ảnh đại diện (tuỳ chọn)</label>
+                        <input type="file" id="avatar-input" accept="image/*">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-displayname">Tên hiển thị</label>
+                        <input type="text" class="form-input" id="reg-displayname" placeholder="Nguyễn Văn A" required minlength="2" maxlength="30">
+                        <span class="form-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-username">Tên đăng nhập</label>
+                        <input type="text" class="form-input" id="reg-username" placeholder="nguyenvana" required minlength="3" maxlength="20" pattern="[a-zA-Z0-9_]+">
+                        <span class="form-error">Chỉ chấp nhận chữ, số và dấu gạch dưới (3–20 ký tự)</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-email">Email</label>
+                        <input type="email" class="form-input" id="reg-email" placeholder="email@example.com" required>
+                        <span class="form-error">Vui lòng nhập email hợp lệ</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-password">Mật khẩu</label>
+                        <input type="password" class="form-input" id="reg-password" placeholder="Tối thiểu 6 ký tự" required minlength="6" autocomplete="new-password">
+                        <span class="form-error">Mật khẩu phải từ 6 ký tự trở lên</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reg-password-confirm">Xác nhận mật khẩu</label>
+                        <input type="password" class="form-input" id="reg-password-confirm" placeholder="Nhập lại mật khẩu" required autocomplete="new-password">
+                        <span class="form-error">Mật khẩu không khớp</span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full" id="register-btn">
+                        <span class="spinner"></span>
+                        <span class="btn-text">Tạo tài khoản</span>
+                    </button>
+
+                    <p class="text-center mt-2 text-secondary" style="font-size: 0.85rem;">
+                        Đã có tài khoản?
+                        <a href="#" id="switch-to-login" style="font-weight: 600;">Đăng nhập</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast container -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="/static/auth.js"></script>
+</body>
+</html>

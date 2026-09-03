@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Comment Generator Dashboard - Quản lý và sinh bình luận mạng xã hội bằng AI">
+    <title>Comment Generator — Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗨️</text></svg>">
+</head>
+<body>
+    <div class="dashboard" id="app">
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-left">
+                <button class="mobile-menu-btn" id="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+                <span class="logo">🗨️</span>
+                <h1>Comment Generator</h1>
+            </div>
+            <div class="header-right">
+                <div class="user-menu" id="user-menu">
+                    <div class="user-menu-trigger" onclick="toggleUserMenu()">
+                        <div class="user-avatar" id="header-avatar">
+                            <span id="header-avatar-letter">U</span>
+                        </div>
+                        <span class="user-name" id="header-username">User</span>
+                        <span class="chevron">▼</span>
+                    </div>
+                    <div class="user-menu-dropdown">
+                        <button class="menu-item" onclick="showProfileModal()">👤 Hồ sơ cá nhân</button>
+                        <button class="menu-item" onclick="showPasswordModal()">🔑 Đổi mật khẩu</button>
+                        <div class="menu-divider"></div>
+                        <button class="menu-item logout" onclick="logout()">🚪 Đăng xuất</button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>📋 Danh sách Task</h2>
+                <button class="btn btn-primary btn-sm" onclick="showNewTaskView()">＋ Mới</button>
+            </div>
+            <div class="sidebar-list" id="task-list">
+                <!-- Task cards rendered by JS -->
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content" id="main-content">
+            <!-- Rendered dynamically by JS: new-task form, task detail, or empty state -->
+        </main>
+    </div>
+
+    <!-- PROFILE MODAL -->
+    <div class="modal-overlay" id="profile-modal">
+        <div class="modal">
+            <h2>👤 Hồ sơ cá nhân</h2>
+
+            <div class="avatar-upload">
+                <div class="avatar-preview" id="profile-avatar-preview" onclick="document.getElementById('profile-avatar-input').click()">
+                    <span class="placeholder">📷</span>
+                    <div class="overlay">Đổi ảnh</div>
+                </div>
+                <input type="file" id="profile-avatar-input" accept="image/*">
+            </div>
+
+            <div class="form-group">
+                <label>Tên hiển thị</label>
+                <input type="text" class="form-input" id="profile-displayname" placeholder="Tên hiển thị">
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-input" id="profile-email" placeholder="email@example.com">
+            </div>
+
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" class="form-input" id="profile-username" disabled style="opacity:0.5">
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="closeModal('profile-modal')">Huỷ</button>
+                <button class="btn btn-primary" onclick="saveProfile()">
+                    <span class="spinner"></span>
+                    <span class="btn-text">Lưu thay đổi</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PASSWORD MODAL -->
+    <div class="modal-overlay" id="password-modal">
+        <div class="modal">
+            <h2>🔑 Đổi mật khẩu</h2>
+
+            <div class="form-group">
+                <label>Mật khẩu hiện tại</label>
+                <input type="password" class="form-input" id="current-password" placeholder="••••••••">
+            </div>
+
+            <div class="form-group">
+                <label>Mật khẩu mới</label>
+                <input type="password" class="form-input" id="new-password" placeholder="Tối thiểu 6 ký tự">
+            </div>
+
+            <div class="form-group">
+                <label>Xác nhận mật khẩu mới</label>
+                <input type="password" class="form-input" id="confirm-new-password" placeholder="Nhập lại mật khẩu mới">
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn btn-secondary" onclick="closeModal('password-modal')">Huỷ</button>
+                <button class="btn btn-primary" onclick="changePassword()">
+                    <span class="spinner"></span>
+                    <span class="btn-text">Đổi mật khẩu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
