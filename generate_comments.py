@@ -273,14 +273,19 @@ class GroqClient(APIClient):
             ]
             if self.model.startswith("qwen/"):
                 messages[1]["content"] = "/no_think\n" + messages[1]["content"]
+            request_options = {
+                "model": self.model,
+                "messages": messages,
+                "temperature": 1.0,
+                "top_p": 0.95,
+                "max_tokens": 4096,
+            }
+            if self.model.startswith("qwen/"):
+                request_options["reasoning_effort"] = "none"
+            elif self.model.startswith("openai/gpt-oss"):
+                request_options["reasoning_effort"] = "low"
             try:
-                response = self.client.chat.completions.create(
-                    model=self.model,
-                    messages=messages,
-                    temperature=1.0,
-                    top_p=0.95,
-                    max_tokens=2048,
-                )
+                response = self.client.chat.completions.create(**request_options)
             except Exception as error:
                 error_text = str(error).lower()
                 if "401" in error_text or "invalid api key" in error_text or "authentication" in error_text:
@@ -316,10 +321,8 @@ class GroqClient(APIClient):
             return self.model
 
         preferred_models = [
-            "qwen/qwen3-32b",
+            "qwen/qwen3.6-27b",
             "openai/gpt-oss-20b",
-            "openai/gpt-oss-120b",
-            "llama-3.3-70b-versatile",
         ]
         for model in preferred_models:
             if model in available_models:

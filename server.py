@@ -96,7 +96,7 @@ class CreateTaskRequest(BaseModel):
     num_comments: int = Field(default=200, ge=5, le=1000)
     language: str = "Tiếng Việt"
     api_provider: str = "groq"
-    api_model: str = "qwen/qwen3-32b"
+    api_model: str = "qwen/qwen3.6-27b"
     batch_size: int = Field(default=40, ge=5, le=50)
     word_count: int = Field(default=10, ge=3, le=30)
     similarity_threshold: float = Field(default=0.75, ge=0.0, le=1.0)
@@ -362,7 +362,7 @@ async def serve_avatar(filename: str):
 PROVIDER_MODELS = {
     "openai": ["gpt-4o-mini", "gpt-4o", "gpt-4-turbo", "gpt-3.5-turbo"],
     "anthropic": ["claude-sonnet-4-20250514", "claude-3-haiku-20240307", "claude-3-opus-20240229"],
-    "groq": ["qwen/qwen3-32b", "openai/gpt-oss-20b", "openai/gpt-oss-120b", "llama-3.3-70b-versatile"],
+    "groq": ["qwen/qwen3.6-27b", "openai/gpt-oss-20b"],
     "ollama": ["llama3.1", "mistral", "gemma2", "phi3", "qwen2"],
 }
 
