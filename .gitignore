@@ -5,3 +5,4 @@ BE/history/*.json
 data/users.json
 data/*/tasks.json
 data/avatars/*
+data/app.db

@@ -19,11 +19,12 @@ from pathlib import Path
 from typing import Optional
 
 from jose import JWTError, jwt
+import storage
 
 # ============================================================================
 # CONSTANTS
 # ============================================================================
-DATA_DIR = Path("data")
+DATA_DIR = storage.DATA_DIR
 USERS_FILE = DATA_DIR / "users.json"
 AVATARS_DIR = DATA_DIR / "avatars"
 
@@ -55,22 +56,15 @@ def _ensure_dirs():
 
 
 def _load_users() -> list[dict]:
-    """Đọc danh sách user từ file JSON."""
+    """Đọc danh sách user từ SQLite."""
     _ensure_dirs()
-    if not USERS_FILE.exists():
-        return []
-    try:
-        with open(USERS_FILE, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except (json.JSONDecodeError, IOError):
-        return []
+    return storage.load_users()
 
 
 def _save_users(users: list[dict]):
-    """Ghi danh sách user ra file JSON."""
+    """Ghi danh sách user vào SQLite."""
     _ensure_dirs()
-    with open(USERS_FILE, "w", encoding="utf-8") as f:
-        json.dump(users, f, ensure_ascii=False, indent=2)
+    storage.save_users(users)
 
 
 def _ensure_user_dir(user_id: str):

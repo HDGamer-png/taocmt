@@ -34,6 +34,7 @@ from pydantic import BaseModel, Field
 import uvicorn
 
 import auth
+import storage
 from generate_comments import CommentGenerator, DEFAULT_CONFIG
 
 # ============================================================================
@@ -65,7 +66,7 @@ ws_connections: dict[str, set] = {}
 # Lock for thread-safe task operations
 task_lock = threading.Lock()
 history_lock = threading.Lock()
-HISTORY_DIR = Path(__file__).parent / "BE" / "history"
+HISTORY_DIR = storage.DATA_DIR / "history"
 
 
 # ============================================================================
@@ -121,17 +122,10 @@ def _topic_group(topic: str) -> str:
 
 
 def _load_user_history(user_id: str) -> dict:
-    """Đọc kho lịch sử tập trung, đồng thời nâng dữ liệu task cũ nếu cần."""
-    HISTORY_DIR.mkdir(parents=True, exist_ok=True)
-    history_file = HISTORY_DIR / f"{user_id}.json"
-    if history_file.exists():
-        try:
-            with open(history_file, "r", encoding="utf-8") as f:
-                history = json.load(f)
-            if isinstance(history, dict) and isinstance(history.get("topics"), dict):
-                return history
-        except (json.JSONDecodeError, IOError):
-            pass
+    """Đọc lịch sử của user từ SQLite."""
+    history = storage.load_document(user_id, "history", None)
+    if isinstance(history, dict) and isinstance(history.get("topics"), dict):
+        return history
 
     history = {"user_id": user_id, "topics": {}}
     for old_task in _get_user_tasks(user_id):
@@ -141,10 +135,7 @@ def _load_user_history(user_id: str) -> dict:
 
 
 def _save_user_history(user_id: str, history: dict):
-    HISTORY_DIR.mkdir(parents=True, exist_ok=True)
-    history_file = HISTORY_DIR / f"{user_id}.json"
-    with open(history_file, "w", encoding="utf-8") as f:
-        json.dump(history, f, ensure_ascii=False, indent=2)
+    storage.save_document(user_id, "history", history)
 
 
 def _add_task_to_history(history: dict, task: dict):
@@ -297,7 +288,7 @@ async def upload_avatar(file: UploadFile = File(...), user_info: dict = Depends(
 
 @app.get("/data/avatars/{filename}")
 async def serve_avatar(filename: str):
-    filepath = Path("data/avatars") / filename
+    filepath = storage.DATA_DIR / "avatars" / filename
     if not filepath.exists():
         raise HTTPException(status_code=404)
     return FileResponse(filepath)
@@ -325,23 +316,14 @@ async def get_providers():
 # ============================================================================
 
 def _get_user_tasks(user_id: str) -> list[dict]:
-    """Lấy danh sách task của user từ file."""
-    tasks_file = auth.get_user_tasks_file(user_id)
-    if not tasks_file.exists():
-        return []
-    try:
-        with open(tasks_file, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except (json.JSONDecodeError, IOError):
-        return []
+    """Lấy danh sách task của user từ SQLite."""
+    tasks = storage.load_document(user_id, "tasks", [])
+    return tasks if isinstance(tasks, list) else []
 
 
 def _save_user_tasks(user_id: str, user_tasks: list[dict]):
-    """Lưu danh sách task của user."""
-    tasks_file = auth.get_user_tasks_file(user_id)
-    tasks_file.parent.mkdir(parents=True, exist_ok=True)
-    with open(tasks_file, "w", encoding="utf-8") as f:
-        json.dump(user_tasks, f, ensure_ascii=False, indent=2)
+    """Lưu danh sách task của user vào SQLite."""
+    storage.save_document(user_id, "tasks", user_tasks)
 
 
 def _update_task_in_file(user_id: str, task_id: str, updates: dict):
@@ -853,7 +835,7 @@ if __name__ == "__main__":
 
     # Ensure data dir
     Path("data").mkdir(exist_ok=True)
-    Path("data/avatars").mkdir(exist_ok=True)
+    (storage.DATA_DIR / "avatars").mkdir(parents=True, exist_ok=True)
 
     print("=" * 60)
     print("  COMMENT GENERATOR WEB APP")
