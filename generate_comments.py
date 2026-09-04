@@ -74,8 +74,9 @@ DEFAULT_CONFIG = {
 SYSTEM_PROMPT = """Bạn là một engine sinh bình luận mạng xã hội cực kỳ tự nhiên.
 
 QUY TẮC TUYỆT ĐỐI - KHÔNG ĐƯỢC VI PHẠM:
-- Mỗi comment PHẢI CÓ ĐÚNG 10 CHỮ (10 từ). Không hơn, không kém. Đếm kỹ từng từ.
-- Emoji KHÔNG tính là từ nhưng cũng KHÔNG được dùng quá 2 emoji mỗi comment.
+    - Mỗi trường content PHẢI CÓ ĐÚNG 10 TỪ TIẾNG VIỆT. Không hơn, không kém.
+    - Chỉ đếm các từ nằm bên trong content; không đếm content, tone, style, JSON hay giải thích.
+    - Emoji và dấu câu KHÔNG tính là từ nhưng cũng KHÔNG được dùng quá 2 emoji mỗi comment.
 - Mỗi comment PHẢI khác biệt về cấu trúc câu, cách mở đầu, và nội dung
 - KHÔNG bao giờ bắt đầu 2 comment liên tiếp bằng cùng một từ/cụm từ
 - TUYỆT ĐỐI KHÔNG sinh nội dung thù ghét, phân biệt, thông tin sai lệch nguy hiểm
@@ -98,7 +99,7 @@ FORMAT OUTPUT:
 Trả về ĐÚNG một JSON object, không markdown, không giải thích:
 {
     "comments": [
-  {"content": "nội dung comment đúng 10 từ", "tone": "giọng_điệu", "style": "văn_phong"},
+    {"content": "nội dung comment đúng 10 từ tiếng Việt", "tone": "giọng_điệu", "style": "văn_phong"},
   ...
     ]
 }
@@ -106,7 +107,7 @@ Trả về ĐÚNG một JSON object, không markdown, không giải thích:
 Các giá trị tone: agreeing, disagreeing, neutral, humorous, sarcastic, questioning, storytelling, informative
 Các giá trị style: formal, casual, teencode, emoji_heavy, emphatic, minimal
 
-NHẮC LẠI: MỖI COMMENT PHẢI CÓ CHÍNH XÁC 10 TỪ. ĐẾM KỸ TRƯỚC KHI TRẢ VỀ.
+NHẮC LẠI: CHỈ TRƯỜNG content PHẢI CÓ CHÍNH XÁC 10 TỪ TIẾNG VIỆT. ĐẾM KỸ TRƯỚC KHI TRẢ VỀ.
 """
 
 
@@ -133,10 +134,10 @@ TRÁNH MỞ ĐẦU BẰNG CÁC TỪ/CỤM SAU (đã dùng rồi):
     return f"""Chủ đề: "{topic}"
 Ngôn ngữ: {language}
 Số lượng: {count} comment
-Số chữ mỗi comment: {word_count} chữ (bắt buộc)
+Số từ tiếng Việt trong trường content: chính xác {word_count} từ (bắt buộc)
 {language_instruction}
 {avoid_section}
-Hãy sinh ĐÚNG {count} comment đa dạng. Trả về JSON object có khóa comments, không thêm text nào khác."""
+Hãy sinh ĐÚNG {count} comment đa dạng. Chỉ đếm từ trong content, không đếm metadata. Trả về JSON object có khóa comments, không thêm text nào khác."""
 
 
 # ============================================================================
@@ -407,6 +408,11 @@ def create_client(provider: str, model: str, max_retries: int, retry_delay_base:
 # XỬ LÝ & LỌC TRÙNG LẶP
 # ============================================================================
 
+def count_content_words(content: str) -> int:
+    """Count words in comment content, excluding punctuation and emoji."""
+    return len(re.findall(r"[\wÀ-ỹ]+(?:['’-][\wÀ-ỹ]+)*", content, re.UNICODE))
+
+
 def parse_api_response(raw_text: str, target_word_count: int = 10) -> list[dict]:
     """Parse JSON response từ API, xử lý các trường hợp format khác nhau."""
     if not isinstance(raw_text, str) or not raw_text.strip():
@@ -471,9 +477,6 @@ def parse_api_response(raw_text: str, target_word_count: int = 10) -> list[dict]
         logger.error(f"  ✗ Kết quả không phải list: {type(data)}")
         return []
 
-    # Validate gần sát số chữ người dùng đã chọn để giữ đủ sản lượng.
-    min_words = max(1, target_word_count - 1)
-    max_words = target_word_count + 1
     valid = []
     for item in data:
         if isinstance(item, str):
@@ -490,8 +493,8 @@ def parse_api_response(raw_text: str, target_word_count: int = 10) -> list[dict]
             # Bỏ dấu ngoặc kép bọc ngoài nếu có
             if (content.startswith('"') and content.endswith('"')) or (content.startswith("'") and content.endswith("'")):
                 content = content[1:-1].strip()
-            word_count = len(content.split())
-            if min_words <= word_count <= max_words:
+            word_count = count_content_words(content)
+            if word_count == target_word_count:
                 valid.append({
                     "content": content,
                     "tone": tone,
@@ -503,8 +506,8 @@ def parse_api_response(raw_text: str, target_word_count: int = 10) -> list[dict]
     # Fallback cho model trả mỗi comment một dòng thay vì JSON.
     for line in text.splitlines():
         content = re.sub(r"^\s*(?:[-*]|\d+[.)])\s*", "", line).strip(" `\"'")
-        word_count = len(content.split())
-        if min_words <= word_count <= max_words:
+        word_count = count_content_words(content)
+        if word_count == target_word_count:
             valid.append({"content": content, "tone": "neutral", "style": "casual"})
     return valid
 
@@ -646,7 +649,7 @@ class CommentGenerator:
             word_count=self.word_count,
         )
 
-        system_prompt = SYSTEM_PROMPT.replace("ĐÚNG 10 CHỮ", f"ĐÚNG {self.word_count} CHỮ")
+        system_prompt = SYSTEM_PROMPT.replace("10 TỪ", f"{self.word_count} TỪ")
         raw_response = self.client.call(system_prompt, user_prompt)
         comments = parse_api_response(raw_response, self.word_count)
 
@@ -743,7 +746,7 @@ class CommentGenerator:
                     if len(self.comments) >= self.target_count:
                         break
                     comment["id"] = str(uuid.uuid4())[:8]
-                    comment["word_count"] = len(comment["content"].split())
+                    comment["word_count"] = count_content_words(comment["content"])
                     comment["length_category"] = classify_length(comment["content"])
                     self.comments.append(comment)
                     batch_added.append(comment)
