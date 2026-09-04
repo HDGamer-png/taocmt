@@ -207,7 +207,18 @@ def get_current_user(authorization: str = Header(None)) -> dict:
     user_info = auth.verify_token(token)
     if not user_info:
         raise HTTPException(status_code=401, detail="Token không hợp lệ hoặc đã hết hạn.")
+    
+    user = auth.find_user_by_id(user_info["user_id"])
+    if not user or not user.get("is_active", True):
+        raise HTTPException(status_code=403, detail="Tài khoản đã bị khóa.")
+    user_info["role"] = user.get("role", "user")
 
+    return user_info
+
+
+def require_admin(user_info: dict = Depends(get_current_user)) -> dict:
+    if user_info.get("role") != "admin":
+        raise HTTPException(status_code=403, detail="Chỉ Admin mới có quyền truy cập.")
     return user_info
 
 
@@ -280,6 +291,27 @@ async def upload_avatar(file: UploadFile = File(...), user_info: dict = Depends(
 
     avatar_path = auth.save_avatar(user_info["user_id"], content, file.filename)
     return {"avatar_path": avatar_path}
+
+
+# ============================================================================
+# ADMIN ENDPOINTS
+# ============================================================================
+
+@app.get("/api/admin/summary")
+async def admin_summary(_: dict = Depends(require_admin)):
+    return storage.usage_summary()
+
+
+@app.get("/api/admin/users")
+async def admin_users(_: dict = Depends(require_admin)):
+    return storage.list_admin_users()
+
+
+@app.put("/api/admin/users/{user_id}/status")
+async def admin_user_status(user_id: str, is_active: bool, _: dict = Depends(require_admin)):
+    if not storage.update_user_status(user_id, is_active):
+        raise HTTPException(status_code=404, detail="Không thể thay đổi tài khoản này.")
+    return {"message": "Đã cập nhật trạng thái tài khoản."}
 
 
 # ============================================================================
@@ -412,6 +444,10 @@ def _run_generator_task(task_id: str, user_id: str, config: dict,
             "current_count": len(comments),
             "comments": comments,
         })
+        storage.record_usage(
+            user_id, task_id, config["num_comments"], len(comments), final_status,
+            config["api_provider"], config["api_model"], datetime.now().isoformat()
+        )
         _record_task_history(user_id, {
             **task_info_for_history(task_id, user_id, config, final_status, comments),
         })
@@ -445,6 +481,10 @@ def _run_generator_task(task_id: str, user_id: str, config: dict,
             "error": error_message,
             "completed_at": datetime.now().isoformat(),
         })
+        storage.record_usage(
+            user_id, task_id, config["num_comments"], 0, "failed",
+            config["api_provider"], config["api_model"], datetime.now().isoformat()
+        )
         _record_task_history(user_id, task_info_for_history(
             task_id, user_id, config, "failed", [], error_message
         ))
@@ -812,6 +852,11 @@ async def root():
 @app.get("/dashboard")
 async def dashboard():
     return FileResponse(str(frontend_dir / "index.html"))
+
+
+@app.get("/admin")
+async def admin_page():
+    return FileResponse(str(frontend_dir / "admin.html"))
 
 
 @app.get("/auth")

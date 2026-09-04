@@ -7,6 +7,8 @@ import sqlite3
 import threading
 from pathlib import Path
 
+import bcrypt
+
 BASE_DIR = Path(__file__).parent
 LEGACY_DATA_DIR = BASE_DIR / "data"
 LEGACY_HISTORY_DIR = BASE_DIR / "BE" / "history"
@@ -60,6 +62,8 @@ def initialize() -> None:
                 avatar_path TEXT,
                 created_at TEXT NOT NULL,
                 last_login TEXT
+                ,role TEXT NOT NULL DEFAULT 'user'
+                ,is_active BOOLEAN NOT NULL DEFAULT TRUE
             );
             CREATE TABLE IF NOT EXISTS user_documents (
                 user_id TEXT NOT NULL,
@@ -73,6 +77,18 @@ def initialize() -> None:
                 key TEXT PRIMARY KEY,
                 value TEXT NOT NULL
             );
+            CREATE TABLE IF NOT EXISTS usage_events (
+                id TEXT PRIMARY KEY,
+                user_id TEXT NOT NULL,
+                task_id TEXT NOT NULL,
+                requested_count INTEGER NOT NULL DEFAULT 0,
+                generated_count INTEGER NOT NULL DEFAULT 0,
+                status TEXT NOT NULL,
+                provider TEXT,
+                model TEXT,
+                created_at TEXT NOT NULL,
+                FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+            );
         """
         if USING_POSTGRES:
             for statement in schema.split(";"):
@@ -81,11 +97,22 @@ def initialize() -> None:
         else:
             connection.executescript(schema)
 
+        if USING_POSTGRES:
+            _execute(connection, "ALTER TABLE users ADD COLUMN IF NOT EXISTS role TEXT NOT NULL DEFAULT 'user'")
+            _execute(connection, "ALTER TABLE users ADD COLUMN IF NOT EXISTS is_active BOOLEAN NOT NULL DEFAULT TRUE")
+        else:
+            columns = {row[1] for row in connection.execute("PRAGMA table_info(users)").fetchall()}
+            if "role" not in columns:
+                connection.execute("ALTER TABLE users ADD COLUMN role TEXT NOT NULL DEFAULT 'user'")
+            if "is_active" not in columns:
+                connection.execute("ALTER TABLE users ADD COLUMN is_active INTEGER NOT NULL DEFAULT 1")
+
         migrated = _execute(
             connection, "SELECT value FROM app_metadata WHERE key = ?",
             ("legacy_json_migrated",),
         ).fetchone()
         if migrated:
+            _ensure_admin(connection)
             return
 
         users = _read_json(LEGACY_DATA_DIR / "users.json", [])
@@ -95,14 +122,14 @@ def initialize() -> None:
                 """
                 INSERT INTO users
                 (user_id, username, email, display_name, password_hash,
-                 avatar_path, created_at, last_login)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                 avatar_path, created_at, last_login, role, is_active)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 ON CONFLICT DO NOTHING
                 """,
                 tuple(user.get(field) for field in (
                     "user_id", "username", "email", "display_name",
                     "password_hash", "avatar_path", "created_at", "last_login",
-                )),
+                )) + (user.get("role", "user"), user.get("is_active", True)),
             )
 
         legacy_avatars = LEGACY_DATA_DIR / "avatars"
@@ -141,6 +168,23 @@ def initialize() -> None:
             "INSERT INTO app_metadata (key, value) VALUES (?, ?)",
             ("legacy_json_migrated", "1"),
         )
+        _ensure_admin(connection)
+
+
+def _ensure_admin(connection) -> None:
+    username = os.environ.get("ADMIN_USERNAME", "").strip()
+    email = os.environ.get("ADMIN_EMAIL", "").strip().lower()
+    password = os.environ.get("ADMIN_PASSWORD", "")
+    if not username or not email or not password:
+        return
+    password_hash = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
+    query = """
+        INSERT INTO users
+        (user_id, username, email, display_name, password_hash, created_at, role, is_active)
+        VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP, 'admin', TRUE)
+        ON CONFLICT(username) DO UPDATE SET role='admin', is_active=TRUE
+    """
+    _execute(connection, query, ("admin-" + username[:8], username, email, username, password_hash))
 
 
 def load_users() -> list[dict]:
@@ -159,8 +203,8 @@ def save_users(users: list[dict]) -> None:
                 """
                 INSERT INTO users
                 (user_id, username, email, display_name, password_hash,
-                 avatar_path, created_at, last_login)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                 avatar_path, created_at, last_login, role, is_active)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 ON CONFLICT(user_id) DO UPDATE SET
                     username=excluded.username, email=excluded.email,
                     display_name=excluded.display_name, password_hash=excluded.password_hash,
@@ -170,7 +214,7 @@ def save_users(users: list[dict]) -> None:
                 tuple(user.get(field) for field in (
                     "user_id", "username", "email", "display_name",
                     "password_hash", "avatar_path", "created_at", "last_login",
-                )),
+                )) + (user.get("role", "user"), user.get("is_active", True)),
             )
 
 
@@ -204,6 +248,56 @@ def save_document(user_id: str, document_type: str, value) -> None:
             """,
             (user_id, document_type, content),
         )
+
+
+def update_user_status(user_id: str, is_active: bool) -> bool:
+    initialize()
+    with _db_lock, _connect() as connection:
+        result = _execute(connection, "UPDATE users SET is_active = ? WHERE user_id = ? AND role <> 'admin'", (is_active, user_id))
+        return result.rowcount > 0
+
+
+def list_admin_users() -> list[dict]:
+    initialize()
+    with _db_lock, _connect() as connection:
+        rows = _execute(connection, """
+            SELECT u.user_id, u.username, u.email, u.display_name, u.role,
+                   u.is_active, u.created_at, u.last_login,
+                   COUNT(DISTINCT e.task_id) AS task_count,
+                   COALESCE(SUM(e.generated_count), 0) AS generated_count
+            FROM users u
+            LEFT JOIN usage_events e ON e.user_id = u.user_id
+            GROUP BY u.user_id
+            ORDER BY u.created_at DESC
+        """).fetchall()
+        return [dict(row) for row in rows]
+
+
+def record_usage(user_id: str, task_id: str, requested_count: int,
+                 generated_count: int, status: str, provider: str, model: str,
+                 created_at: str) -> None:
+    initialize()
+    with _db_lock, _connect() as connection:
+        _execute(connection, """
+            INSERT INTO usage_events
+            (id, user_id, task_id, requested_count, generated_count, status, provider, model, created_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (str(__import__("uuid").uuid4()), user_id, task_id, requested_count,
+               generated_count, status, provider, model, created_at))
+
+
+def usage_summary() -> dict:
+    initialize()
+    with _db_lock, _connect() as connection:
+        row = _execute(connection, """
+            SELECT COUNT(*) AS event_count,
+                   COUNT(DISTINCT user_id) AS active_users,
+                   COALESCE(SUM(generated_count), 0) AS generated_count,
+                   COALESCE(SUM(CASE WHEN status = 'completed' THEN 1 ELSE 0 END), 0) AS completed_tasks
+            FROM usage_events
+        """).fetchone()
+        users = _execute(connection, "SELECT COUNT(*) AS total_users FROM users").fetchone()
+        return {**dict(row), "total_users": users["total_users"]}
 
 
 initialize()

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản trị Admin - Comment Generator</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <main class="admin-page">
+        <header class="admin-header">
+            <div>
+                <p class="admin-eyebrow">Comment Generator</p>
+                <h1>🛡️ Quản trị Admin</h1>
+            </div>
+            <div class="admin-header-actions">
+                <a class="btn btn-secondary btn-sm" href="/dashboard">← Về Dashboard</a>
+                <button class="btn btn-ghost btn-sm" onclick="logoutAdmin()">Đăng xuất</button>
+            </div>
+        </header>
+
+        <section class="admin-stats" id="admin-stats"></section>
+
+        <section class="admin-panel">
+            <div class="admin-panel-header">
+                <div>
+                    <h2>Người dùng</h2>
+                    <p>Quản lý trạng thái tài khoản và mức sử dụng.</p>
+                </div>
+                <button class="btn btn-secondary btn-sm" onclick="loadAdminData()">↻ Làm mới</button>
+            </div>
+            <div class="admin-table-wrapper">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>User</th>
+                            <th>Liên hệ</th>
+                            <th>Vai trò</th>
+                            <th>Task</th>
+                            <th>Comment</th>
+                            <th>Trạng thái</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-users"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <div class="toast-container" id="toast-container"></div>
+    <script src="/static/admin.js"></script>
+</body>
+
+</html>

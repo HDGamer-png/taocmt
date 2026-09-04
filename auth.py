@@ -147,6 +147,8 @@ def register_user(
         "avatar_path": None,
         "created_at": datetime.now().isoformat(),
         "last_login": None,
+        "role": "user",
+        "is_active": True,
     }
 
     # Lưu
@@ -170,6 +172,8 @@ def authenticate_user(username_or_email: str, password: str) -> Optional[dict]:
     if not user:
         user = find_user_by_email(username_or_email)
     if not user:
+        return None
+    if not user.get("is_active", True):
         return None
 
     # Kiểm tra mật khẩu

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="/static/style.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗨️</text></svg>">
 </head>
+
 <body>
     <div class="dashboard" id="app">
         <!-- HEADER -->
@@ -27,6 +29,7 @@
                         <span class="chevron">▼</span>
                     </div>
                     <div class="user-menu-dropdown">
+                        <button class="menu-item admin-menu-item" id="admin-menu-item" onclick="window.location.href='/admin'" hidden>🛡️ Quản trị Admin</button>
                         <button class="menu-item" onclick="showProfileModal()">👤 Hồ sơ cá nhân</button>
                         <button class="menu-item" onclick="showPasswordModal()">🔑 Đổi mật khẩu</button>
                         <div class="menu-divider"></div>
@@ -126,4 +129,5 @@
 
     <script src="/static/app.js"></script>
 </body>
+
 </html>

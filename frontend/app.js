@@ -110,6 +110,8 @@ document.addEventListener('click', (e) => {
 function updateUserUI() {
     if (!currentUser) return;
     document.getElementById('header-username').textContent = currentUser.display_name || currentUser.username;
+    const adminMenuItem = document.getElementById('admin-menu-item');
+    if (adminMenuItem) adminMenuItem.hidden = currentUser.role !== 'admin';
 
     const avatarEl = document.getElementById('header-avatar');
     if (currentUser.avatar_path) {
