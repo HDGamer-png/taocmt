@@ -406,7 +406,7 @@ function renderTaskDetail(task) {
                     </div>
                     <div class="plain-output-actions">
                         <button class="btn btn-secondary btn-sm" onclick="copyAllComments()">📋 Sao chép tất cả</button>
-                        <button class="btn btn-primary btn-sm" onclick="downloadTask('${task.task_id}', 'txt')">📥 Tải file TXT</button>
+                        <button class="btn btn-primary btn-sm" onclick="downloadTask('${task.task_id}', 'txt')">📥 Download</button>
                     </div>
                 </div>
                 <textarea class="plain-output-textarea" id="plain-output" readonly aria-label="Toàn bộ comment">${escapeHtml(comments.map(c => c.content || '').join('\n'))}</textarea>
@@ -811,9 +811,35 @@ async function deleteTask(taskId) {
     }
 }
 
-function downloadTask(taskId, format) {
+async function downloadTask(taskId, format) {
     const token = getToken();
-    window.open(`${API_BASE}/api/tasks/${taskId}/download?format=${format}&authorization=Bearer ${token}`, '_blank');
+    if (!token) {
+        window.location.href = '/auth';
+        return;
+    }
+
+    try {
+        const response = await fetch(`${API_BASE}/api/tasks/${taskId}/download?format=${encodeURIComponent(format)}`, {
+            headers: { 'Authorization': `Bearer ${token}` },
+        });
+        if (!response.ok) {
+            showToast('Không thể tải file.', 'error');
+            return;
+        }
+
+        const blob = await response.blob();
+        const downloadUrl = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        link.download = `comments.${format}`;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(downloadUrl);
+        showToast('Đã tải file thành công!', 'success');
+    } catch {
+        showToast('Lỗi kết nối khi tải file.', 'error');
+    }
 }
 
 // ============================================================================
