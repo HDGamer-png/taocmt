@@ -361,7 +361,7 @@ function renderTaskDetail(task) {
                     <div class="task-info">
                         <span class="info-tag">${task.api_provider} / ${task.api_model}</span>
                         <span class="info-tag">${task.language}</span>
-                        <span class="info-tag">Batch: ${task.batch_size}</span>
+                        <span class="info-tag">${task.word_count || 10} chữ/comment</span>
                         <span class="task-status ${task.status}">${statusLabels[task.status] || task.status}</span>
                     </div>
                 </div>
@@ -711,8 +711,8 @@ function showNewTaskView() {
                 <h3>⚙️ Nâng cao</h3>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="task-batch">Batch size</label>
-                        <input type="number" class="form-input" id="task-batch" value="15" min="5" max="50">
+                        <label for="task-word-count">Số chữ mỗi comment</label>
+                        <input type="number" class="form-input" id="task-word-count" value="10" min="3" max="30">
                     </div>
                     <div class="form-group">
                         <label for="task-similarity">Ngưỡng trùng lặp</label>
@@ -763,7 +763,8 @@ async function createTask() {
         language: document.getElementById('task-language').value,
         api_provider: document.getElementById('task-provider').value,
         api_model: document.getElementById('task-model').value,
-        batch_size: parseInt(document.getElementById('task-batch').value),
+        batch_size: 15,
+        word_count: parseInt(document.getElementById('task-word-count').value),
         similarity_threshold: parseInt(document.getElementById('task-similarity').value) / 100,
     };
 

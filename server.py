@@ -98,6 +98,7 @@ class CreateTaskRequest(BaseModel):
     api_provider: str = "groq"
     api_model: str = "qwen/qwen3.8-27b"
     batch_size: int = Field(default=15, ge=5, le=50)
+    word_count: int = Field(default=10, ge=3, le=30)
     similarity_threshold: float = Field(default=0.75, ge=0.0, le=1.0)
 
 
@@ -182,6 +183,7 @@ def task_info_for_history(task_id: str, user_id: str, config: dict,
         "api_provider": config["api_provider"],
         "api_model": config["api_model"],
         "batch_size": config["batch_size"],
+        "word_count": config.get("word_count", 10),
         "similarity_threshold": config["similarity_threshold"],
         "status": status,
         "comments": comments,
@@ -556,6 +558,7 @@ async def create_task(req: CreateTaskRequest, user_info: dict = Depends(get_curr
         "api_provider": req.api_provider,
         "api_model": req.api_model,
         "batch_size": req.batch_size,
+        "word_count": req.word_count,
         "similarity_threshold": req.similarity_threshold,
     })
 
@@ -568,6 +571,7 @@ async def create_task(req: CreateTaskRequest, user_info: dict = Depends(get_curr
         "api_provider": req.api_provider,
         "api_model": req.api_model,
         "batch_size": req.batch_size,
+        "word_count": req.word_count,
         "similarity_threshold": req.similarity_threshold,
         "status": "pending",
         "current_count": 0,

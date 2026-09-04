@@ -57,6 +57,7 @@ DEFAULT_CONFIG = {
     "num_comments": 200,
     "language": "Tiếng Việt",
     "batch_size": 15,               # Số comment mỗi lần gọi API
+    "word_count": 10,               # Số từ mong muốn trong mỗi comment
     "similarity_threshold": 0.75,   # Ngưỡng loại bỏ trùng lặp (0-1)
     "output_format": "both",        # "csv", "json", hoặc "both"
     "api_provider": "openai",       # "openai" hoặc "anthropic"
@@ -106,7 +107,7 @@ NHẮC LẠI: MỖI COMMENT PHẢI CÓ CHÍNH XÁC 10 TỪ. ĐẾM KỸ TRƯỚC
 """
 
 
-def build_user_prompt(topic: str, count: int, language: str, existing_starts: list[str]) -> str:
+def build_user_prompt(topic: str, count: int, language: str, existing_starts: list[str], word_count: int) -> str:
     """Xây dựng prompt cho mỗi batch, bao gồm danh sách từ mở đầu cần tránh."""
     avoid_section = ""
     language_instruction = ""
@@ -129,6 +130,7 @@ TRÁNH MỞ ĐẦU BẰNG CÁC TỪ/CỤM SAU (đã dùng rồi):
     return f"""Chủ đề: "{topic}"
 Ngôn ngữ: {language}
 Số lượng: {count} comment
+Số chữ mỗi comment: {word_count} chữ (bắt buộc)
 {language_instruction}
 {avoid_section}
 Hãy sinh ĐÚNG {count} comment đa dạng. Trả về JSON array duy nhất, không thêm text nào khác."""
@@ -348,7 +350,7 @@ def create_client(provider: str, model: str, max_retries: int, retry_delay_base:
 # XỬ LÝ & LỌC TRÙNG LẶP
 # ============================================================================
 
-def parse_api_response(raw_text: str) -> list[dict]:
+def parse_api_response(raw_text: str, target_word_count: int = 10) -> list[dict]:
     """Parse JSON response từ API, xử lý các trường hợp format khác nhau."""
     text = raw_text.strip()
 
@@ -389,7 +391,9 @@ def parse_api_response(raw_text: str) -> list[dict]:
         logger.error(f"  ✗ Kết quả không phải list: {type(data)}")
         return []
 
-    # Validate từng comment: Đảm bảo gói gọn trong khoảng 9-11 từ (chuẩn 10 từ)
+    # Validate gần sát số chữ người dùng đã chọn để giữ đủ sản lượng.
+    min_words = max(1, target_word_count - 1)
+    max_words = target_word_count + 1
     valid = []
     for item in data:
         if isinstance(item, dict) and "content" in item:
@@ -398,8 +402,7 @@ def parse_api_response(raw_text: str) -> list[dict]:
             if (content.startswith('"') and content.endswith('"')) or (content.startswith("'") and content.endswith("'")):
                 content = content[1:-1].strip()
             word_count = len(content.split())
-            # Giữ các comment đúng khoảng 9-11 từ (ưu tiên sát 10 từ nhất)
-            if 8 <= word_count <= 12:
+            if min_words <= word_count <= max_words:
                 valid.append({
                     "content": content,
                     "tone": item.get("tone", "neutral"),
@@ -508,6 +511,7 @@ class CommentGenerator:
         self.target_count = config["num_comments"]
         self.language = config["language"]
         self.batch_size = config["batch_size"]
+        self.word_count = config.get("word_count", 10)
         self.similarity_threshold = config["similarity_threshold"]
         self.output_format = config["output_format"]
 
@@ -540,10 +544,12 @@ class CommentGenerator:
             count=count,
             language=self.language,
             existing_starts=self.opening_words,
+            word_count=self.word_count,
         )
 
-        raw_response = self.client.call(SYSTEM_PROMPT, user_prompt)
-        comments = parse_api_response(raw_response)
+        system_prompt = SYSTEM_PROMPT.replace("ĐÚNG 10 CHỮ", f"ĐÚNG {self.word_count} CHỮ")
+        raw_response = self.client.call(system_prompt, user_prompt)
+        comments = parse_api_response(raw_response, self.word_count)
 
         return comments
 
