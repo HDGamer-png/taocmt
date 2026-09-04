@@ -5,6 +5,7 @@ import os
 import shutil
 import sqlite3
 import threading
+from contextlib import contextmanager
 from pathlib import Path
 
 import bcrypt
@@ -18,21 +19,40 @@ DB_PATH = Path(os.environ.get("CMT_DB_PATH", str(DATA_DIR / "app.db")))
 USING_POSTGRES = bool(DATABASE_URL)
 
 _db_lock = threading.RLock()
+_initialized = False
+_postgres_pool = None
 
 
 def _connect():
+    global _postgres_pool
     if USING_POSTGRES:
-        import psycopg
+        from psycopg_pool import ConnectionPool
         from psycopg.rows import dict_row
 
         url = DATABASE_URL.replace("postgres://", "postgresql://", 1)
-        return psycopg.connect(url, row_factory=dict_row)
+        if _postgres_pool is None:
+            _postgres_pool = ConnectionPool(
+                conninfo=url,
+                min_size=1,
+                max_size=5,
+                timeout=15,
+                kwargs={"row_factory": dict_row},
+                open=True,
+            )
+        return _postgres_pool.connection()
 
     DB_PATH.parent.mkdir(parents=True, exist_ok=True)
     connection = sqlite3.connect(DB_PATH, timeout=30)
     connection.row_factory = sqlite3.Row
     connection.execute("PRAGMA busy_timeout = 30000")
     return connection
+
+
+@contextmanager
+def _connection_scope():
+    """Reuse pooled PostgreSQL connections and close SQLite connections normally."""
+    with _connect() as connection:
+        yield connection
 
 
 def _execute(connection, query: str, parameters=()):
@@ -51,7 +71,12 @@ def _read_json(path: Path, default):
 
 def initialize() -> None:
     """Create tables and import legacy JSON data exactly once."""
-    with _db_lock, _connect() as connection:
+    global _initialized
+    if _initialized:
+        return
+    with _db_lock, _connection_scope() as connection:
+        if _initialized:
+            return
         schema = """
             CREATE TABLE IF NOT EXISTS users (
                 user_id TEXT PRIMARY KEY,
@@ -113,6 +138,7 @@ def initialize() -> None:
         ).fetchone()
         if migrated:
             _ensure_admin(connection)
+            _initialized = True
             return
 
         users = _read_json(LEGACY_DATA_DIR / "users.json", [])
@@ -169,6 +195,7 @@ def initialize() -> None:
             ("legacy_json_migrated", "1"),
         )
         _ensure_admin(connection)
+        _initialized = True
 
 
 def _ensure_admin(connection) -> None:
@@ -189,14 +216,14 @@ def _ensure_admin(connection) -> None:
 
 def load_users() -> list[dict]:
     initialize()
-    with _db_lock, _connect() as connection:
+    with _db_lock, _connection_scope() as connection:
         rows = _execute(connection, "SELECT * FROM users ORDER BY created_at").fetchall()
         return [dict(row) for row in rows]
 
 
 def save_users(users: list[dict]) -> None:
     initialize()
-    with _db_lock, _connect() as connection:
+    with _db_lock, _connection_scope() as connection:
         for user in users:
             _execute(
                 connection,
@@ -220,7 +247,7 @@ def save_users(users: list[dict]) -> None:
 
 def load_document(user_id: str, document_type: str, default):
     initialize()
-    with _db_lock, _connect() as connection:
+    with _db_lock, _connection_scope() as connection:
         row = _execute(
             connection,
             "SELECT content FROM user_documents WHERE user_id = ? AND document_type = ?",
@@ -237,7 +264,7 @@ def load_document(user_id: str, document_type: str, default):
 def save_document(user_id: str, document_type: str, value) -> None:
     initialize()
     content = json.dumps(value, ensure_ascii=False)
-    with _db_lock, _connect() as connection:
+    with _db_lock, _connection_scope() as connection:
         _execute(
             connection,
             """
@@ -252,14 +279,14 @@ def save_document(user_id: str, document_type: str, value) -> None:
 
 def update_user_status(user_id: str, is_active: bool) -> bool:
     initialize()
-    with _db_lock, _connect() as connection:
+    with _db_lock, _connection_scope() as connection:
         result = _execute(connection, "UPDATE users SET is_active = ? WHERE user_id = ? AND role <> 'admin'", (is_active, user_id))
         return result.rowcount > 0
 
 
 def list_admin_users() -> list[dict]:
     initialize()
-    with _db_lock, _connect() as connection:
+    with _db_lock, _connection_scope() as connection:
         rows = _execute(connection, """
             SELECT u.user_id, u.username, u.email, u.display_name, u.role,
                    u.is_active, u.created_at, u.last_login,
@@ -277,7 +304,7 @@ def record_usage(user_id: str, task_id: str, requested_count: int,
                  generated_count: int, status: str, provider: str, model: str,
                  created_at: str) -> None:
     initialize()
-    with _db_lock, _connect() as connection:
+    with _db_lock, _connection_scope() as connection:
         _execute(connection, """
             INSERT INTO usage_events
             (id, user_id, task_id, requested_count, generated_count, status, provider, model, created_at)
@@ -288,7 +315,7 @@ def record_usage(user_id: str, task_id: str, requested_count: int,
 
 def usage_summary() -> dict:
     initialize()
-    with _db_lock, _connect() as connection:
+    with _db_lock, _connection_scope() as connection:
         row = _execute(connection, """
             SELECT COUNT(*) AS event_count,
                    COUNT(DISTINCT user_id) AS active_users,
