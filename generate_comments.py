@@ -28,6 +28,7 @@ import uuid
 import hashlib
 import argparse
 import logging
+import re
 import threading
 from datetime import datetime
 from pathlib import Path
@@ -94,11 +95,13 @@ PHONG CÁCH ĐA DẠNG (trộn đều trong batch):
 - Câu hỏi tu từ, thắc mắc vui
 
 FORMAT OUTPUT:
-Trả về ĐÚNG một JSON array, mỗi phần tử là một object:
-[
+Trả về ĐÚNG một JSON object, không markdown, không giải thích:
+{
+    "comments": [
   {"content": "nội dung comment đúng 10 từ", "tone": "giọng_điệu", "style": "văn_phong"},
   ...
-]
+    ]
+}
 
 Các giá trị tone: agreeing, disagreeing, neutral, humorous, sarcastic, questioning, storytelling, informative
 Các giá trị style: formal, casual, teencode, emoji_heavy, emphatic, minimal
@@ -133,7 +136,7 @@ Số lượng: {count} comment
 Số chữ mỗi comment: {word_count} chữ (bắt buộc)
 {language_instruction}
 {avoid_section}
-Hãy sinh ĐÚNG {count} comment đa dạng. Trả về JSON array duy nhất, không thêm text nào khác."""
+Hãy sinh ĐÚNG {count} comment đa dạng. Trả về JSON object có khóa comments, không thêm text nào khác."""
 
 
 # ============================================================================
@@ -412,7 +415,15 @@ def create_client(provider: str, model: str, max_retries: int, retry_delay_base:
 
 def parse_api_response(raw_text: str, target_word_count: int = 10) -> list[dict]:
     """Parse JSON response từ API, xử lý các trường hợp format khác nhau."""
+    if not isinstance(raw_text, str) or not raw_text.strip():
+        return []
     text = raw_text.strip()
+
+    # Qwen đôi khi trả phần suy luận dù đã yêu cầu JSON.
+    if "</think>" in text:
+        text = text.rsplit("</think>", 1)[1].strip()
+    elif "<think>" in text:
+        text = text.split("<think>", 1)[0].strip()
 
     # Loại bỏ markdown code block nếu có
     if text.startswith("```"):
@@ -424,22 +435,24 @@ def parse_api_response(raw_text: str, target_word_count: int = 10) -> list[dict]
     try:
         data = json.loads(text)
     except json.JSONDecodeError:
-        # Thử tìm JSON array trong text
-        start = text.find("[")
-        end = text.rfind("]") + 1
-        if start != -1 and end > start:
-            try:
-                data = json.loads(text[start:end])
-            except json.JSONDecodeError:
-                logger.error(f"  ✗ Không parse được JSON. Raw (200 ký tự đầu): {text[:200]}")
-                return []
-        else:
-            logger.error(f"  ✗ Không tìm thấy JSON array. Raw (200 ký tự đầu): {text[:200]}")
-            return []
+        # Tìm object hoặc array JSON nằm trong phần trả lời thừa.
+        candidates = [(text.find("{"), text.rfind("}") + 1),
+                      (text.find("["), text.rfind("]") + 1)]
+        data = None
+        for start, end in candidates:
+            if start >= 0 and end > start:
+                try:
+                    data = json.loads(text[start:end])
+                    break
+                except json.JSONDecodeError:
+                    continue
+        if data is None:
+            logger.error(f"  ✗ Không parse được JSON. Raw (300 ký tự đầu): {text[:300]}")
+            data = []
 
     # Nếu API trả về object chứa array (ví dụ: {"comments": [...]})
     if isinstance(data, dict):
-        for key in ["comments", "data", "results", "items"]:
+        for key in ["comments", "data", "results", "items", "responses"]:
             if key in data and isinstance(data[key], list):
                 data = data[key]
                 break
@@ -456,8 +469,17 @@ def parse_api_response(raw_text: str, target_word_count: int = 10) -> list[dict]
     max_words = target_word_count + 1
     valid = []
     for item in data:
-        if isinstance(item, dict) and "content" in item:
-            content = str(item["content"]).strip()
+        if isinstance(item, str):
+            content = item.strip()
+            tone = "neutral"
+            style = "casual"
+        elif isinstance(item, dict):
+            content = str(item.get("content", item.get("comment", item.get("text", "")))).strip()
+            tone = item.get("tone", "neutral")
+            style = item.get("style", "casual")
+        else:
+            continue
+        if content:
             # Bỏ dấu ngoặc kép bọc ngoài nếu có
             if (content.startswith('"') and content.endswith('"')) or (content.startswith("'") and content.endswith("'")):
                 content = content[1:-1].strip()
@@ -465,9 +487,18 @@ def parse_api_response(raw_text: str, target_word_count: int = 10) -> list[dict]
             if min_words <= word_count <= max_words:
                 valid.append({
                     "content": content,
-                    "tone": item.get("tone", "neutral"),
-                    "style": item.get("style", "casual"),
+                    "tone": tone,
+                    "style": style,
                 })
+    if valid:
+        return valid
+
+    # Fallback cho model trả mỗi comment một dòng thay vì JSON.
+    for line in text.splitlines():
+        content = re.sub(r"^\s*(?:[-*]|\d+[.)])\s*", "", line).strip(" `\"'")
+        word_count = len(content.split())
+        if min_words <= word_count <= max_words:
+            valid.append({"content": content, "tone": "neutral", "style": "casual"})
     return valid
 
 
