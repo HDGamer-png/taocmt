@@ -57,7 +57,7 @@ DEFAULT_CONFIG = {
     "topic": "",
     "num_comments": 200,
     "language": "Tiếng Việt",
-    "batch_size": 15,               # Số comment mỗi lần gọi API
+    "batch_size": 40,               # Số comment mỗi lần gọi API
     "word_count": 10,               # Số từ mong muốn trong mỗi comment
     "similarity_threshold": 0.75,   # Ngưỡng loại bỏ trùng lặp (0-1)
     "output_format": "both",        # "csv", "json", hoặc "both"
@@ -279,7 +279,7 @@ class GroqClient(APIClient):
                     messages=messages,
                     temperature=1.0,
                     top_p=0.95,
-                    max_tokens=4096,
+                    max_tokens=2048,
                     response_format={"type": "json_object"},
                 )
             except Exception as error:
@@ -290,7 +290,7 @@ class GroqClient(APIClient):
                         messages=messages,
                         temperature=1.0,
                         top_p=0.95,
-                        max_tokens=4096,
+                        max_tokens=2048,
                     )
                 elif "401" in error_text or "invalid api key" in error_text or "authentication" in error_text:
                     raise ValueError(
@@ -439,7 +439,14 @@ def parse_api_response(raw_text: str, target_word_count: int = 10) -> list[dict]
         candidates = [(text.find("{"), text.rfind("}") + 1),
                       (text.find("["), text.rfind("]") + 1)]
         data = None
+        decoder = json.JSONDecoder()
+        try:
+            data, _ = decoder.raw_decode(text[text.find("{"):] if "{" in text else text[text.find("["):])
+        except (json.JSONDecodeError, ValueError):
+            pass
         for start, end in candidates:
+            if data is not None:
+                break
             if start >= 0 and end > start:
                 try:
                     data = json.loads(text[start:end])
@@ -456,8 +463,14 @@ def parse_api_response(raw_text: str, target_word_count: int = 10) -> list[dict]
             if key in data and isinstance(data[key], list):
                 data = data[key]
                 break
+            if key in data and isinstance(data[key], str):
+                data = data[key].splitlines()
+                break
         else:
-            # Nếu là dict đơn lẻ, wrap thành list
+            # Một số model bọc danh sách trong nhiều lớp object.
+            nested = next((value for value in data.values() if isinstance(value, dict)), None)
+            if nested:
+                return parse_api_response(json.dumps(nested, ensure_ascii=False), target_word_count)
             data = [data]
 
     if not isinstance(data, list):
@@ -755,7 +768,7 @@ class CommentGenerator:
 
                 # Delay nhẹ giữa các batch để tránh rate limit
                 if len(self.comments) < self.target_count:
-                    time.sleep(1)
+                    time.sleep(0.15)
 
             except Exception as e:
                 self.last_error = str(e)

@@ -770,7 +770,7 @@ async function createTask() {
         language: document.getElementById('task-language').value,
         api_provider: document.getElementById('task-provider').value,
         api_model: document.getElementById('task-model').value,
-        batch_size: 15,
+        batch_size: 40,
         word_count: parseInt(document.getElementById('task-word-count').value),
         similarity_threshold: parseInt(document.getElementById('task-similarity').value) / 100,
     };
