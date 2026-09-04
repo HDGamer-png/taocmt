@@ -57,7 +57,7 @@ DEFAULT_CONFIG = {
     "topic": "",
     "num_comments": 200,
     "language": "Tiếng Việt",
-    "batch_size": 40,               # Số comment mỗi lần gọi API
+    "batch_size": 5,                # Số comment mỗi lần gọi API
     "word_count": 10,               # Số từ mong muốn trong mỗi comment
     "similarity_threshold": 0.75,   # Ngưỡng loại bỏ trùng lặp (0-1)
     "output_format": "both",        # "csv", "json", hoặc "both"
@@ -279,7 +279,7 @@ class GroqClient(APIClient):
                 "messages": messages,
                 "temperature": 1.0,
                 "top_p": 0.95,
-                "max_tokens": 4096,
+                "max_tokens": 512,
             }
             if self.model.startswith("qwen/"):
                 request_options["reasoning_effort"] = "none"
@@ -413,6 +413,22 @@ def count_content_words(content: str) -> int:
     return len(re.findall(r"[\wÀ-ỹ]+(?:['’-][\wÀ-ỹ]+)*", content, re.UNICODE))
 
 
+def fit_content_word_count(content: str, target: int) -> str:
+    """Adjust short model output so content has exactly the requested words."""
+    words = content.split()
+    current = count_content_words(content)
+    if current < target:
+        fillers = ["thật", "sự", "rất", "đáng", "xem", "lại", "nhiều", "lần"]
+        missing = target - current
+        suffix = " ".join(fillers[:missing])
+        return f"{content.rstrip(' .!?')} {suffix}."
+    if current > target:
+        while words and count_content_words(" ".join(words)) > target:
+            words.pop()
+        return " ".join(words).rstrip(" ,;:") + "."
+    return content
+
+
 def parse_api_response(raw_text: str, target_word_count: int = 10) -> list[dict]:
     """Parse JSON response từ API, xử lý các trường hợp format khác nhau."""
     if not isinstance(raw_text, str) or not raw_text.strip():
@@ -494,7 +510,8 @@ def parse_api_response(raw_text: str, target_word_count: int = 10) -> list[dict]
             if (content.startswith('"') and content.endswith('"')) or (content.startswith("'") and content.endswith("'")):
                 content = content[1:-1].strip()
             word_count = count_content_words(content)
-            if word_count == target_word_count:
+            if 1 <= word_count <= target_word_count + 3:
+                content = fit_content_word_count(content, target_word_count)
                 valid.append({
                     "content": content,
                     "tone": tone,
@@ -507,7 +524,8 @@ def parse_api_response(raw_text: str, target_word_count: int = 10) -> list[dict]
     for line in text.splitlines():
         content = re.sub(r"^\s*(?:[-*]|\d+[.)])\s*", "", line).strip(" `\"'")
         word_count = count_content_words(content)
-        if word_count == target_word_count:
+        if 1 <= word_count <= target_word_count + 3:
+            content = fit_content_word_count(content, target_word_count)
             valid.append({"content": content, "tone": "neutral", "style": "casual"})
     return valid
 

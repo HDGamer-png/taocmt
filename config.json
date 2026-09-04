@@ -2,7 +2,7 @@
     "topic": "Lời khen về gái xinh đang ở 1 địa điểm đẹp trên mọi nền tảng mạng xã hội  theo kiểu GenZ",
     "num_comments": 50,
     "language": "Tiếng Việt",
-    "batch_size": 40,
+    "batch_size": 5,
     "similarity_threshold": 0.75,
     "output_format": "both",
     "api_provider": "groq",

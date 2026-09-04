@@ -97,7 +97,7 @@ class CreateTaskRequest(BaseModel):
     language: str = "Tiếng Việt"
     api_provider: str = "groq"
     api_model: str = "qwen/qwen3.6-27b"
-    batch_size: int = Field(default=40, ge=5, le=50)
+    batch_size: int = Field(default=5, ge=5, le=20)
     word_count: int = Field(default=10, ge=3, le=30)
     similarity_threshold: float = Field(default=0.75, ge=0.0, le=1.0)
 
