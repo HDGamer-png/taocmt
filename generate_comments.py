@@ -292,6 +292,26 @@ class GroqClient(APIClient):
             return response.choices[0].message.content
         return self._retry_with_backoff(_do_call)
 
+    def validate(self) -> None:
+        """Validate credentials and model before creating a background task."""
+        try:
+            models = self.client.models.list()
+        except Exception as error:
+            error_text = str(error).lower()
+            if "401" in error_text or "invalid api key" in error_text or "authentication" in error_text:
+                raise ValueError(
+                    "GROQ_API_KEY không hợp lệ hoặc đã hết hạn. "
+                    "Hãy cập nhật lại biến môi trường trên máy chủ rồi deploy lại."
+                ) from error
+            raise ValueError(f"Không thể kết nối Groq: {error}") from error
+
+        available_models = {model.id for model in models.data}
+        if self.model not in available_models:
+            raise ValueError(
+                f"Model Groq '{self.model}' không khả dụng. "
+                "Hãy chọn một model đang hoạt động trong danh sách Provider."
+            )
+
 
 class OllamaClient(APIClient):
     """Client cho Ollama (chạy local, không cần API key)."""

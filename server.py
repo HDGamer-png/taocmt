@@ -546,6 +546,13 @@ def _run_generator_task(task_id: str, user_id: str, config: dict,
 async def create_task(req: CreateTaskRequest, user_info: dict = Depends(get_current_user)):
     user_id = user_info["user_id"]
 
+    if req.api_provider == "groq":
+        try:
+            from generate_comments import GroqClient
+            GroqClient(req.api_model, 1, 0).validate()
+        except (ImportError, ValueError) as error:
+            raise HTTPException(status_code=400, detail=str(error))
+
     task_id = str(uuid.uuid4())[:8]
 
     # Build config
