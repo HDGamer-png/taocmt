@@ -11,7 +11,7 @@ function adminHeaders(options = {}) {
 async function adminFetch(url, options = {}) {
     const response = await fetch(url, {...options, headers: adminHeaders(options) });
     if (response.status === 401 || response.status === 403) {
-        window.location.href = '/dashboard';
+        window.location.href = '/auth';
         return null;
     }
     return response;

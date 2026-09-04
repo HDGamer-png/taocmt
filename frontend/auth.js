@@ -81,19 +81,21 @@ function checkAuth() {
     if (token) {
         // Verify token is still valid
         fetch(`${API_BASE}/api/auth/me`, {
-            headers: { 'Authorization': `Bearer ${token}` }
-        })
-        .then(res => {
-            if (res.ok) {
-                window.location.href = '/dashboard';
-            } else {
+                headers: { 'Authorization': `Bearer ${token}` }
+            })
+            .then(async res => {
+                if (res.ok) {
+                    const user = await res.json();
+                    saveUser(user);
+                    window.location.href = user.role === 'admin' ? '/admin' : '/dashboard';
+                } else {
+                    clearAuth();
+                }
+            })
+            .catch(() => {
+                // Token invalid, stay on auth page
                 clearAuth();
-            }
-        })
-        .catch(() => {
-            // Token invalid, stay on auth page
-            clearAuth();
-        });
+            });
     }
 }
 
@@ -117,9 +119,9 @@ function switchTab(tabName) {
     document.querySelectorAll('.form-group.error').forEach(g => g.classList.remove('error'));
 
     // Update page title
-    document.title = tabName === 'login'
-        ? 'Comment Generator — Đăng nhập'
-        : 'Comment Generator — Đăng ký';
+    document.title = tabName === 'login' ?
+        'Comment Generator — Đăng nhập' :
+        'Comment Generator — Đăng ký';
 }
 
 // ============================================================================
@@ -187,7 +189,7 @@ async function handleLogin(e) {
             saveUser(data.user);
             showToast('Đăng nhập thành công! Đang chuyển hướng...', 'success');
             setTimeout(() => {
-                window.location.href = '/dashboard';
+                window.location.href = data.user.role === 'admin' ? '/admin' : '/dashboard';
             }, 500);
         } else {
             showAlert(data.detail || 'Đăng nhập thất bại.', 'error');

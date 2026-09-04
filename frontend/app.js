@@ -979,6 +979,10 @@ async function init() {
 
     currentUser = await res.json();
     saveUser(currentUser);
+    if (currentUser.role === 'admin') {
+        window.location.href = '/admin';
+        return;
+    }
     updateUserUI();
 
     // Load providers and tasks
