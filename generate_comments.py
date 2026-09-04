@@ -264,13 +264,16 @@ class GroqClient(APIClient):
 
     def call(self, system_prompt: str, user_prompt: str) -> str:
         def _do_call():
+            messages = [
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ]
+            if self.model.startswith("qwen/"):
+                messages[1]["content"] = "/no_think\n" + messages[1]["content"]
             try:
                 response = self.client.chat.completions.create(
                     model=self.model,
-                    messages=[
-                        {"role": "system", "content": system_prompt},
-                        {"role": "user", "content": user_prompt},
-                    ],
+                    messages=messages,
                     temperature=1.0,
                     top_p=0.95,
                     max_tokens=4096,
@@ -278,17 +281,26 @@ class GroqClient(APIClient):
                 )
             except Exception as error:
                 error_text = str(error).lower()
-                if "401" in error_text or "invalid api key" in error_text or "authentication" in error_text:
+                if "response_format" in error_text or "json_object" in error_text:
+                    response = self.client.chat.completions.create(
+                        model=self.model,
+                        messages=messages,
+                        temperature=1.0,
+                        top_p=0.95,
+                        max_tokens=4096,
+                    )
+                elif "401" in error_text or "invalid api key" in error_text or "authentication" in error_text:
                     raise ValueError(
                         "GROQ_API_KEY không hợp lệ hoặc đã hết hạn. "
                         "Hãy cập nhật lại biến môi trường GROQ_API_KEY trên máy chủ rồi deploy lại."
                     ) from error
-                if "model" in error_text and ("not found" in error_text or "decommissioned" in error_text):
+                elif "model" in error_text and ("not found" in error_text or "decommissioned" in error_text):
                     raise ValueError(
                         f"Model Groq '{self.model}' không còn khả dụng. "
                         "Hãy chọn một model đang hoạt động trong danh sách Provider."
                     ) from error
-                raise
+                else:
+                    raise
             return response.choices[0].message.content
         return self._retry_with_backoff(_do_call)
 
@@ -565,6 +577,7 @@ class CommentGenerator:
 
         # Lưu trữ kết quả
         self.comments: list[dict] = []
+        self.last_error = None
         self.opening_words: list[str] = []  # Track từ mở đầu để tránh lặp
         for comment in self.existing_comments:
             opening = get_opening_words(comment.get("content", ""))
@@ -619,7 +632,7 @@ class CommentGenerator:
         self._notify_progress(0, [], f"🚀 Bắt đầu sinh {self.target_count} comment về: {self.topic}")
 
         batch_num = 0
-        max_rounds = 50  # Giới hạn an toàn
+        max_rounds = 100  # Cho phép bù batch bị trùng hoặc bị rate limit
         consecutive_failures = 0
 
         while len(self.comments) < self.target_count and batch_num < max_rounds:
@@ -650,11 +663,12 @@ class CommentGenerator:
 
                 if not new_comments:
                     consecutive_failures += 1
+                    self.last_error = "Groq trả về kết quả rỗng hoặc không đúng JSON/số từ yêu cầu."
                     msg = f"⚠ Batch rỗng! ({consecutive_failures} lần liên tiếp)"
                     logger.warning(f"  {msg}")
                     self._notify_progress(batch_num, [], msg)
-                    if consecutive_failures >= 3:
-                        msg = "✗ 3 batch rỗng liên tiếp. Dừng lại."
+                    if consecutive_failures >= 10:
+                        msg = "✗ 10 batch rỗng liên tiếp. Dừng lại."
                         logger.error(f"  {msg}")
                         self._notify_progress(batch_num, [], msg)
                         break
@@ -699,12 +713,13 @@ class CommentGenerator:
                     time.sleep(1)
 
             except Exception as e:
+                self.last_error = str(e)
                 msg = f"✗ Lỗi batch {batch_num}: {e}"
                 logger.error(f"  {msg}")
                 self._notify_progress(batch_num, [], msg)
                 consecutive_failures += 1
-                if consecutive_failures >= 3:
-                    msg = "✗ 3 lỗi liên tiếp. Dừng lại."
+                if consecutive_failures >= 10:
+                    msg = "✗ 10 lỗi liên tiếp. Dừng lại."
                     logger.error(f"  {msg}")
                     self._notify_progress(batch_num, [], msg)
                     break
@@ -725,6 +740,8 @@ class CommentGenerator:
                 f"⚠ Chưa đủ! Chỉ sinh được {len(self.comments)}/{self.target_count} comment "
                 f"sau {batch_num} batch."
             )
+            if self.last_error:
+                msg = f"{msg} Lỗi cuối: {self.last_error}"
             logger.warning(msg)
             self._notify_progress(batch_num, [], msg)
         logger.info("=" * 60)

@@ -96,7 +96,7 @@ class CreateTaskRequest(BaseModel):
     num_comments: int = Field(default=200, ge=5, le=1000)
     language: str = "Tiếng Việt"
     api_provider: str = "groq"
-    api_model: str = "llama-3.3-70b-versatile"
+    api_model: str = "qwen/qwen3-32b"
     batch_size: int = Field(default=15, ge=5, le=50)
     word_count: int = Field(default=10, ge=3, le=30)
     similarity_threshold: float = Field(default=0.75, ge=0.0, le=1.0)
@@ -362,7 +362,7 @@ async def serve_avatar(filename: str):
 PROVIDER_MODELS = {
     "openai": ["gpt-4o-mini", "gpt-4o", "gpt-4-turbo", "gpt-3.5-turbo"],
     "anthropic": ["claude-sonnet-4-20250514", "claude-3-haiku-20240307", "claude-3-opus-20240229"],
-    "groq": ["llama-3.3-70b-versatile", "openai/gpt-oss-20b", "openai/gpt-oss-120b", "qwen/qwen3-32b"],
+    "groq": ["qwen/qwen3-32b", "openai/gpt-oss-20b", "openai/gpt-oss-120b", "llama-3.3-70b-versatile"],
     "ollama": ["llama3.1", "mistral", "gemma2", "phi3", "qwen2"],
 }
 
@@ -422,6 +422,7 @@ def _run_generator_task(task_id: str, user_id: str, config: dict,
             if task_id in tasks:
                 tasks[task_id]["current_count"] = total
                 tasks[task_id]["progress_pct"] = round(total / target * 100, 1) if target > 0 else 0
+                tasks[task_id]["comments"].extend(c.copy() for c in new_comments)
 
         # Broadcast qua WebSocket
         if task_id in ws_connections:
@@ -458,6 +459,8 @@ def _run_generator_task(task_id: str, user_id: str, config: dict,
         else:
             final_status = "failed"
 
+        final_error = generator.last_error if final_status == "failed" else None
+
         # Lưu kết quả
         with task_lock:
             if task_id in tasks:
@@ -466,12 +469,14 @@ def _run_generator_task(task_id: str, user_id: str, config: dict,
                 tasks[task_id]["current_count"] = len(comments)
                 tasks[task_id]["progress_pct"] = 100 if final_status == "completed" else tasks[task_id].get("progress_pct", 0)
                 tasks[task_id]["comments"] = comments
+                tasks[task_id]["error"] = final_error
 
         _update_task_in_file(user_id, task_id, {
             "status": final_status,
             "completed_at": datetime.now().isoformat(),
             "current_count": len(comments),
             "comments": comments,
+            "error": final_error,
         })
         storage.record_usage(
             user_id, task_id, config["num_comments"], len(comments), final_status,
@@ -500,18 +505,24 @@ def _run_generator_task(task_id: str, user_id: str, config: dict,
 
     except Exception as e:
         error_message = str(e)
+        partial_comments = []
+        with task_lock:
+            if task_id in tasks:
+                partial_comments = tasks[task_id].get("comments", [])
         with task_lock:
             if task_id in tasks:
                 tasks[task_id]["status"] = "failed"
                 tasks[task_id]["error"] = error_message
                 tasks[task_id]["completed_at"] = datetime.now().isoformat()
+                tasks[task_id]["comments"] = partial_comments
         _update_task_in_file(user_id, task_id, {
             "status": "failed",
             "error": error_message,
             "completed_at": datetime.now().isoformat(),
+            "comments": partial_comments,
         })
         storage.record_usage(
-            user_id, task_id, config["num_comments"], 0, "failed",
+            user_id, task_id, config["num_comments"], len(partial_comments), "failed",
             config["api_provider"], config["api_model"], datetime.now().isoformat()
         )
         _record_task_history(user_id, task_info_for_history(
