@@ -407,7 +407,7 @@ function renderTaskDetail(task) {
                         <button class="btn btn-primary btn-sm" onclick="downloadTask('${task.task_id}', 'txt')">📥 Tải file TXT</button>
                     </div>
                 </div>
-                <textarea class="plain-output-textarea" id="plain-output" readonly aria-label="Toàn bộ comment">${escapeHtml(comments.map(c => c.content || '').join('\\n'))}</textarea>
+                <textarea class="plain-output-textarea" id="plain-output" readonly aria-label="Toàn bộ comment">${escapeHtml(comments.map(c => c.content || '').join('\n'))}</textarea>
             </div>
             ` : ''}
 
