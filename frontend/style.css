@@ -1,3 +1,9 @@
+.admin-status.generating {
+    color: var(--warning);
+    background: var(--warning-bg);
+}
+
+
 /* ============================================================================
    COMMENT GENERATOR — DESIGN SYSTEM
    ============================================================================

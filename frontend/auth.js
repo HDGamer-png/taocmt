@@ -51,28 +51,28 @@ function showToast(message, type = 'info') {
 // ============================================================================
 
 function saveToken(token) {
-    localStorage.setItem('cmt_token', token);
+    sessionStorage.setItem('cmt_token', token);
 }
 
 function getToken() {
-    return localStorage.getItem('cmt_token');
+    return sessionStorage.getItem('cmt_token');
 }
 
 function saveUser(user) {
-    localStorage.setItem('cmt_user', JSON.stringify(user));
+    sessionStorage.setItem('cmt_user', JSON.stringify(user));
 }
 
 function getUser() {
     try {
-        return JSON.parse(localStorage.getItem('cmt_user'));
+        return JSON.parse(sessionStorage.getItem('cmt_user'));
     } catch {
         return null;
     }
 }
 
 function clearAuth() {
-    localStorage.removeItem('cmt_token');
-    localStorage.removeItem('cmt_user');
+    sessionStorage.removeItem('cmt_token');
+    sessionStorage.removeItem('cmt_user');
 }
 
 // Check if already logged in

@@ -1,4 +1,4 @@
-const adminToken = localStorage.getItem('cmt_token');
+const adminToken = sessionStorage.getItem('cmt_token');
 
 function adminHeaders(options = {}) {
     return {
@@ -46,7 +46,6 @@ async function loadAdminData() {
         showAdminToast('Không thể tải dữ liệu quản trị.', 'error');
         return;
     }
-
     const summary = await summaryResponse.json();
     const users = await usersResponse.json();
     document.getElementById('admin-stats').innerHTML = `
@@ -54,6 +53,7 @@ async function loadAdminData() {
         <div class="admin-stat"><span>User hoạt động</span><strong>${summary.active_users}</strong></div>
         <div class="admin-stat"><span>Tổng comment</span><strong>${summary.generated_count}</strong></div>
         <div class="admin-stat"><span>Task hoàn thành</span><strong>${summary.completed_tasks}</strong></div>
+        <div class="admin-stat"><span>Đang sinh</span><strong>${summary.running_comments || 0}</strong></div>
     `;
 
     document.getElementById('admin-users').innerHTML = users.map(user => `
@@ -62,8 +62,8 @@ async function loadAdminData() {
             <td>${escapeAdminHtml(user.email)}<small>Đăng ký: ${formatAdminDate(user.created_at)}</small></td>
             <td><span class="admin-role ${user.role}">${escapeAdminHtml(user.role)}</span></td>
             <td>${user.task_count || 0}</td>
-            <td>${user.generated_count || 0}</td>
-            <td><span class="admin-status ${user.is_active ? 'active' : 'blocked'}">${user.is_active ? 'Hoạt động' : 'Đã khóa'}</span></td>
+            <td>${user.generated_count || 0}${user.is_generating ? `<small>Đang sinh: ${user.running_comments}</small>` : ''}</td>
+            <td><span class="admin-status ${user.is_generating ? 'generating' : (user.is_active ? 'active' : 'blocked')}" >${user.is_generating ? `Đang sinh (${user.running_tasks})` : (user.is_active ? 'Hoạt động' : 'Đã khóa')}</span></td>
             <td>${user.role === 'admin' ? '<span class="text-muted">Admin</span>' : `<button class="btn btn-secondary btn-sm" onclick="toggleUser('${user.user_id}', ${!user.is_active})">${user.is_active ? 'Khóa' : 'Mở khóa'}</button>`}</td>
         </tr>
     `).join('');
@@ -80,8 +80,8 @@ async function toggleUser(userId, isActive) {
 }
 
 function logoutAdmin() {
-    localStorage.removeItem('cmt_token');
-    localStorage.removeItem('cmt_user');
+    sessionStorage.removeItem('cmt_token');
+    sessionStorage.removeItem('cmt_user');
     window.location.href = '/auth';
 }
 
@@ -89,4 +89,5 @@ if (!adminToken) {
     window.location.href = '/auth';
 } else {
     loadAdminData();
+    setInterval(loadAdminData, 3000);
 }

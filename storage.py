@@ -318,13 +318,16 @@ def usage_summary() -> dict:
     with _db_lock, _connection_scope() as connection:
         row = _execute(connection, """
             SELECT COUNT(*) AS event_count,
-                   COUNT(DISTINCT user_id) AS active_users,
                    COALESCE(SUM(generated_count), 0) AS generated_count,
                    COALESCE(SUM(CASE WHEN status = 'completed' THEN 1 ELSE 0 END), 0) AS completed_tasks
             FROM usage_events
         """).fetchone()
-        users = _execute(connection, "SELECT COUNT(*) AS total_users FROM users").fetchone()
-        return {**dict(row), "total_users": users["total_users"]}
+        users = _execute(connection, """
+            SELECT COUNT(*) AS total_users,
+                   COALESCE(SUM(CASE WHEN is_active THEN 1 ELSE 0 END), 0) AS active_users
+            FROM users
+        """).fetchone()
+        return {**dict(row), **dict(users)}
 
 
 initialize()

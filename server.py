@@ -299,12 +299,39 @@ async def upload_avatar(file: UploadFile = File(...), user_info: dict = Depends(
 
 @app.get("/api/admin/summary")
 async def admin_summary(_: dict = Depends(require_admin)):
-    return storage.usage_summary()
+    summary = storage.usage_summary()
+    with task_lock:
+        running_tasks = [task for task in tasks.values()
+                         if task.get("status") in {"pending", "running"}]
+        summary["running_tasks"] = len(running_tasks)
+        summary["running_comments"] = sum(task.get("current_count", 0) for task in running_tasks)
+        summary["generated_count"] += summary["running_comments"]
+    return summary
 
 
 @app.get("/api/admin/users")
 async def admin_users(_: dict = Depends(require_admin)):
-    return storage.list_admin_users()
+    users = storage.list_admin_users()
+    runtime_by_user = {}
+    with task_lock:
+        for task in tasks.values():
+            if task.get("status") not in {"pending", "running"}:
+                continue
+            user_runtime = runtime_by_user.setdefault(task["user_id"], {
+                "running_tasks": 0,
+                "running_comments": 0,
+            })
+            user_runtime["running_tasks"] += 1
+            user_runtime["running_comments"] += task.get("current_count", 0)
+
+    for user in users:
+        runtime = runtime_by_user.get(user["user_id"], {})
+        user["running_tasks"] = runtime.get("running_tasks", 0)
+        user["running_comments"] = runtime.get("running_comments", 0)
+        user["generated_count"] = (user.get("generated_count", 0) or 0) + user["running_comments"]
+        user["task_count"] = (user.get("task_count", 0) or 0) + user["running_tasks"]
+        user["is_generating"] = user["running_tasks"] > 0
+    return users
 
 
 @app.put("/api/admin/users/{user_id}/status")
