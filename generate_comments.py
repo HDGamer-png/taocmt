@@ -304,8 +304,8 @@ class GroqClient(APIClient):
             return response.choices[0].message.content
         return self._retry_with_backoff(_do_call)
 
-    def validate(self) -> None:
-        """Validate credentials and model before creating a background task."""
+    def validate(self) -> str:
+        """Validate credentials and return an available text model."""
         try:
             models = self.client.models.list()
         except Exception as error:
@@ -317,12 +317,26 @@ class GroqClient(APIClient):
                 ) from error
             raise ValueError(f"Không thể kết nối Groq: {error}") from error
 
-        available_models = {model.id for model in models.data}
-        if self.model not in available_models:
-            raise ValueError(
-                f"Model Groq '{self.model}' không khả dụng. "
-                "Hãy chọn một model đang hoạt động trong danh sách Provider."
-            )
+        available_models = [model.id for model in models.data]
+        if self.model in available_models:
+            return self.model
+
+        preferred_models = [
+            "qwen/qwen3-32b",
+            "openai/gpt-oss-20b",
+            "openai/gpt-oss-120b",
+            "llama-3.3-70b-versatile",
+        ]
+        for model in preferred_models:
+            if model in available_models:
+                return model
+
+        excluded_prefixes = ("whisper", "distil-whisper", "playai-tts", "meta-llama/llama-guard")
+        text_models = [model for model in available_models if not model.startswith(excluded_prefixes)]
+        if text_models:
+            return text_models[0]
+
+        raise ValueError("Tài khoản Groq không có model sinh văn bản khả dụng.")
 
 
 class OllamaClient(APIClient):

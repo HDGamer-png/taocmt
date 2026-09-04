@@ -369,7 +369,20 @@ PROVIDER_MODELS = {
 
 @app.get("/api/providers")
 async def get_providers():
-    return PROVIDER_MODELS
+    providers = {key: list(value) for key, value in PROVIDER_MODELS.items()}
+    if os.environ.get("GROQ_API_KEY", "").strip():
+        try:
+            from generate_comments import GroqClient
+            client = GroqClient("openai/gpt-oss-20b", 1, 0)
+            models = client.client.models.list().data
+            available = [model.id for model in models]
+            excluded_prefixes = ("whisper", "distil-whisper", "playai-tts", "meta-llama/llama-guard")
+            available = [model for model in available if not model.startswith(excluded_prefixes)]
+            if available:
+                providers["groq"] = available
+        except Exception:
+            pass
+    return providers
 
 
 # ============================================================================
@@ -560,9 +573,11 @@ async def create_task(req: CreateTaskRequest, user_info: dict = Depends(get_curr
     if req.api_provider == "groq":
         try:
             from generate_comments import GroqClient
-            GroqClient(req.api_model, 1, 0).validate()
+            resolved_model = GroqClient(req.api_model, 1, 0).validate()
         except (ImportError, ValueError) as error:
             raise HTTPException(status_code=400, detail=str(error))
+    else:
+        resolved_model = req.api_model
 
     task_id = str(uuid.uuid4())[:8]
 
@@ -574,7 +589,7 @@ async def create_task(req: CreateTaskRequest, user_info: dict = Depends(get_curr
         "num_comments": req.num_comments,
         "language": req.language,
         "api_provider": req.api_provider,
-        "api_model": req.api_model,
+        "api_model": resolved_model,
         "batch_size": req.batch_size,
         "word_count": req.word_count,
         "similarity_threshold": req.similarity_threshold,
@@ -587,7 +602,7 @@ async def create_task(req: CreateTaskRequest, user_info: dict = Depends(get_curr
         "num_comments": req.num_comments,
         "language": req.language,
         "api_provider": req.api_provider,
-        "api_model": req.api_model,
+        "api_model": resolved_model,
         "batch_size": req.batch_size,
         "word_count": req.word_count,
         "similarity_threshold": req.similarity_threshold,
