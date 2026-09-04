@@ -167,10 +167,15 @@ def authenticate_user(username_or_email: str, password: str) -> Optional[dict]:
     Xác thực user bằng username/email + password.
     Trả về user dict (không có password_hash) nếu đúng, None nếu sai.
     """
-    # Tìm theo username hoặc email
-    user = find_user_by_username(username_or_email)
-    if not user:
-        user = find_user_by_email(username_or_email)
+    # Đọc danh sách một lần để tránh hai round-trip tới database.
+    normalized_login = username_or_email.strip().lower()
+    users = _load_users()
+    user = next(
+        (candidate for candidate in users
+         if candidate.get("username", "").lower() == normalized_login
+         or candidate.get("email", "").lower() == normalized_login),
+        None,
+    )
     if not user:
         return None
     if not user.get("is_active", True):
@@ -181,11 +186,7 @@ def authenticate_user(username_or_email: str, password: str) -> Optional[dict]:
         return None
 
     # Cập nhật last_login
-    users = _load_users()
-    for u in users:
-        if u["user_id"] == user["user_id"]:
-            u["last_login"] = datetime.now().isoformat()
-            break
+    user["last_login"] = datetime.now().isoformat()
     _save_users(users)
 
     return {k: v for k, v in user.items() if k != "password_hash"}

@@ -280,19 +280,10 @@ class GroqClient(APIClient):
                     temperature=1.0,
                     top_p=0.95,
                     max_tokens=2048,
-                    response_format={"type": "json_object"},
                 )
             except Exception as error:
                 error_text = str(error).lower()
-                if "response_format" in error_text or "json_object" in error_text:
-                    response = self.client.chat.completions.create(
-                        model=self.model,
-                        messages=messages,
-                        temperature=1.0,
-                        top_p=0.95,
-                        max_tokens=2048,
-                    )
-                elif "401" in error_text or "invalid api key" in error_text or "authentication" in error_text:
+                if "401" in error_text or "invalid api key" in error_text or "authentication" in error_text:
                     raise ValueError(
                         "GROQ_API_KEY không hợp lệ hoặc đã hết hạn. "
                         "Hãy cập nhật lại biến môi trường GROQ_API_KEY trên máy chủ rồi deploy lại."
