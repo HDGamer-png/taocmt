@@ -6,7 +6,7 @@
     "similarity_threshold": 0.75,
     "output_format": "both",
     "api_provider": "groq",
-    "api_model": "qwen/qwen3.8-27b",
+    "api_model": "llama-3.3-70b-versatile",
     "max_retries": 5,
     "retry_delay_base": 2
 }

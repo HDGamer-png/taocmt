@@ -253,7 +253,7 @@ class GroqClient(APIClient):
         except ImportError:
             raise ImportError("Cần cài đặt: pip install groq")
 
-        api_key = os.environ.get("GROQ_API_KEY")
+        api_key = os.environ.get("GROQ_API_KEY", "").strip()
         if not api_key:
             raise ValueError(
                 "Chưa đặt biến môi trường GROQ_API_KEY.\n"
@@ -264,17 +264,31 @@ class GroqClient(APIClient):
 
     def call(self, system_prompt: str, user_prompt: str) -> str:
         def _do_call():
-            response = self.client.chat.completions.create(
-                model=self.model,
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_prompt},
-                ],
-                temperature=1.0,
-                top_p=0.95,
-                max_tokens=4096,
-                response_format={"type": "json_object"},
-            )
+            try:
+                response = self.client.chat.completions.create(
+                    model=self.model,
+                    messages=[
+                        {"role": "system", "content": system_prompt},
+                        {"role": "user", "content": user_prompt},
+                    ],
+                    temperature=1.0,
+                    top_p=0.95,
+                    max_tokens=4096,
+                    response_format={"type": "json_object"},
+                )
+            except Exception as error:
+                error_text = str(error).lower()
+                if "401" in error_text or "invalid api key" in error_text or "authentication" in error_text:
+                    raise ValueError(
+                        "GROQ_API_KEY không hợp lệ hoặc đã hết hạn. "
+                        "Hãy cập nhật lại biến môi trường GROQ_API_KEY trên máy chủ rồi deploy lại."
+                    ) from error
+                if "model" in error_text and ("not found" in error_text or "decommissioned" in error_text):
+                    raise ValueError(
+                        f"Model Groq '{self.model}' không còn khả dụng. "
+                        "Hãy chọn một model đang hoạt động trong danh sách Provider."
+                    ) from error
+                raise
             return response.choices[0].message.content
         return self._retry_with_backoff(_do_call)
 

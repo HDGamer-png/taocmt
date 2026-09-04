@@ -386,6 +386,13 @@ function renderTaskDetail(task) {
                 </div>
             </div>
 
+            ${task.error ? `
+            <div class="alert show alert-error task-error">
+                <span class="alert-icon">⚠️</span>
+                <span class="alert-text">${escapeHtml(task.error)}</span>
+            </div>
+            ` : ''}
+
             <!-- Log panel (visible when running) -->
             <div class="log-panel ${isRunning ? '' : 'hidden'}" id="log-panel">
                 <div id="log-entries">
