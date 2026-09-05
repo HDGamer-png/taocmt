@@ -111,6 +111,7 @@ def initialize() -> None:
                 status TEXT NOT NULL,
                 provider TEXT,
                 model TEXT,
+                topic_group TEXT NOT NULL DEFAULT 'generic',
                 created_at TEXT NOT NULL,
                 FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
             );
@@ -125,12 +126,16 @@ def initialize() -> None:
         if USING_POSTGRES:
             _execute(connection, "ALTER TABLE users ADD COLUMN IF NOT EXISTS role TEXT NOT NULL DEFAULT 'user'")
             _execute(connection, "ALTER TABLE users ADD COLUMN IF NOT EXISTS is_active BOOLEAN NOT NULL DEFAULT TRUE")
+            _execute(connection, "ALTER TABLE usage_events ADD COLUMN IF NOT EXISTS topic_group TEXT NOT NULL DEFAULT 'generic'")
         else:
             columns = {row[1] for row in connection.execute("PRAGMA table_info(users)").fetchall()}
             if "role" not in columns:
                 connection.execute("ALTER TABLE users ADD COLUMN role TEXT NOT NULL DEFAULT 'user'")
             if "is_active" not in columns:
                 connection.execute("ALTER TABLE users ADD COLUMN is_active INTEGER NOT NULL DEFAULT 1")
+            usage_columns = {row[1] for row in connection.execute("PRAGMA table_info(usage_events)").fetchall()}
+            if "topic_group" not in usage_columns:
+                connection.execute("ALTER TABLE usage_events ADD COLUMN topic_group TEXT NOT NULL DEFAULT 'generic'")
 
         migrated = _execute(
             connection, "SELECT value FROM app_metadata WHERE key = ?",
@@ -302,15 +307,50 @@ def list_admin_users() -> list[dict]:
 
 def record_usage(user_id: str, task_id: str, requested_count: int,
                  generated_count: int, status: str, provider: str, model: str,
-                 created_at: str) -> None:
+                 created_at: str, topic_group: str = "generic") -> None:
+    initialize()
+    with _db_lock, _connection_scope() as connection:
+        existing = _execute(connection, "SELECT id FROM usage_events WHERE task_id = ?", (task_id,)).fetchone()
+        if existing:
+            _execute(connection, """
+                UPDATE usage_events
+                SET requested_count = ?, generated_count = ?, status = ?,
+                    provider = ?, model = ?, topic_group = ?, created_at = ?
+                WHERE task_id = ?
+            """, (requested_count, generated_count, status, provider, model,
+                   topic_group, created_at, task_id))
+            return
+        _execute(connection, """
+            INSERT INTO usage_events
+            (id, user_id, task_id, requested_count, generated_count, status, provider, model, topic_group, created_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (str(__import__("uuid").uuid4()), user_id, task_id, requested_count,
+               generated_count, status, provider, model, topic_group, created_at))
+
+
+def reserve_usage(user_id: str, task_id: str, requested_count: int, topic_group: str) -> None:
+    """Reserve a task's requested count before background generation starts."""
     initialize()
     with _db_lock, _connection_scope() as connection:
         _execute(connection, """
             INSERT INTO usage_events
-            (id, user_id, task_id, requested_count, generated_count, status, provider, model, created_at)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-        """, (str(__import__("uuid").uuid4()), user_id, task_id, requested_count,
-               generated_count, status, provider, model, created_at))
+            (id, user_id, task_id, requested_count, generated_count, status, provider, model, topic_group, created_at)
+            VALUES (?, ?, ?, ?, 0, 'reserved', 'auto', 'managed', ?, CURRENT_TIMESTAMP)
+        """, (str(__import__("uuid").uuid4()), user_id, task_id, requested_count, topic_group))
+
+
+def daily_topic_usage(user_id: str, topic_group: str) -> int:
+    """Return generated comments for this user/topic on the current UTC day."""
+    initialize()
+    with _db_lock, _connection_scope() as connection:
+        row = _execute(connection, """
+            SELECT COALESCE(SUM(
+                CASE WHEN status = 'reserved' THEN requested_count ELSE generated_count END
+            ), 0) AS generated_count
+            FROM usage_events
+            WHERE user_id = ? AND topic_group = ? AND created_at >= CURRENT_DATE
+        """, (user_id, topic_group)).fetchone()
+        return int(row["generated_count"] or 0)
 
 
 def usage_summary() -> dict:

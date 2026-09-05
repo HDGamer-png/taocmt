@@ -95,8 +95,8 @@ class CreateTaskRequest(BaseModel):
     topic: str
     num_comments: int = Field(default=200, ge=5, le=1000)
     language: str = "Tiếng Việt"
-    api_provider: str = "groq"
-    api_model: str = "qwen/qwen3.6-27b"
+    api_provider: str = "auto"
+    api_model: str = "managed"
     batch_size: int = Field(default=5, ge=5, le=20)
     word_count: int = Field(default=10, ge=3, le=30)
     similarity_threshold: float = Field(default=0.75, ge=0.0, le=1.0)
@@ -360,29 +360,13 @@ async def serve_avatar(filename: str):
 # ============================================================================
 
 PROVIDER_MODELS = {
-    "openai": ["gpt-4o-mini", "gpt-4o", "gpt-4-turbo", "gpt-3.5-turbo"],
-    "anthropic": ["claude-sonnet-4-20250514", "claude-3-haiku-20240307", "claude-3-opus-20240229"],
-    "groq": ["qwen/qwen3.6-27b", "openai/gpt-oss-20b"],
-    "ollama": ["llama3.1", "mistral", "gemma2", "phi3", "qwen2"],
+    "managed": ["Gemini -> Groq fallback"],
 }
 
 
 @app.get("/api/providers")
 async def get_providers():
-    providers = {key: list(value) for key, value in PROVIDER_MODELS.items()}
-    if os.environ.get("GROQ_API_KEY", "").strip():
-        try:
-            from generate_comments import GroqClient
-            client = GroqClient("openai/gpt-oss-20b", 1, 0)
-            models = client.client.models.list().data
-            available = [model.id for model in models]
-            excluded_prefixes = ("whisper", "distil-whisper", "playai-tts", "meta-llama/llama-guard")
-            available = [model for model in available if not model.startswith(excluded_prefixes)]
-            if available:
-                providers["groq"] = available
-        except Exception:
-            pass
-    return providers
+    return PROVIDER_MODELS
 
 
 # ============================================================================
@@ -493,7 +477,7 @@ def _run_generator_task(task_id: str, user_id: str, config: dict,
         })
         storage.record_usage(
             user_id, task_id, config["num_comments"], len(comments), final_status,
-            config["api_provider"], config["api_model"], datetime.now().isoformat()
+            config["api_provider"], config["api_model"], datetime.now().isoformat(), config["topic_group"]
         )
         _record_task_history(user_id, {
             **task_info_for_history(task_id, user_id, config, final_status, comments),
@@ -536,7 +520,7 @@ def _run_generator_task(task_id: str, user_id: str, config: dict,
         })
         storage.record_usage(
             user_id, task_id, config["num_comments"], len(partial_comments), "failed",
-            config["api_provider"], config["api_model"], datetime.now().isoformat()
+            config["api_provider"], config["api_model"], datetime.now().isoformat(), config["topic_group"]
         )
         _record_task_history(user_id, task_info_for_history(
             task_id, user_id, config, "failed", [], error_message
@@ -569,15 +553,13 @@ def _run_generator_task(task_id: str, user_id: str, config: dict,
 @app.post("/api/tasks")
 async def create_task(req: CreateTaskRequest, user_info: dict = Depends(get_current_user)):
     user_id = user_info["user_id"]
+    topic_group = _topic_group(req.topic)
+    used_today = storage.daily_topic_usage(user_id, topic_group)
+    if used_today + req.num_comments > 1000:
+        remaining = max(0, 1000 - used_today)
+        raise HTTPException(status_code=429, detail=f"Bạn đã dùng {used_today}/1000 comment hôm nay cho nhóm topic này. Còn lại {remaining} comment.")
 
-    if req.api_provider == "groq":
-        try:
-            from generate_comments import GroqClient
-            resolved_model = GroqClient(req.api_model, 1, 0).validate()
-        except (ImportError, ValueError) as error:
-            raise HTTPException(status_code=400, detail=str(error))
-    else:
-        resolved_model = req.api_model
+    resolved_model = "managed"
 
     task_id = str(uuid.uuid4())[:8]
 
@@ -585,10 +567,10 @@ async def create_task(req: CreateTaskRequest, user_info: dict = Depends(get_curr
     config = DEFAULT_CONFIG.copy()
     config.update({
         "topic": req.topic,
-        "topic_group": _topic_group(req.topic),
+        "topic_group": topic_group,
         "num_comments": req.num_comments,
         "language": req.language,
-        "api_provider": req.api_provider,
+        "api_provider": "auto",
         "api_model": resolved_model,
         "batch_size": req.batch_size,
         "word_count": req.word_count,
@@ -601,7 +583,7 @@ async def create_task(req: CreateTaskRequest, user_info: dict = Depends(get_curr
         "topic": req.topic,
         "num_comments": req.num_comments,
         "language": req.language,
-        "api_provider": req.api_provider,
+        "api_provider": "auto",
         "api_model": resolved_model,
         "batch_size": req.batch_size,
         "word_count": req.word_count,
@@ -624,6 +606,7 @@ async def create_task(req: CreateTaskRequest, user_info: dict = Depends(get_curr
     user_tasks = _get_user_tasks(user_id)
     user_tasks.append(task_info)
     _save_user_tasks(user_id, user_tasks)
+    storage.reserve_usage(user_id, task_id, req.num_comments, topic_group)
     _record_task_history(user_id, task_info)
 
     # Tạo cancel flag và progress log

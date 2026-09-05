@@ -30,6 +30,8 @@ import argparse
 import logging
 import re
 import threading
+import urllib.error
+import urllib.request
 from datetime import datetime
 from pathlib import Path
 from difflib import SequenceMatcher
@@ -337,6 +339,101 @@ class GroqClient(APIClient):
         raise ValueError("Tài khoản Groq không có model sinh văn bản khả dụng.")
 
 
+class GeminiClient(APIClient):
+    """Gemini client using the public generateContent REST endpoint."""
+
+    def __init__(self, model: str, max_retries: int, retry_delay_base: float,
+                 api_key: str = None):
+        super().__init__(model, max_retries, retry_delay_base)
+        self.api_key = (api_key or os.environ.get("GEMINI_API_KEY", "")).strip()
+        if not self.api_key:
+            raise ValueError("Chưa đặt biến môi trường GEMINI_API_KEY")
+
+    def call(self, system_prompt: str, user_prompt: str) -> str:
+        def _do_call():
+            payload = json.dumps({
+                "system_instruction": {"parts": [{"text": system_prompt}]},
+                "contents": [{"role": "user", "parts": [{"text": user_prompt}]}],
+                "generationConfig": {
+                    "temperature": 1.0,
+                    "topP": 0.95,
+                    "maxOutputTokens": 2048,
+                    "responseMimeType": "application/json",
+                },
+            }).encode("utf-8")
+            request = urllib.request.Request(
+                f"https://generativelanguage.googleapis.com/v1beta/models/{self.model}:generateContent?key={self.api_key}",
+                data=payload,
+                headers={"Content-Type": "application/json"},
+                method="POST",
+            )
+            try:
+                with urllib.request.urlopen(request, timeout=60) as response:
+                    data = json.loads(response.read().decode("utf-8"))
+            except urllib.error.HTTPError as error:
+                detail = error.read().decode("utf-8", errors="replace")
+                raise RuntimeError(f"Gemini HTTP {error.code}: {detail[:300]}") from error
+            candidates = data.get("candidates", [])
+            if not candidates:
+                raise RuntimeError("Gemini không trả về candidate hợp lệ.")
+            return "".join(part.get("text", "") for part in candidates[0].get("content", {}).get("parts", []))
+
+        return self._retry_with_backoff(_do_call)
+
+
+def get_gemini_api_keys() -> list[str]:
+    """Read Gemini keys in deterministic order without logging their values."""
+    keys = []
+    keys.extend(value.strip() for value in os.environ.get("GEMINI_API_KEYS", "").split(","))
+    single_key = os.environ.get("GEMINI_API_KEY", "").strip()
+    if single_key:
+        keys.append(single_key)
+    index = 1
+    while True:
+        key = os.environ.get(f"GEMINI_API_KEY_{index}", "").strip()
+        if not key:
+            break
+        keys.append(key)
+        index += 1
+    return list(dict.fromkeys(key for key in keys if key))
+
+
+class FallbackClient(APIClient):
+    """Try configured hosted providers in order, without exposing them to users."""
+
+    def __init__(self, model: str, max_retries: int, retry_delay_base: float):
+        super().__init__(model, max_retries, retry_delay_base)
+        self.clients = []
+        gemini_model = os.environ.get("GEMINI_MODEL", "gemini-2.0-flash")
+        candidates = [
+            (f"gemini-{index}", gemini_model, GeminiClient, key)
+            for index, key in enumerate(get_gemini_api_keys(), start=1)
+        ]
+        candidates.append(("groq", os.environ.get("GROQ_MODEL", "openai/gpt-oss-20b"), GroqClient, None))
+        errors = []
+        for name, provider_model, client_type, api_key in candidates:
+            try:
+                client = client_type(provider_model, max_retries, retry_delay_base, api_key) if api_key else client_type(provider_model, max_retries, retry_delay_base)
+                self.clients.append((name, provider_model, client))
+            except (ImportError, ValueError) as error:
+                errors.append(f"{name}: {error}")
+        if not self.clients:
+            raise ValueError("Không có API sinh comment khả dụng. " + " | ".join(errors))
+
+    def call(self, system_prompt: str, user_prompt: str) -> str:
+        errors = []
+        for name, model, client in self.clients:
+            try:
+                result = client.call(system_prompt, user_prompt)
+                self.model = model
+                return result
+            except Exception as error:
+                errors.append(f"{name}: {error}")
+                self.clients.remove((name, model, client))
+                logger.warning("Provider %s lỗi, chuyển provider tiếp theo: %s", name, error)
+        raise RuntimeError("Tất cả provider đều lỗi. " + " | ".join(errors))
+
+
 class OllamaClient(APIClient):
     """Client cho Ollama (chạy local, không cần API key)."""
 
@@ -394,6 +491,8 @@ class OllamaClient(APIClient):
 def create_client(provider: str, model: str, max_retries: int, retry_delay_base: float) -> APIClient:
     """Factory function tạo API client phù hợp."""
     providers = {
+        "auto": FallbackClient,
+        "gemini": GeminiClient,
         "openai": OpenAIClient,
         "anthropic": AnthropicClient,
         "groq": GroqClient,
@@ -568,10 +667,9 @@ def deduplicate_comments(
         if text_hash in existing_hashes:
             continue
 
-        # Check 2: Similarity với các comment đã có (chỉ check 50 gần nhất để tối ưu)
+        # Check 2: Compare with the complete topic history to preserve uniqueness.
         is_similar = False
-        check_against = existing_texts[-50:] if len(existing_texts) > 50 else existing_texts
-        for existing_text in check_against:
+        for existing_text in existing_texts:
             if calculate_similarity(text, existing_text) > threshold:
                 is_similar = True
                 break

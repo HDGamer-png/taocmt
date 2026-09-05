@@ -659,10 +659,6 @@ function showNewTaskView() {
 
     document.getElementById('sidebar').classList.remove('open');
 
-    const providerOptions = Object.keys(providers).map(p =>
-        `<option value="${p}" ${p === 'groq' ? 'selected' : ''}>${p.charAt(0).toUpperCase() + p.slice(1)}</option>`
-    ).join('');
-
     const main = document.getElementById('main-content');
     main.innerHTML = `
         <div class="new-task-form">
@@ -690,25 +686,8 @@ function showNewTaskView() {
                             <option value="Tiếng Việt" selected>🇻🇳 Tiếng Việt</option>
                             <option value="GenZ">🔥 GenZ (ưu tiên tiếng Việt)</option>
                             <option value="English">🇺🇸 English</option>
-                            <option value="日本語">🇯🇵 日本語</option>
+                            <option value="中文">🇨🇳 Tiếng Trung</option>
                             <option value="한국어">🇰🇷 한국어</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-card">
-                <h3>🤖 AI Provider</h3>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="task-provider">Provider</label>
-                        <select class="form-select" id="task-provider" onchange="updateModelOptions()">
-                            ${providerOptions}
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="task-model">Model</label>
-                        <select class="form-select" id="task-model">
                         </select>
                     </div>
                 </div>
@@ -738,19 +717,6 @@ function showNewTaskView() {
         </div>
     `;
 
-    // Populate model options
-    updateModelOptions();
-}
-
-function updateModelOptions() {
-    const provider = document.getElementById('task-provider')?.value;
-    const modelSelect = document.getElementById('task-model');
-    if (!provider || !modelSelect) return;
-
-    const models = providers[provider] || [];
-    modelSelect.innerHTML = models.map((m, i) =>
-        `<option value="${m}" ${i === 0 ? 'selected' : ''}>${m}</option>`
-    ).join('');
 }
 
 async function createTask() {
@@ -768,8 +734,6 @@ async function createTask() {
         topic,
         num_comments: parseInt(document.getElementById('task-count').value),
         language: document.getElementById('task-language').value,
-        api_provider: document.getElementById('task-provider').value,
-        api_model: document.getElementById('task-model').value,
         batch_size: 5,
         word_count: parseInt(document.getElementById('task-word-count').value),
         similarity_threshold: parseInt(document.getElementById('task-similarity').value) / 100,

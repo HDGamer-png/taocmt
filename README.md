@@ -12,17 +12,29 @@ Các biến môi trường:
 - `CMT_DATA_DIR`: thư mục chứa avatar và SQLite fallback.
 - `CMT_DB_PATH`: đường dẫn đầy đủ tới file SQLite fallback.
 - `ADMIN_USERNAME`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`: thông tin tạo hoặc nâng
-	cấp tài khoản Admin ban đầu trên Render.
+	cấp tài khoản Admin ban đầu trên Replit.
 
 Khi khởi động lần đầu, ứng dụng tự động nhập dữ liệu cũ từ `data/users.json`,
 `data/{user_id}/tasks.json` và `BE/history/{user_id}.json`. Database được đánh dấu
 đã migrate để không nhập trùng ở các lần khởi động sau.
 
-### Cấu hình Render và PostgreSQL miễn phí
+### Cấu hình Neon PostgreSQL và Replit
 
-`render.yaml` yêu cầu biến môi trường `DATABASE_URL`. Hãy tạo database miễn phí
-trên Supabase hoặc Neon, lấy connection string và nhập vào Render tại
-**Dashboard → Service → Environment → Add Environment Variable**.
+Tạo database PostgreSQL miễn phí trên Neon, sao chép connection string dạng
+`postgresql://...` và đặt vào Replit Secrets với tên `DATABASE_URL`. Không dùng
+SQLite trên Replit cho dữ liệu production vì filesystem của deployment không
+được coi là nơi lưu trữ lâu dài.
+
+Trong Replit, import repository này và tạo các Secrets: `DATABASE_URL`,
+`CMT_SECRET_KEY`, `GEMINI_API_KEY_1`, `GEMINI_API_KEY_2`, `GROQ_API_KEY`, `ADMIN_USERNAME`,
+`ADMIN_EMAIL` và `ADMIN_PASSWORD`. File `.replit` đã chứa lệnh chạy web và
+deployment.
+
+Gemini là provider chính. Có thể thêm nhiều key bằng `GEMINI_API_KEY_1`,
+`GEMINI_API_KEY_2`, ... hoặc một biến `GEMINI_API_KEYS` chứa các key phân cách
+bằng dấu phẩy. Backend sẽ thử từng key Gemini; khi một key hết quota, timeout
+hoặc trả lỗi, key đó được bỏ qua và chuyển sang key kế tiếp, sau đó mới fallback
+sang Groq. Người dùng không nhìn thấy hay lựa chọn provider/model.
 
 Để tạo Admin, thêm ba biến `ADMIN_USERNAME`, `ADMIN_EMAIL` và `ADMIN_PASSWORD`
 trên Render trước lần deploy đầu tiên. Khi ứng dụng khởi động, tài khoản đó sẽ
