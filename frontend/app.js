@@ -739,22 +739,28 @@ async function createTask() {
         similarity_threshold: parseInt(document.getElementById('task-similarity').value) / 100,
     };
 
-    const res = await apiFetch('/api/tasks', {
-        method: 'POST',
-        body: JSON.stringify(payload),
-    });
+    try {
+        const res = await apiFetch('/api/tasks', {
+            method: 'POST',
+            body: JSON.stringify(payload),
+        });
 
-    btn.classList.remove('loading');
-    btn.disabled = false;
-
-    if (res && res.ok) {
-        const data = await res.json();
-        showToast('Task đã được tạo! Đang sinh comment...', 'success');
-        await loadTasks();
-        selectTask(data.task_id);
-    } else if (res) {
-        const err = await res.json();
-        showToast(err.detail || 'Tạo task thất bại.', 'error');
+        if (res && res.ok) {
+            const data = await res.json();
+            showToast('Task đã được tạo! Đang sinh comment...', 'success');
+            await loadTasks();
+            selectTask(data.task_id);
+        } else if (res) {
+            const err = await res.json().catch(() => ({}));
+            showToast(err.detail || `Tạo task thất bại (${res.status}).`, 'error');
+        } else {
+            showToast('Không nhận được phản hồi từ server.', 'error');
+        }
+    } catch (error) {
+        showToast(`Không thể tạo task: ${error.message}`, 'error');
+    } finally {
+        btn.classList.remove('loading');
+        btn.disabled = false;
     }
 }
 

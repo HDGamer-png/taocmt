@@ -343,12 +343,13 @@ def daily_topic_usage(user_id: str, topic_group: str) -> int:
     """Return generated comments for this user/topic on the current UTC day."""
     initialize()
     with _db_lock, _connection_scope() as connection:
-        row = _execute(connection, """
+        today_expression = "CURRENT_DATE::text" if USING_POSTGRES else "CURRENT_DATE"
+        row = _execute(connection, f"""
             SELECT COALESCE(SUM(
                 CASE WHEN status = 'reserved' THEN requested_count ELSE generated_count END
             ), 0) AS generated_count
             FROM usage_events
-            WHERE user_id = ? AND topic_group = ? AND created_at >= CURRENT_DATE
+            WHERE user_id = ? AND topic_group = ? AND created_at >= {today_expression}
         """, (user_id, topic_group)).fetchone()
         return int(row["generated_count"] or 0)
 
