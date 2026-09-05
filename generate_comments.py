@@ -388,13 +388,10 @@ def get_gemini_api_keys() -> list[str]:
     single_key = os.environ.get("GEMINI_API_KEY", "").strip()
     if single_key:
         keys.append(single_key)
-    index = 1
-    while True:
+    for index in range(1, 6):
         key = os.environ.get(f"GEMINI_API_KEY_{index}", "").strip()
-        if not key:
-            break
-        keys.append(key)
-        index += 1
+        if key:
+            keys.append(key)
     return list(dict.fromkeys(key for key in keys if key))
 
 
@@ -404,7 +401,7 @@ class FallbackClient(APIClient):
     def __init__(self, model: str, max_retries: int, retry_delay_base: float):
         super().__init__(model, max_retries, retry_delay_base)
         self.clients = []
-        gemini_model = os.environ.get("GEMINI_MODEL", "gemini-2.0-flash")
+        gemini_model = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash-lite")
         candidates = [
             (f"gemini-{index}", gemini_model, GeminiClient, key)
             for index, key in enumerate(get_gemini_api_keys(), start=1)

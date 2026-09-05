@@ -26,25 +26,27 @@ SQLite trên Replit cho dữ liệu production vì filesystem của deployment k
 được coi là nơi lưu trữ lâu dài.
 
 Trong Replit, import repository này và tạo các Secrets: `DATABASE_URL`,
-`CMT_SECRET_KEY`, `GEMINI_API_KEY_1`, `GEMINI_API_KEY_2`, `GROQ_API_KEY`, `ADMIN_USERNAME`,
+`CMT_SECRET_KEY`, `GEMINI_API_KEY_1` đến `GEMINI_API_KEY_5`, `GROQ_API_KEY`, `ADMIN_USERNAME`,
 `ADMIN_EMAIL` và `ADMIN_PASSWORD`. File `.replit` đã chứa lệnh chạy web và
 deployment.
 
-Gemini là provider chính. Có thể thêm nhiều key bằng `GEMINI_API_KEY_1`,
-`GEMINI_API_KEY_2`, ... hoặc một biến `GEMINI_API_KEYS` chứa các key phân cách
-bằng dấu phẩy. Backend sẽ thử từng key Gemini; khi một key hết quota, timeout
+Gemini là provider chính. Hãy thêm đủ năm key bằng `GEMINI_API_KEY_1` đến
+`GEMINI_API_KEY_5`. Backend sẽ thử từng key Gemini; khi một key hết quota, timeout
 hoặc trả lỗi, key đó được bỏ qua và chuyển sang key kế tiếp, sau đó mới fallback
 sang Groq. Người dùng không nhìn thấy hay lựa chọn provider/model.
 
+Model mặc định là `gemini-2.5-flash-lite`, phù hợp cho việc sinh nhiều comment
+nhanh. Có thể ghi đè bằng Secret hoặc biến môi trường `GEMINI_MODEL`.
+
 Để tạo Admin, thêm ba biến `ADMIN_USERNAME`, `ADMIN_EMAIL` và `ADMIN_PASSWORD`
-trên Render trước lần deploy đầu tiên. Khi ứng dụng khởi động, tài khoản đó sẽ
+trên Replit trước lần deploy đầu tiên. Khi ứng dụng khởi động, tài khoản đó sẽ
 được tạo với quyền Admin. Không đưa mật khẩu vào GitHub. Sau khi đăng nhập,
 truy cập `/admin` để quản lý.
 
 Khi khởi động lần đầu, ứng dụng tự tạo các bảng PostgreSQL. Nếu các file JSON cũ
 vẫn có trong workspace lúc khởi động, ứng dụng sẽ tự nhập một lần. Dữ liệu đã
-từng nằm trên instance Render cũ không tự chuyển sang database mới; cần xuất
+từng nằm trên instance cũ không tự chuyển sang database mới; cần xuất
 hoặc nhập chúng trước khi deploy phiên bản này.
 
-Avatar hiện vẫn là file local. Với Render Free, avatar có thể mất khi instance
+Avatar hiện vẫn là file local. Với deployment miễn phí, avatar có thể mất khi instance
 thay đổi; tài khoản, task, comment và history vẫn được bảo toàn trong PostgreSQL.
