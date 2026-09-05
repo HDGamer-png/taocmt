@@ -795,6 +795,9 @@ async def download_task(task_id: str, format: str = "json", authorization: str =
         if task_id in tasks and tasks[task_id].get("comments"):
             comments = tasks[task_id]["comments"]
 
+    if not comments:
+        raise HTTPException(status_code=409, detail="Task chưa có comment để tải xuống.")
+
     safe_topic = "".join(c if c.isalnum() or c in " _-" else "_" for c in task.get("topic", "comments"))[:30]
 
     if format == "txt":
@@ -821,13 +824,15 @@ async def download_task(task_id: str, format: str = "json", authorization: str =
             media_type="text/csv; charset=utf-8",
             headers={"Content-Disposition": f'attachment; filename="{safe_topic}.csv"'}
         )
-    else:
+    elif format == "json":
         content = json.dumps(comments, ensure_ascii=False, indent=2)
         return StreamingResponse(
             io.BytesIO(content.encode("utf-8")),
             media_type="application/json; charset=utf-8",
             headers={"Content-Disposition": f'attachment; filename="{safe_topic}.json"'}
         )
+    else:
+        raise HTTPException(status_code=400, detail="Định dạng tải xuống không được hỗ trợ.")
 
 
 # ============================================================================

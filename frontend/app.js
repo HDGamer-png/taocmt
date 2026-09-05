@@ -801,7 +801,8 @@ async function downloadTask(taskId, format) {
             headers: { 'Authorization': `Bearer ${token}` },
         });
         if (!response.ok) {
-            showToast('Không thể tải file.', 'error');
+            const error = await response.json().catch(() => ({}));
+            showToast(error.detail || `Không thể tải file (${response.status}).`, 'error');
             return;
         }
 
@@ -813,7 +814,7 @@ async function downloadTask(taskId, format) {
         document.body.appendChild(link);
         link.click();
         link.remove();
-        URL.revokeObjectURL(downloadUrl);
+        setTimeout(() => URL.revokeObjectURL(downloadUrl), 1000);
         showToast('Đã tải file thành công!', 'success');
     } catch {
         showToast('Lỗi kết nối khi tải file.', 'error');
