@@ -35,7 +35,7 @@ Gemini là provider chính. Hãy thêm đủ năm key bằng `GEMINI_API_KEY_1` 
 hoặc trả lỗi, key đó được bỏ qua và chuyển sang key kế tiếp, sau đó mới fallback
 sang Groq. Người dùng không nhìn thấy hay lựa chọn provider/model.
 
-Model mặc định là `gemini-2.5-flash-lite`, phù hợp cho việc sinh nhiều comment
+Model mặc định là `gemini-3.5-flash-lite`, phù hợp cho việc sinh nhiều comment
 nhanh. Có thể ghi đè bằng Secret hoặc biến môi trường `GEMINI_MODEL`.
 Mặc định ứng dụng chạy Gemini-only với `GEMINI_ONLY=true`; không cần cấu hình
 `GROQ_API_KEY`.

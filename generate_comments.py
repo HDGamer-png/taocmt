@@ -401,7 +401,7 @@ class FallbackClient(APIClient):
     def __init__(self, model: str, max_retries: int, retry_delay_base: float):
         super().__init__(model, max_retries, retry_delay_base)
         self.clients = []
-        gemini_model = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash-lite")
+        gemini_model = os.environ.get("GEMINI_MODEL", "gemini-3.5-flash-lite")
         candidates = [
             (f"gemini-{index}", gemini_model, GeminiClient, key)
             for index, key in enumerate(get_gemini_api_keys(), start=1)
