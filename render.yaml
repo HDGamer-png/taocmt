@@ -17,6 +17,8 @@ services:
         sync: false
       - key: GEMINI_MODEL
         value: gemini-2.5-flash-lite
+      - key: GEMINI_ONLY
+        value: "true"
       - key: GROQ_API_KEY
         sync: false
       - key: CMT_SECRET_KEY

@@ -37,6 +37,8 @@ sang Groq. Người dùng không nhìn thấy hay lựa chọn provider/model.
 
 Model mặc định là `gemini-2.5-flash-lite`, phù hợp cho việc sinh nhiều comment
 nhanh. Có thể ghi đè bằng Secret hoặc biến môi trường `GEMINI_MODEL`.
+Mặc định ứng dụng chạy Gemini-only với `GEMINI_ONLY=true`; không cần cấu hình
+`GROQ_API_KEY`.
 
 Để tạo Admin, thêm ba biến `ADMIN_USERNAME`, `ADMIN_EMAIL` và `ADMIN_PASSWORD`
 trên Replit trước lần deploy đầu tiên. Khi ứng dụng khởi động, tài khoản đó sẽ

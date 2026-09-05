@@ -406,7 +406,9 @@ class FallbackClient(APIClient):
             (f"gemini-{index}", gemini_model, GeminiClient, key)
             for index, key in enumerate(get_gemini_api_keys(), start=1)
         ]
-        candidates.append(("groq", os.environ.get("GROQ_MODEL", "openai/gpt-oss-20b"), GroqClient, None))
+        gemini_only = os.environ.get("GEMINI_ONLY", "true").strip().lower() == "true"
+        if not gemini_only and os.environ.get("GROQ_API_KEY", "").strip():
+            candidates.append(("groq", os.environ.get("GROQ_MODEL", "openai/gpt-oss-20b"), GroqClient, None))
         errors = []
         for name, provider_model, client_type, api_key in candidates:
             try:
@@ -428,7 +430,7 @@ class FallbackClient(APIClient):
                 errors.append(f"{name}: {error}")
                 self.clients.remove((name, model, client))
                 logger.warning("Provider %s lỗi, chuyển provider tiếp theo: %s", name, error)
-        raise RuntimeError("Tất cả provider đều lỗi. " + " | ".join(errors))
+            raise RuntimeError("Tất cả Gemini API đều lỗi: " + " | ".join(errors))
 
 
 class OllamaClient(APIClient):
@@ -831,7 +833,7 @@ class CommentGenerator:
 
                 if not new_comments:
                     consecutive_failures += 1
-                    self.last_error = "Groq trả về kết quả rỗng hoặc không đúng JSON/số từ yêu cầu."
+                    self.last_error = "AI provider trả về kết quả rỗng hoặc không đúng JSON/số từ yêu cầu."
                     msg = f"⚠ Batch rỗng! ({consecutive_failures} lần liên tiếp)"
                     logger.warning(f"  {msg}")
                     self._notify_progress(batch_num, [], msg)
